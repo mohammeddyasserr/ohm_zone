@@ -10,6 +10,7 @@ module team.ohm_zone {
     requires org.kordamp.bootstrapfx.core;
     requires eu.hansolo.tilesfx;
     requires com.almasb.fxgl.all;
+    requires java.sql;
 
     opens main_package to javafx.fxml;
     exports main_package;
