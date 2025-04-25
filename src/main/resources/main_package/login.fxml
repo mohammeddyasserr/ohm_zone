@@ -36,6 +36,8 @@
       <TextField fx:id="phonesignup" layoutX="104.0" layoutY="297.0" prefHeight="38.0" prefWidth="194.0" promptText="Phone number" style="-fx-background-color: transparent; -fx-text-fill: white; -fx-border-color: white;" visible="false" />
       <TextField fx:id="addresssignup" layoutX="104.0" layoutY="356.0" prefHeight="38.0" prefWidth="194.0" promptText="address" style="-fx-background-color: transparent; -fx-text-fill: white; -fx-border-color: white;" visible="false" />
       <Button fx:id="signupbtn" layoutX="104.0" layoutY="431.0" mnemonicParsing="false" onAction="#signup" prefHeight="38.0" prefWidth="194.0" style="-fx-background-color: #00FF87;" text="Sign Up" visible="false" />
+      <Label fx:id="pass_error" layoutX="594.0" layoutY="274.0" text="wrong password try again" textFill="#cf2020" visible="false" />
+      <Label fx:id="user_error" layoutX="652.0" layoutY="193.0" prefHeight="18.0" prefWidth="79.0" text="user not found" textFill="#cf2020" visible="false" />
 
    </children>
 </AnchorPane>

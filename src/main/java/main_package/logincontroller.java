@@ -1,5 +1,10 @@
 package main_package;
-
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+import main_package.main;
 import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -8,8 +13,25 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.util.Duration;
 
-public class logincontroller {
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
+
+public class logincontroller {
+    private Stage stage;
+    private Scene scene;
+    private Parent root;
+    /*public void switchtoadmin(ActionEvent event) throws IOException {
+        Parent root= FXMLLoader.load(getClass().getResource("admin_home.fxml"));
+        stage=(Stage)((Node)event.getSource()).getScene().getWindow();
+        scene= new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }*/
     @FXML
     private ImageView logo;
     @FXML
@@ -40,6 +62,10 @@ public class logincontroller {
     private TextField addresssignup;
     @FXML
     private Button signupbtn;
+    @FXML
+    private Label pass_error;
+    @FXML
+    private Label user_error;
 
     @FXML
     void adminselect(ActionEvent event) {
@@ -47,8 +73,39 @@ public class logincontroller {
     }
 
     @FXML
-    void signinclick(ActionEvent event) {
+    void signinclick(ActionEvent event)throws IOException {
+        pass_error.setVisible(false);
+        user_error.setVisible(false);
+        if(admin.isSelected()){
+            try{
+                Connection con=DriverManager.getConnection("jdbc:sqlite:store.db");
+                System.out.println("connected");
+                PreparedStatement ps=con.prepareStatement("select * from admins where user_name=?");
+                ps.setString(1,userfield.getText());
+                ResultSet r=ps.executeQuery();
+                if (r.next()) {
+                    String dbPassword = r.getString("password");
+                    if (dbPassword.equals(passfield.getText())) {
+                        Parent root= FXMLLoader.load(getClass().getResource("mohammed.fxml"));
+                        stage=(Stage)((Node)event.getSource()).getScene().getWindow();
+                        scene= new Scene(root);
+                        stage.setScene(scene);
+                        stage.show();
 
+                    } else {
+                        pass_error.setVisible(true);
+                    }
+                } else {
+                    user_error.setVisible(true);
+                }
+                r.close();
+                ps.close();
+                con.close();
+        }
+            catch(SQLException ee){
+            System.out.print(ee.getMessage());
+        }
+        }
     }
 
     @FXML
