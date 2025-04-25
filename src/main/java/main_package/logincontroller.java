@@ -29,11 +29,11 @@ public class logincontroller {
     @FXML
     private Button signup;
     @FXML
-    private TextField pass2signup;
+    private PasswordField pass2signup;
     @FXML
     private TextField usernamesignup;
     @FXML
-    private TextField pass1signup;
+    private PasswordField pass1signup;
     @FXML
     private TextField phonesignup;
     @FXML
