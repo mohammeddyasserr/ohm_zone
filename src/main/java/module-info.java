@@ -11,7 +11,6 @@ module team.ohm_zone {
     requires eu.hansolo.tilesfx;
     requires com.almasb.fxgl.all;
     requires java.sql;
-    requires java.desktop;
 
     opens main_package to javafx.fxml;
     exports main_package;
