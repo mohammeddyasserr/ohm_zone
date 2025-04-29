@@ -16,7 +16,7 @@ public class product {
     }
     // === Add Product ===
     public static void addToDatabase(Connection conn,int id,String name,double price,int quantity) throws SQLException {
-        String sql = "INSERT INTO products (id, name, price, quantity) VALUES (?, ?, ?, ?)";
+        String sql = "INSERT INTO product (id, name, price, quantity) VALUES (?, ?, ?, ?)";
         try (PreparedStatement s = conn.prepareStatement(sql)) {
             s.setInt(1, id);
             s.setString(2, name);
@@ -28,7 +28,7 @@ public class product {
 
     // === Delete Product ===
     public static void deleteFromDatabase(Connection conn,int id,String name,double price,int quantity) throws SQLException {
-        String sql = "DELETE FROM products WHERE id = ?";
+        String sql = "DELETE FROM product WHERE id = ?";
         try (PreparedStatement s = conn.prepareStatement(sql)) {
             s.setInt(1, id);
             s.executeUpdate();
@@ -37,7 +37,7 @@ public class product {
 
     // === Update Product ===
     public static void updateInDatabase(Connection conn,int id,String name,double price,int quantity) throws SQLException {
-        String sql = "UPDATE products SET name = ?, price = ?, quantity = ? WHERE id = ?";
+        String sql = "UPDATE product SET name = ?, price = ?, quantity = ? WHERE id = ?";
         try (PreparedStatement s = conn.prepareStatement(sql)) {
             s.setString(1, name);
             s.setDouble(2, price);
