@@ -38,6 +38,13 @@
       <Button fx:id="signupbtn" layoutX="104.0" layoutY="431.0" mnemonicParsing="false" onAction="#signup" prefHeight="38.0" prefWidth="194.0" style="-fx-background-color: #00FF87;" text="Sign Up" visible="false" />
       <Label fx:id="pass_error" layoutX="594.0" layoutY="274.0" text="wrong password try again" textFill="#cf2020" visible="false" />
       <Label fx:id="user_error" layoutX="652.0" layoutY="193.0" prefHeight="18.0" prefWidth="79.0" text="user not found" textFill="#cf2020" visible="false" />
+      <Label fx:id="user_taken" layoutX="242.0" layoutY="155.0" text="user taken" textFill="#cf2020" visible="false" />
+      <Label fx:id="pass_match" layoutX="166.0" layoutY="273.0" prefHeight="18.0" prefWidth="131.0" text="password doesn't match" textFill="#cf2020" visible="false" />
+      <Label fx:id="phone_error" layoutX="122.0" layoutY="333.0" prefHeight="18.0" prefWidth="174.0" text="wrong number, must be 11 digit" textFill="#cf2020" visible="false" />
+      <Label fx:id="address_error" layoutX="201.0" layoutY="394.0" prefHeight="18.0" prefWidth="97.0" text="mustn't be empty" textFill="#cf2020" visible="false" />
+      <Label fx:id="pass_empty" layoutX="152.0" layoutY="212.0" text="password musn't be empty" textFill="#cf2020" visible="false" />
+      <Label fx:id="user_empty" layoutX="203.0" layoutY="155.0" text="mustn't be empty" textFill="#cf2020" visible="false" />
+      <Button fx:id="back_to_login" layoutX="157.0" layoutY="476.0" mnemonicParsing="false" onAction="#backtologin" style="-fx-background-color: transparent;" text="back to home" textFill="#00ff87" visible="false" />
 
    </children>
 </AnchorPane>
