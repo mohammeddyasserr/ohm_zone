@@ -37,7 +37,7 @@
             </ImageView>
             <ImageView fitHeight="25.0" fitWidth="21.0" layoutX="923.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../../../Downloads/account_circle_40dp_FFFFFF_FILL0_wght400_GRAD0_opsz40.png" />
+                  <Image url="@../icons/account.png" />
                </image>
                <effect>
                   <Glow />
