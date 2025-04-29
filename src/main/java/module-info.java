@@ -13,5 +13,7 @@ module team.ohm_zone {
     requires java.sql;
 
     opens main_package to javafx.fxml;
+    opens admin_gui_controller to javafx.fxml;
     exports main_package;
+    exports admin_gui_controller ;
 }

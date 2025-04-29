@@ -1,16 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.Glow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="admin_gui_controller.admin_main_controller">
+<AnchorPane prefHeight="570.0" prefWidth="951.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="admin_gui_controller.admin_main_controller">
    <children>
-      <Button fx:id="menubutton" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#togglesidepanel" text="=" />
-      <AnchorPane fx:id="sidepanel" layoutX="-200.0" prefHeight="403.0" prefWidth="200.0" style="-fx-background-color: green; -fx-border-color: blue;">
+      <Pane fx:id="side_panel" prefHeight="74.0" prefWidth="958.0" style="-fx-background-color: black;">
          <children>
-            <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" text="Button" />
-            <Button layoutX="14.0" layoutY="51.0" mnemonicParsing="false" text="Button" />
+            <Button fx:id="menu_btn" layoutX="14.0" layoutY="24.0" mnemonicParsing="false" onAction="#toggle_menu" text="_" />
+            <ImageView fitHeight="74.0" fitWidth="90.0" layoutX="442.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../icons/logo.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="25.0" fitWidth="21.0" layoutX="923.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../icons/logo.png" />
+               </image>
+               <effect>
+                  <Glow />
+               </effect>
+            </ImageView>
+            <Label layoutX="849.0" layoutY="28.0" prefHeight="17.0" prefWidth="74.0" text="Mohammed" textFill="WHITE" />
          </children>
-      </AnchorPane>
+      </Pane>
+      <Pane layoutY="74.0" prefHeight="495.0" prefWidth="166.0" style="-fx-background-color: linear-gradient(#0BFB7C, #f0f9ff);">
+         <children>
+            <Button mnemonicParsing="false" prefHeight="51.0" prefWidth="166.0" style="-fx-background-color: transparent;" text="Home" />
+            <Button layoutY="51.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="166.0" style="-fx-background-color: transparent;" text="Add Product" />
+            <Button layoutY="102.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="166.0" style="-fx-background-color: transparent;" text="Remove Product" />
+            <Button layoutY="153.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="166.0" style="-fx-background-color: transparent;" text="Edit Product" />
+            <Button layoutY="204.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="166.0" style="-fx-background-color: transparent;" text="Pills" />
+            <Button layoutY="255.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="166.0" style="-fx-background-color: transparent;" text="Adminstration" />
+            <Button layoutY="444.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="166.0" style="-fx-background-color: transparent;" text="Log Out" />
+         </children></Pane>
    </children>
 </AnchorPane>

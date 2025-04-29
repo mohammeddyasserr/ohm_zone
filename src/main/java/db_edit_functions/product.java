@@ -15,7 +15,7 @@ public class product {
         this.quantity = quantity;
     }
     // === Add Product ===
-    public void addToDatabase(Connection conn) throws SQLException {
+    public static void addToDatabase(Connection conn,int id,String name,double price,int quantity) throws SQLException {
         String sql = "INSERT INTO products (id, name, price, quantity) VALUES (?, ?, ?, ?)";
         try (PreparedStatement s = conn.prepareStatement(sql)) {
             s.setInt(1, id);
@@ -27,7 +27,7 @@ public class product {
     }
 
     // === Delete Product ===
-    public void deleteFromDatabase(Connection conn) throws SQLException {
+    public static void deleteFromDatabase(Connection conn,int id,String name,double price,int quantity) throws SQLException {
         String sql = "DELETE FROM products WHERE id = ?";
         try (PreparedStatement s = conn.prepareStatement(sql)) {
             s.setInt(1, id);
@@ -36,7 +36,7 @@ public class product {
     }
 
     // === Update Product ===
-    public void updateInDatabase(Connection conn) throws SQLException {
+    public static void updateInDatabase(Connection conn,int id,String name,double price,int quantity) throws SQLException {
         String sql = "UPDATE products SET name = ?, price = ?, quantity = ? WHERE id = ?";
         try (PreparedStatement s = conn.prepareStatement(sql)) {
             s.setString(1, name);
