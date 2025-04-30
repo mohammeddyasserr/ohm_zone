@@ -3,7 +3,7 @@ package db_edit_functions;
 import java.sql.*;
 
 public class product {
-    private final int id;
+    private int id;
     private String name;
     private double price;
     private int quantity;
