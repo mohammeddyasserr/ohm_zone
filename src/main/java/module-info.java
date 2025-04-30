@@ -16,4 +16,5 @@ module team.ohm_zone {
     opens admin_gui_controller to javafx.fxml;
     exports main_package;
     exports admin_gui_controller ;
+    exports user_gui_controller;
 }
