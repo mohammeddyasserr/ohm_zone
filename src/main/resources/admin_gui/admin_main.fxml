@@ -34,7 +34,7 @@
                   <Image url="@../icons/logo.png" />
                </image>
             </ImageView>
-            <Button fx:id="account_btn" contentDisplay="RIGHT" layoutX="571.0" layoutY="24.0" mnemonicParsing="false" onAction="#account_page" prefHeight="29.0" prefWidth="375.0" style="-fx-background-color: transparent; -fx-alignment: CENTER_RIGHT;" text="mohammed" textFill="WHITE">
+            <Button fx:id="account_btn" contentDisplay="RIGHT" layoutX="571.0" layoutY="24.0" mnemonicParsing="false" onAction="#acount_page" prefHeight="29.0" prefWidth="375.0" style="-fx-background-color: transparent; -fx-alignment: CENTER_RIGHT;" text="mohammed" textFill="WHITE">
                <graphic>
                   <ImageView fitHeight="21.0" fitWidth="87.0" pickOnBounds="true" preserveRatio="true">
                      <image>

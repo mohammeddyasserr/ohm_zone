@@ -21,7 +21,7 @@ public class admin_main_controller {
     private Button menu_btn;
 
     @FXML
-    void account_page(ActionEvent event) {
+    void acount_page(ActionEvent event) {
     }
 
     @FXML
