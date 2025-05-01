@@ -32,20 +32,23 @@
                         <Image url="@../icons/logo.png" />
                     </image>
                 </ImageView>
-                <ImageView fitHeight="25.0" fitWidth="21.0" layoutX="923.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true">
-                    <image>
+            <Button fx:id="account_btn" contentDisplay="RIGHT" layoutX="564.0" layoutY="20.0" mnemonicParsing="false" onAction="#acount_page" prefHeight="29.0" prefWidth="375.0" style="-fx-background-color: transparent; -fx-alignment: CENTER_RIGHT;" text="mohammed" textFill="WHITE">
+               <graphic>
+                  <ImageView fitHeight="21.0" fitWidth="87.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
                         <Image url="@../icons/account.png" />
-                    </image>
-                    <effect>
+                     </image>
+                     <effect>
                         <Glow />
-                    </effect>
-                </ImageView>
-                <Label layoutX="849.0" layoutY="28.0" prefHeight="17.0" prefWidth="74.0" text="Mohammed" textFill="WHITE" />
+                     </effect>
+                  </ImageView>
+               </graphic>
+            </Button>
             </children>
         </Pane>
         <Pane fx:id="side_panel" layoutY="74.0" prefHeight="495.0" prefWidth="166.0" style="-fx-background-color: linear-gradient(from 0% 0% to 100% 100%, rgba(0,255,204,0.2), rgba(0,200,120,0.15), rgba(255,255,255,0.1));;">
             <children>
-                <Button graphicTextGap="10.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="166.0" style="-fx-background-color: transparent; -fx-alignment: CENTER_LEFT;" text="Home" textFill="WHITE">
+                <Button graphicTextGap="10.0" mnemonicParsing="false" onAction="#home_page" prefHeight="51.0" prefWidth="166.0" style="-fx-background-color: transparent; -fx-alignment: CENTER_LEFT;" text="Home" textFill="WHITE">
                     <graphic>
                         <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -53,7 +56,7 @@
                             </image>
                         </ImageView>
                     </graphic></Button>
-                <Button graphicTextGap="10.0" layoutY="51.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="166.0" style="-fx-background-color: transparent; -fx-alignment: CENTER_LEFT;" text="Add Product" textFill="WHITE">
+                <Button graphicTextGap="10.0" layoutY="51.0" mnemonicParsing="false" onAction="#addp_page" prefHeight="51.0" prefWidth="166.0" style="-fx-background-color: transparent; -fx-alignment: CENTER_LEFT;" text="Add Product" textFill="WHITE">
                     <graphic>
                         <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -61,7 +64,7 @@
                             </image>
                         </ImageView>
                     </graphic></Button>
-                <Button graphicTextGap="10.0" layoutY="102.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="166.0" style="-fx-background-color: transparent; -fx-alignment: CENTER_LEFT;" text="Remove Product" textFill="WHITE">
+                <Button graphicTextGap="10.0" layoutY="102.0" mnemonicParsing="false" onAction="#removep_page" prefHeight="51.0" prefWidth="166.0" style="-fx-background-color: transparent; -fx-alignment: CENTER_LEFT;" text="Remove Product" textFill="WHITE">
                     <graphic>
                         <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -69,7 +72,7 @@
                             </image>
                         </ImageView>
                     </graphic></Button>
-                <Button graphicTextGap="10.0" layoutY="153.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="166.0" style="-fx-background-color: transparent; -fx-alignment: CENTER_LEFT;" text="Edit Product" textFill="WHITE">
+                <Button graphicTextGap="10.0" layoutY="153.0" mnemonicParsing="false" onAction="#editp_page" prefHeight="51.0" prefWidth="166.0" style="-fx-background-color: transparent; -fx-alignment: CENTER_LEFT;" text="Edit Product" textFill="WHITE">
                     <graphic>
                         <ImageView fitHeight="30.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -77,7 +80,7 @@
                             </image>
                         </ImageView>
                     </graphic></Button>
-                <Button graphicTextGap="10.0" layoutY="204.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="166.0" style="-fx-background-color: transparent; -fx-alignment: CENTER_LEFT;" text="Pills" textFill="WHITE">
+                <Button graphicTextGap="10.0" layoutY="204.0" mnemonicParsing="false" onAction="#pills_page" prefHeight="51.0" prefWidth="166.0" style="-fx-background-color: transparent; -fx-alignment: CENTER_LEFT;" text="Pills" textFill="WHITE">
                     <graphic>
                         <ImageView fitHeight="30.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -85,7 +88,7 @@
                             </image>
                         </ImageView>
                     </graphic></Button>
-                <Button graphicTextGap="10.0" layoutY="255.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="166.0" style="-fx-background-color: transparent; -fx-alignment: CENTER_LEFT;" text="Adminstration" textFill="WHITE">
+                <Button graphicTextGap="10.0" layoutY="255.0" mnemonicParsing="false" onAction="#adda_page" prefHeight="51.0" prefWidth="166.0" style="-fx-background-color: transparent; -fx-alignment: CENTER_LEFT;" text="Adminstration" textFill="WHITE">
                     <graphic>
                         <ImageView fitHeight="30.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -93,7 +96,7 @@
                             </image>
                         </ImageView>
                     </graphic></Button>
-                <Button graphicTextGap="10.0" layoutY="444.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="166.0" style="-fx-background-color: transparent; -fx-alignment: CENTER_LEFT;" text="Log Out" textFill="WHITE">
+                <Button graphicTextGap="10.0" layoutY="444.0" mnemonicParsing="false" onAction="#login_page" prefHeight="51.0" prefWidth="166.0" style="-fx-background-color: transparent; -fx-alignment: CENTER_LEFT;" text="Log Out" textFill="WHITE">
                     <graphic>
                         <ImageView fitHeight="30.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                             <image>
