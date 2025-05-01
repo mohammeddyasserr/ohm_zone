@@ -16,6 +16,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import main_package.user_session;
 
 import java.io.IOException;
 import java.net.URL;
@@ -63,6 +64,10 @@ public class remove_product_controller implements Initializable {
 
     @FXML
     private Label selection_error;
+
+    @FXML
+    private Button account_btn;
+
 
     @FXML
     void acount_page(ActionEvent event) {
@@ -216,6 +221,7 @@ public class remove_product_controller implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        account_btn.setText(user_session.get_user());
         loadData();
         showDataInTable();
     }

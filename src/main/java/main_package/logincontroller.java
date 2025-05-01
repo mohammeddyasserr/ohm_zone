@@ -1,4 +1,5 @@
 package main_package;
+import admin_gui_controller.admin_main_controller;
 import db_edit_functions.User;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -11,7 +12,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.util.Duration;
-
+import main_package.user_session ;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -99,9 +100,13 @@ public class logincontroller {
                 if (r.next()) {
                     String dbPassword = r.getString("password");
                     if (dbPassword.equals(passfield.getText())) {
-                        Parent root= FXMLLoader.load(getClass().getResource("/admin_gui/admin_main.fxml"));
-                        stage=(Stage)((Node)event.getSource()).getScene().getWindow();
-                        scene= new Scene(root);
+                        String name = userfield.getText();
+                        user_session.set_user(name);
+
+                        FXMLLoader loader = new FXMLLoader(getClass().getResource("/admin_gui/admin_main.fxml"));
+                        Parent root = loader.load();
+                        Stage stage = (Stage) signinbtn.getScene().getWindow();
+                        Scene scene = new Scene(root);
                         stage.setScene(scene);
                         stage.show();
 

@@ -28,6 +28,7 @@ public class add_product_controller implements Initializable {
 
 
     public void initialize(URL location, ResourceBundle resources) {
+        account_btn.setText(user_session.get_user());
 
         try {
             Connection con = DriverManager.getConnection("jdbc:sqlite:store.db");
@@ -81,6 +82,10 @@ public class add_product_controller implements Initializable {
 
     @FXML
     private Pane side_panel;
+
+    @FXML
+    private Button account_btn;
+
 
     @FXML
     void acount_page(ActionEvent event) {
