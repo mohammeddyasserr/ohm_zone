@@ -13,10 +13,8 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-import main_package.account_btn;
 import main_package.user_session;
 
 import java.io.IOException;
@@ -31,7 +29,7 @@ import java.util.ResourceBundle;
 
 
 
-public class remove_product_controller extends account_btn implements Initializable {
+public class remove_product_controller implements Initializable {
 
 
     private product selectedProduct;
@@ -65,6 +63,14 @@ public class remove_product_controller extends account_btn implements Initializa
 
     @FXML
     private Label selection_error;
+
+    @FXML
+    private Button account_btn;
+
+    @FXML
+    public void initialize() {
+        account_btn.setText(user_session.get_user()); // This sets the button text to the logged-in username
+    }
 
 
     @FXML

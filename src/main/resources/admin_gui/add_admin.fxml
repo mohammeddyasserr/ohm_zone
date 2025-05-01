@@ -2,7 +2,6 @@
 
 <?import javafx.geometry.Rectangle2D?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
 <?import javafx.scene.effect.Glow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -35,15 +34,18 @@
                   <Image url="@../icons/logo.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="25.0" fitWidth="21.0" layoutX="923.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../icons/account.png" />
-               </image>
-               <effect>
-                  <Glow />
-               </effect>
-            </ImageView>
-            <Label layoutX="849.0" layoutY="28.0" prefHeight="17.0" prefWidth="74.0" text="Mohammed" textFill="WHITE" />
+            <Button fx:id="account_btn" contentDisplay="RIGHT" layoutX="576.0" layoutY="22.0" mnemonicParsing="false" onAction="#acount_page" prefHeight="29.0" prefWidth="375.0" style="-fx-background-color: transparent; -fx-alignment: CENTER_RIGHT;" text="mohammed" textFill="WHITE">
+               <graphic>
+                  <ImageView fitHeight="21.0" fitWidth="87.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/account.png" />
+                     </image>
+                     <effect>
+                        <Glow />
+                     </effect>
+                  </ImageView>
+               </graphic>
+            </Button>
          </children>
       </Pane>
       <Pane fx:id="side_panel" layoutY="74.0" prefHeight="495.0" prefWidth="166.0" style="-fx-background-color: linear-gradient(from 0% 0% to 100% 100%, rgba(0,255,204,0.2), rgba(0,200,120,0.15), rgba(255,255,255,0.1));;">

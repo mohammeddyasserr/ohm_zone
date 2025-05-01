@@ -7,12 +7,11 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
-import main_package.account_btn;
 import main_package.user_session;
 
 import java.sql.*;
 
-public class add_admin_controller extends account_btn  {
+public class add_admin_controller   {
 
 
     @FXML
@@ -27,6 +26,14 @@ public class add_admin_controller extends account_btn  {
     private PasswordField passwordField;
     @FXML
     private Label messageLabel;
+
+    @FXML
+    private Button account_btn;
+
+    @FXML
+    public void initialize() {
+        account_btn.setText(user_session.get_user()); // This sets the button text to the logged-in username
+    }
 
 
     @FXML
