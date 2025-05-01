@@ -12,13 +12,8 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 
-<AnchorPane prefHeight="570.0" prefWidth="951.0" style="-fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #002b36, #014d4a, #00ffcc);;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="admin_gui_controller.edit_product_controller">
+<AnchorPane prefHeight="570.0" prefWidth="951.0" style="-fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #002b36, #014d4a, #00ffcc);;" stylesheets="@style.CSS" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="admin_gui_controller.edit_product_controller">
     <children>
-        <ImageView fitHeight="516.0" fitWidth="520.0" layoutX="222.0" layoutY="30.0" opacity="0.18" pickOnBounds="true" preserveRatio="true">
-            <image>
-                <Image url="@../icons/logo.png" />
-            </image>
-        </ImageView>
         <Pane prefHeight="74.0" prefWidth="958.0" style="-fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #001f3f, #003b46);;">
             <children>
                 <Button fx:id="menu_btn" layoutX="14.0" layoutY="24.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#toggle_menu" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #ffffff, #e0f7fa);;">
@@ -108,12 +103,12 @@
                         </ImageView>
                     </graphic></Button>
             </children></Pane>
-      <TableView id="productsTable" fx:id="table" layoutX="509.0" layoutY="102.0" onMouseClicked="#rowClicked" prefHeight="439.0" prefWidth="429.0" style="-fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #001f3f, #003b46); -fx-border-color: white;">
+      <TableView id="productsTable" fx:id="table" layoutX="495.0" layoutY="102.0" onMouseClicked="#rowClicked" prefHeight="439.0" prefWidth="444.0" style="-fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #001f3f, #003b46);" stylesheets="@style.CSS">
         <columns>
-          <TableColumn fx:id="id" prefWidth="69.60003662109375" style="-fx-background-color: light grey;" text="ID" />
-          <TableColumn fx:id="name" minWidth="100.0" prefWidth="114.39996337890625" style="-fx-background-color: light grey; -fx-text-fill: black;" text="NAME" />
-            <TableColumn fx:id="price" minWidth="100.0" prefWidth="128.79998779296875" style="-fx-background-color: light grey;" text="PRICE" />
-            <TableColumn fx:id="quantity" minWidth="100.0" prefWidth="118.4000244140625" style="-fx-background-color: light grey;" text="QUANTITY" />
+          <TableColumn fx:id="id" prefWidth="69.60003662109375" text="ID" />
+          <TableColumn fx:id="name" minWidth="100.0" prefWidth="114.39996337890625" text="NAME" />
+            <TableColumn fx:id="price" minWidth="100.0" prefWidth="128.79998779296875" text="PRICE" />
+            <TableColumn fx:id="quantity" minWidth="100.0" prefWidth="118.4000244140625" text="QUANTITY" />
         </columns>
       </TableView>
       <TextField fx:id="id1" disable="true" layoutX="222.0" layoutY="164.0" prefHeight="38.0" prefWidth="194.0" promptText="Product ID" style="-fx-background-color: transperent; -fx-border-color: white; -fx-text-fill: white;" />
