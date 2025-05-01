@@ -83,7 +83,7 @@ public class add_product_controller implements Initializable {
     private Pane side_panel;
 
     @FXML
-    void acount_page(ActionEvent event) {
+    void account_page(ActionEvent event) {
 
     }
 
