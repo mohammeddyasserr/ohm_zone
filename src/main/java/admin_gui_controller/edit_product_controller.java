@@ -144,23 +144,16 @@ public class edit_product_controller implements Initializable {
                 ps.setInt(3, newQuantity);
                 ps.setInt(4, selectedProduct.getId());
 
-                int affectedRows = ps.executeUpdate();
 
-                if (affectedRows == 0) {
-                    showAlert("Error", "Update Failed", "No records were updated.");
-                    return;
-                }
-                
                 refreshTableAndFields();
 
             } catch (SQLException e) {
-                showAlert("Database Error", "Update Failed", "Error: " + e.getMessage());
+                selection_error.setText("Update Failed");
                 e.printStackTrace();
             }
 
         } catch (NumberFormatException e) {
-            showAlert("Input Error", "Invalid Numbers",
-                    "Please enter valid numbers:\n- Price: decimal value\n- Quantity: whole number");
+            selection_error.setText("Please enter valid numbers");
         }
     }
 
@@ -176,13 +169,6 @@ public class edit_product_controller implements Initializable {
         selectedProduct = null;
     }
 
-    private void showAlert(String title, String header, String content) {
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle(title);
-        alert.setHeaderText(header);
-        alert.setContentText(content);
-        alert.showAndWait();
-    }
 
     @FXML
     void rowClicked(javafx.scene.input.MouseEvent mouseEvent) {

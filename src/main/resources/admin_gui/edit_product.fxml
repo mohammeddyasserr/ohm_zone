@@ -116,7 +116,7 @@
             <TableColumn fx:id="quantity" minWidth="100.0" prefWidth="118.4000244140625" style="-fx-background-color: light grey;" text="QUANTITY" />
         </columns>
       </TableView>
-      <TextField fx:id="id1" layoutX="222.0" layoutY="164.0" prefHeight="38.0" prefWidth="194.0" promptText="Product ID" style="-fx-background-color: transperent; -fx-border-color: white; -fx-text-fill: white;" />
+      <TextField fx:id="id1" disable="true" layoutX="222.0" layoutY="164.0" prefHeight="38.0" prefWidth="194.0" promptText="Product ID" style="-fx-background-color: transperent; -fx-border-color: white; -fx-text-fill: white;" />
       <TextField fx:id="nameField" layoutX="221.0" layoutY="232.0" prefHeight="38.0" prefWidth="194.0" promptText="Product Name" style="-fx-background-color: transperent; -fx-border-color: white; -fx-text-fill: white;" />
       <TextField fx:id="priceField" layoutX="221.0" layoutY="302.0" prefHeight="38.0" prefWidth="194.0" promptText="Price" style="-fx-background-color: transperent; -fx-border-color: white; -fx-text-fill: white;" />
       <TextField fx:id="quantityField" layoutX="221.0" layoutY="374.0" prefHeight="38.0" prefWidth="194.0" promptText="Quantity" style="-fx-background-color: transperent; -fx-border-color: white; -fx-text-fill: white;" />
