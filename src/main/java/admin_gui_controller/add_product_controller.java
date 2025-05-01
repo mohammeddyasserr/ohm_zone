@@ -83,14 +83,6 @@ public class add_product_controller implements Initializable {
     private Pane side_panel;
 
     @FXML
-    private Button account_btn;
-
-    @FXML
-    public void initialize() {
-        account_btn.setText(user_session.get_user()); // This sets the button text to the logged-in username
-    }
-
-    @FXML
     void acount_page(ActionEvent event) {
 
     }

@@ -99,10 +99,7 @@ public class logincontroller {
                 if (r.next()) {
                     String dbPassword = r.getString("password");
                     if (dbPassword.equals(passfield.getText())) {
-                        user_session.set_user(userfield.getText());
-
-                        FXMLLoader loader = new FXMLLoader(getClass().getResource("/admin_gui/admin_main.fxml"));
-                        Parent root = loader.load();
+                        Parent root= FXMLLoader.load(getClass().getResource("/admin_gui/admin_main.fxml"));
                         stage=(Stage)((Node)event.getSource()).getScene().getWindow();
                         scene= new Scene(root);
                         stage.setScene(scene);

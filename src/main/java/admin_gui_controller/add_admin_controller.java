@@ -2,16 +2,21 @@ package admin_gui_controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
-import main_package.user_session;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.sql.*;
 
-public class add_admin_controller   {
+public class add_admin_controller {
 
 
     @FXML
@@ -21,18 +26,71 @@ public class add_admin_controller   {
 
 
     @FXML
-    private TextField usernameField;
-    @FXML
-    private PasswordField passwordField;
-    @FXML
-    private Label messageLabel;
+    void acount_page(ActionEvent event) {
+
+    }
 
     @FXML
-    private Button account_btn;
+    void adda_page(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/admin_gui/add_admin.fxml"));
+        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
 
     @FXML
-    public void initialize() {
-        account_btn.setText(user_session.get_user()); // This sets the button text to the logged-in username
+    void addp_page(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/admin_gui/add_product.fxml"));
+        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    @FXML
+    void editp_page(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/admin_gui/edit_product.fxml"));
+        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    @FXML
+    void home_page(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/admin_gui/admin_main.fxml"));
+        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    @FXML
+    void pills_page(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/admin_gui/pills_admin.fxml"));
+        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    @FXML
+    void removep_page(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/admin_gui/remove_product.fxml"));
+        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    @FXML
+    void login_page(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/main_package/login.fxml"));
+        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
 
 
@@ -44,44 +102,5 @@ public class add_admin_controller   {
     }
 
 
-    @FXML
-    private void handleAddAdmin() {
-        String username = usernameField.getText().trim();
-        String password = passwordField.getText().trim();
 
-        if (username.isEmpty() || password.isEmpty()) {
-            messageLabel.setText("Please fill in all fields.");
-            return;
-        }
-
-        try {
-
-            Connection con = DriverManager.getConnection("jdbc:sqlite:store.db");
-
-
-            PreparedStatement checkStmt = con.prepareStatement("SELECT COUNT(*) FROM admins WHERE username = ?");
-            checkStmt.setString(1, username);
-            ResultSet rs = checkStmt.executeQuery();
-
-            if (rs.next() && rs.getInt(1) > 0) {
-                messageLabel.setText("Username already exists.");
-            } else {
-
-                PreparedStatement insertStmt = con.prepareStatement("INSERT INTO admins(username, password) VALUES(?, ?)");
-                insertStmt.setString(1, username);
-                insertStmt.setString(2, password);
-                insertStmt.executeUpdate();
-                messageLabel.setText("Admin added successfully.");
-                insertStmt.close();
-            }
-
-            rs.close();
-            checkStmt.close();
-            con.close();
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-            messageLabel.setText("Database error occurred.");
-        }
-    }
 }

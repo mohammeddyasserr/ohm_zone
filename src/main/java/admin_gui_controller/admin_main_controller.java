@@ -9,26 +9,16 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-import main_package.user_session;
 
 import java.io.IOException;
 
-public class admin_main_controller  {
+public class admin_main_controller {
 
     @FXML
     private Pane side_panel;
 
     @FXML
     private Button menu_btn;
-
-    @FXML
-    private Button account_btn;
-
-    @FXML
-    public void initialize() {
-        account_btn.setText(user_session.get_user()); // This sets the button text to the logged-in username
-    }
-
 
     @FXML
     void acount_page(ActionEvent event) {
