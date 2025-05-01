@@ -16,7 +16,7 @@
             <Image url="@../icons/logo.png" />
          </image>
       </ImageView>
-      <Pane fx:id="side_panel" prefHeight="74.0" prefWidth="958.0" style="-fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #001f3f, #003b46);;">
+      <Pane prefHeight="74.0" prefWidth="958.0" style="-fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #001f3f, #003b46);;">
          <children>
             <Button fx:id="menu_btn" layoutX="14.0" layoutY="24.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#toggle_menu" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #ffffff, #e0f7fa);;">
                <graphic>
@@ -46,7 +46,7 @@
             <Label layoutX="849.0" layoutY="28.0" prefHeight="17.0" prefWidth="74.0" text="Mohammed" textFill="WHITE" />
          </children>
       </Pane>
-      <Pane layoutY="74.0" prefHeight="495.0" prefWidth="166.0" style="-fx-background-color: linear-gradient(from 0% 0% to 100% 100%, rgba(0,255,204,0.2), rgba(0,200,120,0.15), rgba(255,255,255,0.1));;">
+      <Pane fx:id="side_panel" layoutY="74.0" prefHeight="495.0" prefWidth="166.0" style="-fx-background-color: linear-gradient(from 0% 0% to 100% 100%, rgba(0,255,204,0.2), rgba(0,200,120,0.15), rgba(255,255,255,0.1));;">
          <children>
             <Button graphicTextGap="10.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="166.0" style="-fx-background-color: transparent; -fx-alignment: CENTER_LEFT;" text="Home" textFill="WHITE">
                <graphic>
