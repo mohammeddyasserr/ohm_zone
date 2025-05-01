@@ -143,6 +143,7 @@ public class edit_product_controller implements Initializable {
                 ps.setDouble(2, newPrice);
                 ps.setInt(3, newQuantity);
                 ps.setInt(4, selectedProduct.getId());
+                ps.executeUpdate();
 
 
                 refreshTableAndFields();
