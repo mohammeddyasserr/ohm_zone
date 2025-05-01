@@ -16,6 +16,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import main_package.account_btn;
 import main_package.user_session;
 
 import java.io.IOException;
@@ -30,7 +31,7 @@ import java.util.ResourceBundle;
 
 
 
-public class remove_product_controller implements Initializable {
+public class remove_product_controller extends account_btn implements Initializable {
 
 
     private product selectedProduct;
@@ -65,13 +66,6 @@ public class remove_product_controller implements Initializable {
     @FXML
     private Label selection_error;
 
-    @FXML
-    private Button account_btn;
-
-    @FXML
-    public void initialize() {
-        account_btn.setText(user_session.get_user());
-    }
 
     @FXML
     void acount_page(ActionEvent event) {

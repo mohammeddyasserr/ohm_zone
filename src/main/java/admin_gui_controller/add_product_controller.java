@@ -20,7 +20,7 @@ import java.net.URL;
 import java.sql.*;
 import java.util.ResourceBundle;
 
-public class add_product_controller implements Initializable {
+public class add_product_controller extends account_btn implements Initializable {
     public add_product_controller() {
         // Constructor افتراضي
     }
@@ -81,14 +81,6 @@ public class add_product_controller implements Initializable {
 
     @FXML
     private Pane side_panel;
-
-    @FXML
-    private Button account_btn;
-
-    @FXML
-    public void initialize() {
-        account_btn.setText(user_session.get_user());
-    }
 
     @FXML
     void acount_page(ActionEvent event) {
