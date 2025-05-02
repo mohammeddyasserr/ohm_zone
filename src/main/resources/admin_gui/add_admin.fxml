@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.gluonhq.charm.glisten.layout.Layer?>
+
 <?import javafx.geometry.Rectangle2D?>
 <?import javafx.scene.control.Accordion?>
 <?import javafx.scene.control.Button?>
@@ -111,7 +111,6 @@
       <TextField id="user_name" fx:id="user_name" layoutX="226.0" layoutY="188.0" promptText="Username" style="-fx-background-color: transperent; -fx-border-color: white; -fx-text-fill: white;" />
       <PasswordField id="password" fx:id="password" layoutX="226.0" layoutY="272.0" promptText="Password" style="-fx-background-color: transperent; -fx-border-color: white; -fx-text-fill: white;" />
       <PasswordField id="password_confirm" fx:id="password_confirm" layoutX="226.0" layoutY="351.0" promptText="Confirm password" style="-fx-background-color: transperent; -fx-border-color: white; -fx-text-fill: white;" />
-      <Layer />
       <Label id="username_error" fx:id="username_error" layoutX="225.0" layoutY="214.0" prefHeight="11.0" prefWidth="150.0" textFill="#cf2020" />
       <Label id="confirm_error" fx:id="confirm_error" layoutX="226.0" layoutY="377.0" prefHeight="18.0" prefWidth="150.0" textFill="#cf2020" />
       <Label id="password_error" fx:id="password_error" layoutX="226.0" layoutY="298.0" prefHeight="18.0" prefWidth="150.0" textFill="#cf2020" />
