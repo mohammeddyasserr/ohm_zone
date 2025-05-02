@@ -3,6 +3,7 @@ package admin_gui_controller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -12,11 +13,14 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import main_package.user_session;
 
 import java.io.IOException;
+import java.net.URL;
 import java.sql.*;
+import java.util.ResourceBundle;
 
-public class add_admin_controller {
+public class add_admin_controller implements Initializable {
 
     @FXML
     private Pane side_panel;
@@ -40,6 +44,13 @@ public class add_admin_controller {
     Label result_label;
     @FXML
     Button addbtn;
+    @FXML
+    private Button account_btn;
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        account_btn.setText(user_session.get_user());
+    }
 
 
     // Navigation Methods
