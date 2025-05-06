@@ -1,5 +1,6 @@
 package user_gui_controller;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
@@ -16,6 +17,7 @@ public class calc_controller {
     @FXML private Pane fourbandpane;
     @FXML private Pane fivebandpane;
     @FXML private Pane sixbandpane;
+    @FXML private Pane side_panel;
 
     // 4-band
     @FXML private ComboBox<String> band1_4;
@@ -50,6 +52,43 @@ public class calc_controller {
         setupComboBoxes();
         band_num.getItems().addAll("4", "5", "6");
         band_num.setOnAction(e -> switchBandPane());
+    }
+
+    @FXML
+    void toggle_menu(ActionEvent event) {
+        boolean isVisible=side_panel.isVisible();
+        side_panel.setVisible(!isVisible);
+        //side_panel.setManaged(!isVisible);
+    }
+
+    @FXML
+    void calculator_page(ActionEvent event) {
+
+    }
+
+    @FXML
+    void cart_page(ActionEvent event) {
+
+    }
+
+    @FXML
+    void home_page_user(ActionEvent event) {
+
+    }
+
+    @FXML
+    void login_page(ActionEvent event) {
+
+    }
+
+    @FXML
+    void pills_page_user(ActionEvent event) {
+
+    }
+
+    @FXML
+    void shop_page(ActionEvent event) {
+
     }
 
     private void setupMaps() {
@@ -132,7 +171,7 @@ public class calc_controller {
     }
 
     @FXML
-    public void calculate() {
+    void claculate_act(ActionEvent event)  {
         try {
             switch (band_num.getValue()) {
                 case "4":

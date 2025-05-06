@@ -12,35 +12,27 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0"
-            xmlns="http://javafx.com/javafx/23.0.1"
-            xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="user_gui_controller.calc_controller">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="user_gui_controller.calc_controller">
 
     <children>
 
         <!-- Background & Logo -->
         <ScrollPane layoutX="165.0" layoutY="74.0" prefHeight="497.0" prefWidth="793.0">
             <content>
-                <AnchorPane prefHeight="571.0" prefWidth="959.0"
-                            style="-fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #002b36, #014d4a, #00ffcc);" />
+                <AnchorPane prefHeight="571.0" prefWidth="959.0" style="-fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #002b36, #014d4a, #00ffcc);" />
             </content>
         </ScrollPane>
 
-        <ImageView fitHeight="545.0" fitWidth="516.0" layoutX="222.0" layoutY="30.0"
-                   opacity="0.18" pickOnBounds="true" preserveRatio="true">
+        <ImageView fitHeight="545.0" fitWidth="516.0" layoutX="222.0" layoutY="30.0" opacity="0.18" pickOnBounds="true" preserveRatio="true">
             <image>
                 <Image url="@../icons/logo.png" />
             </image>
         </ImageView>
 
         <!-- Top Panel -->
-        <Pane fx:id="side_panel" prefHeight="74.0" prefWidth="958.0"
-              style="-fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #001f3f, #003b46);">
+        <Pane fx:id="side_panel" prefHeight="74.0" prefWidth="958.0" style="-fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #001f3f, #003b46);">
             <children>
-                <Button fx:id="menu_btn" layoutX="14.0" layoutY="24.0" prefHeight="30.0" prefWidth="30.0"
-                        mnemonicParsing="false" onAction="#toggle_menu"
-                        style="-fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #ffffff, #e0f7fa);">
+                <Button fx:id="menu_btn" layoutX="14.0" layoutY="24.0" mnemonicParsing="false" onAction="#toggle_menu" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #ffffff, #e0f7fa);">
                     <graphic>
                         <ImageView fitHeight="26.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -59,8 +51,7 @@
                     </image>
                 </ImageView>
 
-                <ImageView fitHeight="25.0" fitWidth="21.0" layoutX="923.0" layoutY="26.0"
-                           pickOnBounds="true" preserveRatio="true">
+                <ImageView fitHeight="25.0" fitWidth="21.0" layoutX="923.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true">
                     <image>
                         <Image url="@../icons/account.png" />
                     </image>
@@ -69,18 +60,14 @@
                     </effect>
                 </ImageView>
 
-                <Label layoutX="849.0" layoutY="28.0" prefHeight="17.0" prefWidth="74.0"
-                       text="Mohammed" textFill="WHITE" />
+                <Label layoutX="849.0" layoutY="28.0" prefHeight="17.0" prefWidth="74.0" text="Mohammed" textFill="WHITE" />
             </children>
         </Pane>
 
         <!-- Sidebar -->
-        <Pane layoutY="74.0" prefHeight="495.0" prefWidth="166.0"
-              style="-fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #002b36, #014d4a, #00ffcc);">
+        <Pane layoutY="74.0" prefHeight="495.0" prefWidth="166.0" style="-fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #002b36, #014d4a, #00ffcc);">
             <children>
-                <Button mnemonicParsing="false" onAction="#home_page_user" prefHeight="51.0" prefWidth="166.0"
-                        text="Home" textFill="WHITE"
-                        style="-fx-background-color: transparent; -fx-alignment: CENTER_LEFT;" graphicTextGap="10.0">
+                <Button graphicTextGap="10.0" mnemonicParsing="false" onAction="#home_page_user" prefHeight="51.0" prefWidth="166.0" style="-fx-background-color: transparent; -fx-alignment: CENTER_LEFT;" text="Home" textFill="WHITE">
                     <graphic>
                         <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -90,9 +77,7 @@
                     </graphic>
                 </Button>
 
-                <Button layoutY="51.0" mnemonicParsing="false" onAction="#shop_page" prefHeight="51.0" prefWidth="166.0"
-                        text="Shop" textFill="WHITE"
-                        style="-fx-background-color: transparent; -fx-alignment: CENTER_LEFT;" graphicTextGap="10.0">
+                <Button graphicTextGap="10.0" layoutY="51.0" mnemonicParsing="false" onAction="#shop_page" prefHeight="51.0" prefWidth="166.0" style="-fx-background-color: transparent; -fx-alignment: CENTER_LEFT;" text="Shop" textFill="WHITE">
                     <graphic>
                         <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -102,9 +87,7 @@
                     </graphic>
                 </Button>
 
-                <Button layoutY="102.0" mnemonicParsing="false" onAction="#pills_page_user" prefHeight="51.0" prefWidth="166.0"
-                        text="Pills" textFill="WHITE"
-                        style="-fx-background-color: transparent; -fx-alignment: CENTER_LEFT;" graphicTextGap="10.0">
+                <Button graphicTextGap="10.0" layoutY="102.0" mnemonicParsing="false" onAction="#pills_page_user" prefHeight="51.0" prefWidth="166.0" style="-fx-background-color: transparent; -fx-alignment: CENTER_LEFT;" text="Pills" textFill="WHITE">
                     <graphic>
                         <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -114,9 +97,7 @@
                     </graphic>
                 </Button>
 
-                <Button layoutY="342.0" mnemonicParsing="false" onAction="#cart_page" prefHeight="51.0" prefWidth="166.0"
-                        text="Your Cart" textFill="WHITE"
-                        style="-fx-background-color: transparent; -fx-alignment: CENTER_LEFT;" graphicTextGap="10.0">
+                <Button graphicTextGap="10.0" layoutY="342.0" mnemonicParsing="false" onAction="#cart_page" prefHeight="51.0" prefWidth="166.0" style="-fx-background-color: transparent; -fx-alignment: CENTER_LEFT;" text="Your Cart" textFill="WHITE">
                     <graphic>
                         <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -126,9 +107,7 @@
                     </graphic>
                 </Button>
 
-                <Button layoutY="393.0" mnemonicParsing="false" onAction="#calculator_page" prefHeight="51.0" prefWidth="166.0"
-                        text="Calculator" textFill="WHITE"
-                        style="-fx-background-color: transparent; -fx-alignment: CENTER_LEFT;" graphicTextGap="10.0">
+                <Button graphicTextGap="10.0" layoutY="393.0" mnemonicParsing="false" onAction="#calculator_page" prefHeight="51.0" prefWidth="166.0" style="-fx-background-color: transparent; -fx-alignment: CENTER_LEFT;" text="Calculator" textFill="WHITE">
                     <graphic>
                         <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -138,9 +117,7 @@
                     </graphic>
                 </Button>
 
-                <Button layoutY="444.0" mnemonicParsing="false" onAction="#login_page" prefHeight="51.0" prefWidth="166.0"
-                        text="Log Out" textFill="WHITE"
-                        style="-fx-background-color: transparent; -fx-alignment: CENTER_LEFT;" graphicTextGap="10.0">
+                <Button graphicTextGap="10.0" layoutY="444.0" mnemonicParsing="false" onAction="#login_page" prefHeight="51.0" prefWidth="166.0" style="-fx-background-color: transparent; -fx-alignment: CENTER_LEFT;" text="Log Out" textFill="WHITE">
                     <graphic>
                         <ImageView fitHeight="30.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -192,10 +169,8 @@
             </children>
         </HBox>
 
-        <Button fx:id="calc_btn" layoutX="184.0" layoutY="498.0" prefHeight="45.0" prefWidth="214.0" text="Calculate" />
-        <Label fx:id="result" layoutX="486.0" layoutY="492.0" prefHeight="55.0" prefWidth="392.0"
-               text="Label"
-               style="-fx-border-color: cyan; -fx-text-fill: white; -fx-alignment: center;" />
+        <Button fx:id="calc_btn" layoutX="184.0" layoutY="498.0" onAction="#claculate_act" prefHeight="45.0" prefWidth="214.0" text="Calculate" />
+        <Label fx:id="result" layoutX="486.0" layoutY="492.0" prefHeight="55.0" prefWidth="392.0" style="-fx-border-color: cyan; -fx-text-fill: white; -fx-alignment: center;" text="Label" />
 
     </children>
 </AnchorPane>

@@ -55,8 +55,12 @@ public class add_admin_controller implements Initializable {
 
     // Navigation Methods
     @FXML
-    void acount_page(ActionEvent event) {
-
+    void acount_page(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/admin_gui/account.fxml"));
+        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
 
     @FXML
