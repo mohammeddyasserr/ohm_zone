@@ -12,6 +12,7 @@ module team.ohm_zone {
     requires com.almasb.fxgl.all;
     requires java.sql;
     requires java.desktop;
+    requires jbcrypt;
 
     opens main_package to javafx.fxml;
     opens admin_gui_controller to javafx.fxml;

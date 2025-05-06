@@ -19,6 +19,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.*;
 import java.util.ResourceBundle;
+import org.mindrot.jbcrypt.BCrypt;
 
 public class add_admin_controller implements Initializable {
 
@@ -184,6 +185,7 @@ public class add_admin_controller implements Initializable {
                     String insertSql = "INSERT INTO admins (user_name, password) VALUES (?, ?)";
                     PreparedStatement insertStmt = conn.prepareStatement(insertSql);
                     insertStmt.setString(1, username);
+                    pass=BCrypt.hashpw(pass, BCrypt.gensalt());
                     insertStmt.setString(2, pass); // Consider hashing in real apps
                     insertStmt.executeUpdate();
 

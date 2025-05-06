@@ -13,6 +13,8 @@ import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.util.Duration;
 import main_package.user_session ;
+import org.mindrot.jbcrypt.BCrypt;
+
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -99,7 +101,7 @@ public class logincontroller {
                 ResultSet r=ps.executeQuery();
                 if (r.next()) {
                     String dbPassword = r.getString("password");
-                    if (dbPassword.equals(passfield.getText())) {
+                    if (BCrypt.checkpw(passfield.getText(), dbPassword)) {
                         String name = userfield.getText();
                         user_session.set_user(name);
 
@@ -133,7 +135,7 @@ public class logincontroller {
                 ResultSet r=ps.executeQuery();
                 if (r.next()) {
                     String dbPassword = r.getString("password");
-                    if (dbPassword.equals(passfield.getText())) {
+                    if (BCrypt.checkpw(passfield.getText(), dbPassword)) {
                         Parent root= FXMLLoader.load(getClass().getResource("/user_gui/user_main.fxml"));
                         stage=(Stage)((Node)event.getSource()).getScene().getWindow();
                         scene= new Scene(root);
@@ -189,7 +191,7 @@ public class logincontroller {
                 address_error.setVisible(true);
             }
             else{
-                User.addToDatabase(con,usernamesignup.getText(),pass1signup.getText(),phonesignup.getText(),addresssignup.getText());
+                User.addToDatabase(con,usernamesignup.getText(),BCrypt.hashpw(pass1signup.getText(), BCrypt.gensalt()),phonesignup.getText(),addresssignup.getText());
                 TranslateTransition transition = new TranslateTransition();
                 transition.setNode(logo);  // تحديد الشعار كالعنصر الذي سيتم تحريكه
                 transition.setByX(-440);    // تحريك الشعار بمقدار 300 وحدة إلى اليمين (يمكنك تعديل هذه القيمة حسب احتياجك)
