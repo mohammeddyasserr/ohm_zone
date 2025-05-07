@@ -6,9 +6,12 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
-//import javafx.scene.layout.Pane;
+import javafx.scene.layout.Pane;
 //import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
@@ -34,6 +37,62 @@ public class user_account_controller {
 
     private boolean isMenuVisible = true;
 
+    @FXML
+    private Button account_btn;
+
+    @FXML
+    private Button address_btn;
+
+    @FXML
+    private Label btn1_error;
+
+    @FXML
+    private Label btn2_error;
+
+    @FXML
+    private Label btn3_error;
+
+    @FXML
+    private TextField changeAddress;
+
+    @FXML
+    private TextField changeNumber;
+
+    @FXML
+    private TextField confirmPass;
+
+    @FXML
+    private Label confirmation_error;
+
+    @FXML
+    private TextField enterPass;
+
+    @FXML
+    private ImageView logoImage;
+
+    @FXML
+    private Button menu_btn;
+
+    @FXML
+    private TextField newPass;
+
+    @FXML
+    private Button number_btn;
+
+    @FXML
+    private Label number_error;
+
+    @FXML
+    private Button pass_btn;
+
+    @FXML
+    private Label pass_error;
+
+    @FXML
+    private AnchorPane topBar;
+
+    @FXML
+    private TextField username;
 
 
 

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.Glow?>
 <?import javafx.scene.image.Image?>
@@ -131,5 +132,11 @@
       <TextField fx:id="changeAddress" layoutX="620.0" layoutY="334.0" prefHeight="38.0" prefWidth="194.0" promptText="Change Address" style="-fx-background-color: transparent; -fx-border-color: white; -fx-text-fill: white;" />
       <Button fx:id="number_btn" layoutX="620.0" layoutY="231.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="194.0" style="-fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #001f3f, #003b46);" text="Edit Number" textFill="WHITE" />
       <Button fx:id="address_btn" layoutX="620.0" layoutY="393.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="194.0" style="-fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #001f3f, #003b46);" text="Edit Address" textFill="WHITE" />
+      <Label fx:id="pass_error" layoutX="317.0" layoutY="270.0" prefHeight="18.0" prefWidth="148.0" text="wrnog password , try again" textFill="#cf2020" visible="false" />
+      <Label fx:id="confirmation_error" layoutX="331.0" layoutY="431.0" prefHeight="18.0" prefWidth="134.0" text="password doesn't match" textFill="#cf2020" visible="false" />
+      <Label fx:id="number_error" layoutX="636.0" layoutY="206.0" prefHeight="18.0" prefWidth="178.0" text="wrong number, must be 11 digit" textFill="#cf2020" visible="false" />
+      <Label fx:id="btn1_error" layoutX="353.0" layoutY="499.0" prefHeight="18.0" prefWidth="111.0" text="enter your password" textFill="#cf2020" visible="false" />
+      <Label fx:id="btn2_error" layoutX="703.0" layoutY="270.0" prefHeight="18.0" prefWidth="111.0" text="enter your password" textFill="#cf2020" visible="false" />
+      <Label fx:id="btn3_error" layoutX="703.0" layoutY="431.0" prefHeight="18.0" prefWidth="111.0" text="enter your password" textFill="#cf2020" visible="false" />
    </children>
 </AnchorPane>

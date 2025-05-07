@@ -78,7 +78,7 @@ public class user_main_controller {
 
     @FXML
     void acount_page(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/user_gui/account_user.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/user_gui/account_page.fxml"));
         Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
         stage.setScene(scene);
