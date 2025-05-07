@@ -94,6 +94,20 @@ public class user_account_controller {
     @FXML
     private TextField username;
 
+    @FXML
+    void edit_address_action(ActionEvent event) {
+
+    }
+
+    @FXML
+    void edit_number_action(ActionEvent event) {
+
+    }
+
+    @FXML
+    void edit_password_action(ActionEvent event) {
+
+    }
 
 
     @FXML
