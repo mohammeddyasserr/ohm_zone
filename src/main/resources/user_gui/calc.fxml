@@ -1,54 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.effect.Glow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
 
-<?import javafx.scene.control.ComboBox?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.control.Label?>
-<AnchorPane prefHeight="594.0" prefWidth="951.0"
-            style="-fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #002b36, #014d4a, #00ffcc);"
-            xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="user_gui_controller.calc_controller">
+<AnchorPane prefHeight="594.0" prefWidth="951.0" style="-fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #002b36, #014d4a, #00ffcc);" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="user_gui_controller.calc_controller">
     <children>
         <!-- Top StackPane containing top bar and centered logo -->
         <StackPane AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <children>
                 <!-- Top Bar -->
-                <AnchorPane fx:id="topBar" prefHeight="74.0"
-                            style="-fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #001f3f, #003b46);">
+                <AnchorPane fx:id="topBar" prefHeight="74.0" style="-fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #001f3f, #003b46);">
                     <children>
                         <!-- Menu Button -->
-                        <Button fx:id="menu_btn" layoutX="14.0" layoutY="24.0" mnemonicParsing="false" onAction="#toggle_menu"
-                                prefHeight="30.0" prefWidth="30.0"
-                                style="-fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #ffffff, #e0f7fa);">
+                        <Button fx:id="menu_btn" layoutX="14.0" layoutY="24.0" mnemonicParsing="false" onAction="#toggle_menu" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #ffffff, #e0f7fa);">
                             <graphic>
                                 <ImageView fitHeight="26.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
                                     <image>
-                                        <Image url="@../icons/menu.png"/>
+                                        <Image url="@../icons/menu.png" />
                                     </image>
                                 </ImageView>
                             </graphic>
                         </Button>
 
                         <!-- Account Button (Right) -->
-                        <Button fx:id="account_btn" layoutY="25.0" mnemonicParsing="false" onAction="#acount_page"
-                                prefHeight="29.0" prefWidth="200.0"
-                                style="-fx-background-color: transparent; -fx-alignment: CENTER_RIGHT;"
-                                text="mohammed" textFill="WHITE" AnchorPane.rightAnchor="10.0">
+                        <Button fx:id="account_btn" layoutY="25.0" mnemonicParsing="false" onAction="#acount_page" prefHeight="29.0" prefWidth="200.0" style="-fx-background-color: transparent; -fx-alignment: CENTER_RIGHT;" text="mohammed" textFill="WHITE" AnchorPane.rightAnchor="10.0">
                             <graphic>
                                 <ImageView fitHeight="21.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
                                     <image>
-                                        <Image url="@../icons/account.png"/>
+                                        <Image url="@../icons/account.png" />
                                     </image>
                                     <effect>
-                                        <Glow/>
+                                        <Glow />
                                     </effect>
                                 </ImageView>
                             </graphic>
@@ -59,88 +51,73 @@
                 <!-- Centered Logo -->
                 <ImageView fx:id="logoImage" fitHeight="50.0" fitWidth="50.0" preserveRatio="true">
                     <image>
-                        <Image url="@../icons/logo.png"/>
+                        <Image url="@../icons/logo.png" />
                     </image>
                 </ImageView>
             </children>
         </StackPane>
 
         <!-- Left Menu -->
-        <AnchorPane fx:id="left_menu" layoutY="74.4" prefWidth="170.0"
-                    style="-fx-background-color: linear-gradient(from 0% 0% to 100% 100%, rgba(0,255,204,0.2), rgba(0,200,120,0.15), rgba(255,255,255,0.1));"
-                    AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="74.0">
+        <AnchorPane fx:id="left_menu" layoutY="74.4" prefWidth="170.0" style="-fx-background-color: linear-gradient(from 0% 0% to 100% 100%, rgba(0,255,204,0.2), rgba(0,200,120,0.15), rgba(255,255,255,0.1));" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="74.0">
             <children>
-                <VBox spacing="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
-                      AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                <VBox spacing="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                     <children>
                         <!-- Top Buttons -->
-                        <Button mnemonicParsing="false" onAction="#home_page_user" prefHeight="51.0" prefWidth="166.0"
-                                style="-fx-background-color: transparent; -fx-alignment: CENTER_LEFT;"
-                                text="Home" textFill="WHITE">
+                        <Button mnemonicParsing="false" onAction="#home_page_user" prefHeight="51.0" prefWidth="166.0" style="-fx-background-color: transparent; -fx-alignment: CENTER_LEFT;" text="Home" textFill="WHITE">
                             <graphic>
                                 <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                                     <image>
-                                        <Image url="@../icons/home.png"/>
+                                        <Image url="@../icons/home.png" />
                                     </image>
                                 </ImageView>
                             </graphic>
                         </Button>
-                        <Button mnemonicParsing="false" onAction="#shop_page" prefHeight="51.0" prefWidth="166.0"
-                                style="-fx-background-color: transparent; -fx-alignment: CENTER_LEFT;"
-                                text="Shop" textFill="WHITE">
+                        <Button mnemonicParsing="false" onAction="#shop_page" prefHeight="51.0" prefWidth="166.0" style="-fx-background-color: transparent; -fx-alignment: CENTER_LEFT;" text="Shop" textFill="WHITE">
                             <graphic>
                                 <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                                     <image>
-                                        <Image url="@../icons/you.png"/>
+                                        <Image url="@../icons/you.png" />
                                     </image>
                                 </ImageView>
                             </graphic>
                         </Button>
-                        <Button mnemonicParsing="false" onAction="#pills_page_user" prefHeight="51.0" prefWidth="166.0"
-                                style="-fx-background-color: transparent; -fx-alignment: CENTER_LEFT;"
-                                text="Pills" textFill="WHITE">
+                        <Button mnemonicParsing="false" onAction="#pills_page_user" prefHeight="51.0" prefWidth="166.0" style="-fx-background-color: transparent; -fx-alignment: CENTER_LEFT;" text="Pills" textFill="WHITE">
                             <graphic>
                                 <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                                     <image>
-                                        <Image url="@../icons/you.png"/>
+                                        <Image url="@../icons/you.png" />
                                     </image>
                                 </ImageView>
                             </graphic>
                         </Button>
 
                         <!-- Spacer to push bottom buttons down -->
-                        <AnchorPane VBox.vgrow="ALWAYS"/>
+                        <AnchorPane VBox.vgrow="ALWAYS" />
 
                         <!-- Bottom Buttons -->
-                        <Button mnemonicParsing="false" onAction="#cart_page" prefHeight="51.0" prefWidth="166.0"
-                                style="-fx-background-color: transparent; -fx-alignment: CENTER_LEFT;"
-                                text="Your Cart" textFill="WHITE">
+                        <Button mnemonicParsing="false" onAction="#cart_page" prefHeight="51.0" prefWidth="166.0" style="-fx-background-color: transparent; -fx-alignment: CENTER_LEFT;" text="Your Cart" textFill="WHITE">
                             <graphic>
                                 <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                                     <image>
-                                        <Image url="@../icons/cart.png"/>
+                                        <Image url="@../icons/cart.png" />
                                     </image>
                                 </ImageView>
                             </graphic>
                         </Button>
-                        <Button mnemonicParsing="false" onAction="#calculator_page" prefHeight="51.0" prefWidth="166.0"
-                                style="-fx-background-color: transparent; -fx-alignment: CENTER_LEFT;"
-                                text="Calculator" textFill="WHITE">
+                        <Button mnemonicParsing="false" onAction="#calculator_page" prefHeight="51.0" prefWidth="166.0" style="-fx-background-color: transparent; -fx-alignment: CENTER_LEFT;" text="Calculator" textFill="WHITE">
                             <graphic>
                                 <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                                     <image>
-                                        <Image url="@../icons/cart.png"/>
+                                        <Image url="@../icons/cart.png" />
                                     </image>
                                 </ImageView>
                             </graphic>
                         </Button>
-                        <Button mnemonicParsing="false" onAction="#login_page" prefHeight="51.0" prefWidth="166.0"
-                                style="-fx-background-color: transparent; -fx-alignment: CENTER_LEFT;"
-                                text="Log Out" textFill="WHITE">
+                        <Button mnemonicParsing="false" onAction="#login_page" prefHeight="51.0" prefWidth="166.0" style="-fx-background-color: transparent; -fx-alignment: CENTER_LEFT;" text="Log Out" textFill="WHITE">
                             <graphic>
                                 <ImageView fitHeight="30.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                                     <image>
-                                        <Image url="@../icons/logout.png"/>
+                                        <Image url="@../icons/logout.png" />
                                     </image>
                                 </ImageView>
                             </graphic>
@@ -149,48 +126,73 @@
                 </VBox>
             </children>
         </AnchorPane>
-        <!-- Calculator Section -->
-        <ComboBox fx:id="band_num" layoutX="202.0" layoutY="99.0" promptText="NO. OF BANDS" />
-
-        <HBox layoutX="158.0" layoutY="132.0" prefHeight="350.0" prefWidth="785.0">
-            <children>
+      <VBox layoutX="170.0" layoutY="90.0" prefHeight="503.0" prefWidth="780.0">
+         <children>
+              <!-- Calculator Section -->
+              <ComboBox fx:id="band_num" layoutX="150.0" promptText="NO. OF BANDS" style="-fx-background-color: silver;" translateX="30.0" VBox.vgrow="ALWAYS" />
+            <AnchorPane prefHeight="208.0" prefWidth="780.0">
+               <children>
+                  <ImageView fitHeight="221.0" fitWidth="499.0" layoutX="12.0" layoutY="30.0" pickOnBounds="true" preserveRatio="true" translateX="140.0">
+                     <image>
+                        <Image url="@../icons/resistance_body_croped.png" />
+                     </image>
+                  </ImageView>
+                  <Rectangle fx:id="band1" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff" height="103.0" layoutX="294.0" layoutY="63.0" stroke="BLACK" strokeType="INSIDE" style="-fx-fill: transparent; -fx-stroke: transparent;" translateY="-1.0" width="19.0" />
+                  <Rectangle fx:id="band2" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="93.0" layoutX="332.0" layoutY="67.0" stroke="BLACK" strokeType="INSIDE" style="-fx-fill: transparent; -fx-stroke: transparent;" width="19.0" />
+                  <Rectangle fx:id="band3" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="93.0" layoutX="369.0" layoutY="67.0" stroke="BLACK" strokeType="INSIDE" style="-fx-fill: transparent; -fx-stroke: transparent;" width="19.0" />
+                  <Rectangle fx:id="multiplier" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="93.0" layoutX="425.0" layoutY="67.0" stroke="BLACK" strokeType="INSIDE" style="-fx-fill: transparent; -fx-stroke: transparent;" width="19.0" />
+                  <Rectangle fx:id="tol" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="103.0" layoutX="488.0" layoutY="62.0" stroke="BLACK" strokeType="INSIDE" style="-fx-fill: transparent; -fx-stroke: transparent;" width="19.0" />
+               </children>
+            </AnchorPane>
                 <!-- Four Band Pane -->
-                <Pane fx:id="fourbandpane" prefHeight="200.0" prefWidth="200.0" visible="false">
+                <Pane fx:id="fourbandpane" prefHeight="500.0" prefWidth="780.0" visible="false">
                     <children>
-                        <ComboBox fx:id="band1_4" layoutX="17.0" layoutY="24.0" prefWidth="150.0" promptText="Band 1" />
-                        <ComboBox fx:id="band2_4" layoutX="17.0" layoutY="75.0" prefWidth="150.0" promptText="Band 2" />
-                        <ComboBox fx:id="multiplier_4" layoutX="17.0" layoutY="126.0" prefWidth="150.0" promptText="Multiplier" />
-                        <ComboBox fx:id="tolerance_4" layoutX="20.0" layoutY="177.0" prefWidth="150.0" promptText="Tolerance" />
+                        <ComboBox fx:id="band1_4" layoutX="18.0" layoutY="24.0" prefWidth="150.0" promptText="Band 1" />
+                        <ComboBox fx:id="band2_4" layoutX="185.0" layoutY="24.0" prefWidth="150.0" promptText="Band 2" />
+                        <ComboBox fx:id="multiplier_4" layoutX="352.0" layoutY="25.0" prefWidth="150.0" promptText="Multiplier" />
+                        <ComboBox fx:id="tolerance_4" layoutX="519.0" layoutY="26.0" prefWidth="150.0" promptText="Tolerance" />
                     </children>
                 </Pane>
 
                 <!-- Five Band Pane -->
-                <Pane fx:id="fivebandpane" prefHeight="200.0" prefWidth="200.0" visible="false">
+                <Pane fx:id="fivebandpane" prefHeight="500.0" prefWidth="780.0" visible="false">
                     <children>
-                        <ComboBox fx:id="band1_5" layoutX="18.0" layoutY="23.0" prefWidth="150.0" promptText="Band 1" />
-                        <ComboBox fx:id="band2_5" layoutX="17.0" layoutY="71.0" prefWidth="150.0" promptText="Band 2" />
-                        <ComboBox fx:id="band3_5" layoutX="18.0" layoutY="125.0" prefWidth="150.0" promptText="Band 3" />
-                        <ComboBox fx:id="multiplier_5" layoutX="19.0" layoutY="177.0" prefWidth="150.0" promptText="Multiplier" />
-                        <ComboBox fx:id="tolerance_5" layoutX="19.0" layoutY="226.0" prefWidth="150.0" promptText="Tolerance" />
+                        <ComboBox fx:id="band1_5" layoutX="18.0" layoutY="24.0" prefWidth="130.0" promptText="Band 1" />
+                        <ComboBox fx:id="band2_5" layoutX="168.0" layoutY="24.0" prefWidth="130.0" promptText="Band 2" />
+                        <ComboBox fx:id="band3_5" layoutX="318.0" layoutY="24.0" prefWidth="130.0" promptText="Band 3" />
+                        <ComboBox fx:id="multiplier_5" layoutX="468.0" layoutY="24.0" prefWidth="130.0" promptText="Multiplier" />
+                        <ComboBox fx:id="tolerance_5" layoutX="618.0" layoutY="24.0" prefWidth="130.0" promptText="Tolerance" />
                     </children>
                 </Pane>
 
-                <!-- Six Band Pane -->
-                <Pane fx:id="sixbandpane" prefHeight="426.0" prefWidth="224.0" visible="false">
+                      <!-- Six Band Pane -->
+                <Pane fx:id="sixbandpane" prefHeight="500.0" prefWidth="780.0" visible="false">
                     <children>
-                        <ComboBox fx:id="band1_6" layoutX="18.0" layoutY="23.0" prefWidth="150.0" promptText="Band 1" />
-                        <ComboBox fx:id="band2_6" layoutX="17.0" layoutY="71.0" prefWidth="150.0" promptText="Band 2" />
-                        <ComboBox fx:id="band3_6" layoutX="18.0" layoutY="125.0" prefWidth="150.0" promptText="Band 3" />
-                        <ComboBox fx:id="multiplier_6" layoutX="19.0" layoutY="177.0" prefWidth="150.0" promptText="Multiplier" />
-                        <ComboBox fx:id="tolerance_6" layoutX="19.0" layoutY="226.0" prefWidth="150.0" promptText="Tolerance" />
-                        <ComboBox fx:id="tempco_6" layoutX="19.0" layoutY="274.0" prefWidth="150.0" promptText="Temp Coefficient" />
+                        <ComboBox fx:id="band1_6" layoutX="18.0" layoutY="24.0" prefWidth="110.0" promptText="Band 1" />
+                        <ComboBox fx:id="band2_6" layoutX="148.0" layoutY="24.0" prefWidth="110.0" promptText="Band 2" />
+                        <ComboBox fx:id="band3_6" layoutX="278.0" layoutY="24.0" prefWidth="110.0" promptText="Band 3" />
+                        <ComboBox fx:id="multiplier_6" layoutX="408.0" layoutY="24.0" prefWidth="110.0" promptText="Multiplier" />
+                        <ComboBox fx:id="tolerance_6" layoutX="538.0" layoutY="24.0" prefWidth="110.0" promptText="Tolerance" />
+                        <ComboBox fx:id="tempco_6" layoutX="668.0" layoutY="24.0" prefWidth="110.0" promptText="Temp Coefficient" />
                     </children>
                 </Pane>
-            </children>
-        </HBox>
-
-        <Button fx:id="calc_btn" layoutX="184.0" layoutY="498.0" onAction="#claculate_act" prefHeight="45.0" prefWidth="214.0" text="Calculate" />
-        <Label fx:id="result" layoutX="486.0" layoutY="492.0" prefHeight="55.0" prefWidth="392.0" style="-fx-border-color: cyan; -fx-text-fill: white; -fx-alignment: center;" text="Label" />
+            <AnchorPane prefHeight="470.0" prefWidth="780.0">
+               <children>
+            
+                          <Button fx:id="calc_btn" layoutX="41.0" layoutY="-27.0" onAction="#claculate_act" prefHeight="60.0" prefWidth="290.0" style="-fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #001f3f, #003b46);" text="Calculate" textFill="WHITE">
+                     <font>
+                        <Font name="Apple Braille Outline 6 Dot" size="26.0" />
+                     </font>
+                  </Button>
+                    <Label fx:id="result" layoutX="438.0" layoutY="-27.0" prefHeight="60.0" prefWidth="290.0" style="-fx-border-color: linear-gradient(from 0% 0% to 100% 100%, #c0c0c0, #e0e0e0, #c0c0c0); -fx-text-fill: white; -fx-alignment: center; -fx-border-width: 4; -fx-border-radius: 88;" text="Result" textFill="WHITE">
+                     <font>
+                        <Font size="33.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+         </children>
+      </VBox>
 
     </children>
 </AnchorPane>

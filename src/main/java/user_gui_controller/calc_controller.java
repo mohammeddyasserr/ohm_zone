@@ -13,6 +13,8 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.Priority;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
@@ -49,11 +51,18 @@ public class calc_controller {
     @FXML private ComboBox<String> tolerance_6;
     @FXML private ComboBox<String> tempco_6;
 
+    @FXML private Rectangle band1;
+    @FXML private Rectangle band2;
+    @FXML private Rectangle band3;
+    @FXML private Rectangle multiplier;
+    @FXML private Rectangle tol;
+
     @FXML private Label result;
 
     private final Map<String, Integer> digitMap = new HashMap<>();
     private final Map<String, Double> multiplierMap = new HashMap<>();
     private final Map<String, String> toleranceMap = new HashMap<>();
+    private final Map<String, Color> colorMap = new HashMap<>();
 
     @FXML
     public void initialize() {
@@ -168,7 +177,27 @@ public class calc_controller {
         toleranceMap.put("Gray", "±0.05%");
         toleranceMap.put("Gold", "±5%");
         toleranceMap.put("Silver", "±10%");
+
+        colorMap.put("Black", Color.BLACK);
+        colorMap.put("Brown", Color.SADDLEBROWN);
+        colorMap.put("Red", Color.RED);
+        colorMap.put("Orange", Color.ORANGE);
+        colorMap.put("Yellow", Color.YELLOW);
+        colorMap.put("Green", Color.GREEN);
+        colorMap.put("Blue", Color.BLUE);
+        colorMap.put("Violet", Color.DARKVIOLET);
+        colorMap.put("Gray", Color.GRAY);
+        colorMap.put("White", Color.WHITE);
+        colorMap.put("Gold", Color.GOLD);
+        colorMap.put("Silver", Color.SILVER);
     }
+
+    private void setRectColor(Rectangle rect, String colorName) {
+        Color color = colorMap.getOrDefault(colorName, Color.TRANSPARENT);
+        rect.setFill(color);
+    }
+
+
 
     private void setupComboBoxes() {
         var digits = digitMap.keySet();
@@ -192,6 +221,23 @@ public class calc_controller {
         multiplier_6.getItems().addAll(mults);
         tolerance_6.getItems().addAll(tols);
         tempco_6.getItems().addAll("100ppm/K", "50ppm/K", "15ppm/K", "10ppm/K", "5ppm/K", "1ppm/K");
+
+        band1_4.setOnAction(e -> {setRectColor(band1, band1_4.getValue());});
+        band2_4.setOnAction(e -> {setRectColor(band2, band2_4.getValue());});
+        multiplier_4.setOnAction(e -> {setRectColor(multiplier, multiplier_4.getValue());});
+        tolerance_4.setOnAction(e -> {setRectColor(tol, tolerance_4.getValue());});
+
+        band1_5.setOnAction(e -> {setRectColor(band1, band1_5.getValue());});
+        band2_5.setOnAction(e -> {setRectColor(band2, band2_5.getValue());});
+        band3_5.setOnAction(e -> {setRectColor(band3, band3_5.getValue());});
+        multiplier_5.setOnAction(e -> {setRectColor(multiplier, multiplier_5.getValue());});
+        tolerance_5.setOnAction(e -> {setRectColor(tol, tolerance_5.getValue());});
+
+        band1_6.setOnAction(e -> {setRectColor(band1, band1_6.getValue());});
+        band2_6.setOnAction(e -> {setRectColor(band2, band2_6.getValue());});
+        band3_6.setOnAction(e -> {setRectColor(band3, band3_6.getValue());});
+        multiplier_6.setOnAction(e -> {setRectColor(multiplier, multiplier_6.getValue());});
+        tolerance_6.setOnAction(e -> {setRectColor(tol, tolerance_6.getValue());});
     }
 
     private void switchBandPane() {
