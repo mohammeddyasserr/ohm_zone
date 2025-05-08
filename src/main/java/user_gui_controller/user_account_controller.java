@@ -63,7 +63,16 @@ public class user_account_controller implements Initializable {
     private PasswordField confirmPass;
 
     @FXML
+    private Label new_pass_error;
+
+    @FXML
     private Label confirmation_error;
+
+    @FXML
+    private Label num_updated;
+
+    @FXML
+    private Label number_empty;
 
     @FXML
     private PasswordField enterPass;
@@ -76,6 +85,12 @@ public class user_account_controller implements Initializable {
 
     @FXML
     private PasswordField newPass;
+
+    @FXML
+    private Label address_empty;
+
+    @FXML
+    private Label address_updated;
 
     @FXML
     private Button number_btn;
@@ -107,25 +122,153 @@ public class user_account_controller implements Initializable {
 
     @FXML
     void edit_address_action(ActionEvent event) {
+        Label[] Labels = {
+                btn2_error, number_error, number_empty, num_updated,
+                btn3_error, address_empty, address_updated,
+                btn1_error, pass_error, confirmation_error,
+                pass_updated, new_pass_error
+        };
 
+        for (Label label : Labels) {
+            label.setVisible(false);
+        }
+
+        String currentPassword = enterPass.getText();
+        String newAddress = changeAddress.getText();
+        String currentUsername = user_session.get_user();
+
+        if (currentPassword.isEmpty()) {
+            btn3_error.setVisible(true);
+            return;
+        }
+
+        try {
+            Connection conn = DriverManager.getConnection("jdbc:sqlite:store.db");
+            String query = "SELECT password FROM users WHERE user_name = ?";
+            PreparedStatement statement = conn.prepareStatement(query);
+            statement.setString(1, currentUsername);
+            ResultSet resultSet = statement.executeQuery();
+
+            if (resultSet.next()) {
+                String storedHashedPassword = resultSet.getString("password");
+                if (!BCrypt.checkpw(currentPassword, storedHashedPassword)) {
+                    pass_error.setVisible(true);
+                    conn.close();
+                    return;
+                }
+            } else {
+                pass_error.setVisible(true);
+                conn.close();
+                return;
+            }
+
+            if (newAddress.isEmpty()) {
+                address_empty.setVisible(true);
+                conn.close();
+                return;
+            }
+
+            String updateQuery = "UPDATE users SET address = ? WHERE user_name = ?";
+            PreparedStatement updateStatement = conn.prepareStatement(updateQuery);
+            updateStatement.setString(1, newAddress);
+            updateStatement.setString(2, currentUsername);
+            updateStatement.executeUpdate();
+
+            address_updated.setVisible(true);
+            enterPass.clear();
+            changeAddress.clear();
+            conn.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
     void edit_number_action(ActionEvent event) {
+        Label[] Labels = {
+                btn2_error, number_error, number_empty, num_updated,
+                btn3_error, address_empty, address_updated,
+                btn1_error, pass_error, confirmation_error,
+                pass_updated, new_pass_error
+        };
 
+        for (Label label : Labels) {
+            label.setVisible(false);
+        }
+
+        String currentPassword = enterPass.getText();
+        String newPhoneNumber = changeNumber.getText();
+        String currentUsername = user_session.get_user();
+
+        if (currentPassword.isEmpty()) {
+            btn2_error.setVisible(true);
+            return;
+        }
+
+        try {
+            Connection conn = DriverManager.getConnection("jdbc:sqlite:store.db");
+            String query = "SELECT password FROM users WHERE user_name = ?";
+            PreparedStatement statement = conn.prepareStatement(query);
+            statement.setString(1, currentUsername);
+            ResultSet resultSet = statement.executeQuery();
+
+            if (resultSet.next()) {
+                String storedHashedPassword = resultSet.getString("password");
+                if (!BCrypt.checkpw(currentPassword, storedHashedPassword)) {
+                    pass_error.setVisible(true);
+                    conn.close();
+                    return;
+                }
+            } else {
+                pass_error.setVisible(true);
+                conn.close();
+                return;
+            }
+
+            if (newPhoneNumber.isEmpty()) {
+                number_empty.setVisible(true);
+                conn.close();
+                return;
+            }
+
+            if (newPhoneNumber.length() < 11) {
+                number_error.setVisible(true);
+                conn.close();
+                return;
+            }
+
+            String updateQuery = "UPDATE users SET phone = ? WHERE user_name = ?";
+            PreparedStatement updateStatement = conn.prepareStatement(updateQuery);
+            updateStatement.setString(1, newPhoneNumber);
+            updateStatement.setString(2, currentUsername);
+            updateStatement.executeUpdate();
+
+            num_updated.setVisible(true);
+            enterPass.clear();
+            changeNumber.clear();
+            conn.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
     void edit_password_action(ActionEvent event) {
+        Label[] Labels = {
+                btn2_error, number_error, number_empty, num_updated,
+                btn3_error, address_empty, address_updated,
+                btn1_error, pass_error, confirmation_error,
+                pass_updated, new_pass_error
+        };
+
+        for (Label label : Labels) {
+            label.setVisible(false);
+        }
+
         String currentPass = enterPass.getText().trim();
         String usernameText = username.getText().trim();
         String newPassword = newPass.getText().trim();
         String confirmPassword = confirmPass.getText().trim();
-
-        btn1_error.setVisible(false);
-        pass_error.setVisible(false);
-        confirmation_error.setVisible(false);
-        pass_updated.setVisible(false);
 
         if (currentPass.isEmpty()) {
             btn1_error.setVisible(true);
@@ -141,20 +284,27 @@ public class user_account_controller implements Initializable {
                         String hashedPassword = rs.getString("password");
                         if (!BCrypt.checkpw(currentPass, hashedPassword)) {
                             pass_error.setVisible(true);
+                            conn.close();
                             return;
                         }
                     } else {
                         pass_error.setVisible(true);
+                        conn.close();
                         return;
                     }
                 }
             }
-
-            if (!newPassword.equals(confirmPassword)) {
-                confirmation_error.setVisible(true);
+            if (newPassword.isEmpty()) {
+                new_pass_error.setVisible(true);
+                conn.close();
                 return;
             }
 
+            if (!newPassword.equals(confirmPassword)) {
+                confirmation_error.setVisible(true);
+                conn.close();
+                return;
+            }
 
             String updateSql = "UPDATE users SET password = ? WHERE user_name = ?";
             try (PreparedStatement updateStmt = conn.prepareStatement(updateSql)) {
@@ -163,12 +313,11 @@ public class user_account_controller implements Initializable {
                 updateStmt.executeUpdate();
             }
 
-
             pass_updated.setVisible(true);
             enterPass.clear();
             newPass.clear();
             confirmPass.clear();
-
+            conn.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
