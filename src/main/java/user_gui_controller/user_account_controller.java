@@ -7,10 +7,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.ScrollPane;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
@@ -63,13 +60,13 @@ public class user_account_controller implements Initializable {
     private TextField changeNumber;
 
     @FXML
-    private TextField confirmPass;
+    private PasswordField confirmPass;
 
     @FXML
     private Label confirmation_error;
 
     @FXML
-    private TextField enterPass;
+    private PasswordField enterPass;
 
     @FXML
     private ImageView logoImage;
@@ -78,7 +75,7 @@ public class user_account_controller implements Initializable {
     private Button menu_btn;
 
     @FXML
-    private TextField newPass;
+    private PasswordField newPass;
 
     @FXML
     private Button number_btn;

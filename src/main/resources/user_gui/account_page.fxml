@@ -2,6 +2,7 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.Glow?>
 <?import javafx.scene.image.Image?>
@@ -30,7 +31,7 @@
                   </Button>
 
                   <!-- Account Button (Right) -->
-                  <Button fx:id="account_btn" layoutY="25.0" mnemonicParsing="false" onAction="#acount_page" prefHeight="29.0" prefWidth="200.0" style="-fx-background-color: transparent; -fx-alignment: CENTER_RIGHT;" text="mohammed" textFill="WHITE" AnchorPane.rightAnchor="10.0">
+                  <Button fx:id="account_btn" contentDisplay="RIGHT" layoutY="25.0" mnemonicParsing="false" onAction="#acount_page" prefHeight="29.0" prefWidth="200.0" style="-fx-background-color: transparent; -fx-alignment: CENTER_RIGHT;" text="mohammed" textFill="WHITE" AnchorPane.rightAnchor="10.0">
                      <graphic>
                         <ImageView fitHeight="21.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -124,9 +125,6 @@
          </children>
       </AnchorPane>
       <TextField fx:id="username" editable="false" layoutX="271.0" layoutY="168.0" prefHeight="38.0" prefWidth="194.0" promptText="Username" style="-fx-background-color: transparent; -fx-border-color: white; -fx-text-fill: white;" />
-      <TextField fx:id="enterPass" layoutX="271.0" layoutY="231.0" prefHeight="38.0" prefWidth="194.0" promptText="Enter Password" style="-fx-background-color: transparent; -fx-border-color: white; -fx-text-fill: white;" />
-      <TextField fx:id="newPass" layoutX="271.0" layoutY="334.0" prefHeight="38.0" prefWidth="194.0" promptText="New Password" style="-fx-background-color: transparent; -fx-border-color: white; -fx-text-fill: white;" />
-      <TextField fx:id="confirmPass" layoutX="271.0" layoutY="393.0" prefHeight="38.0" prefWidth="194.0" promptText="Confirm New Password" style="-fx-background-color: transparent; -fx-border-color: white; -fx-text-fill: white;" />
       <Button fx:id="pass_btn" layoutX="271.0" layoutY="461.0" mnemonicParsing="false" onAction="#edit_password_action" prefHeight="38.0" prefWidth="194.0" style="-fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #001f3f, #003b46);" text="Edit Password" textFill="WHITE" />
       <TextField fx:id="changeNumber" layoutX="620.0" layoutY="168.0" prefHeight="38.0" prefWidth="194.0" promptText="Change Phone Number" style="-fx-background-color: transparent; -fx-border-color: white; -fx-text-fill: white;" />
       <TextField fx:id="changeAddress" layoutX="620.0" layoutY="334.0" prefHeight="38.0" prefWidth="194.0" promptText="Change Address" style="-fx-background-color: transparent; -fx-border-color: white; -fx-text-fill: white;" />
@@ -138,6 +136,9 @@
       <Label fx:id="btn1_error" layoutX="353.0" layoutY="499.0" prefHeight="18.0" prefWidth="111.0" text="enter your password" textFill="#cf2020" visible="false" />
       <Label fx:id="btn2_error" layoutX="703.0" layoutY="270.0" prefHeight="18.0" prefWidth="111.0" text="enter your password" textFill="#cf2020" visible="false" />
       <Label fx:id="btn3_error" layoutX="703.0" layoutY="431.0" prefHeight="18.0" prefWidth="111.0" text="enter your password" textFill="#cf2020" visible="false" />
-      <Label fx:id="pass_updated" layoutX="271.0" layoutY="499.0" prefHeight="18.0" prefWidth="111.0" text="password updated" textFill="#00ff04" visible="false" />
+      <Label fx:id="pass_updated" layoutX="362.0" layoutY="499.0" prefHeight="18.0" prefWidth="102.0" text="password updated" textFill="#9aff9a" visible="false" />
+      <PasswordField fx:id="enterPass" layoutX="271.0" layoutY="231.0" prefHeight="38.0" prefWidth="194.0" promptText="Enter Password" style="-fx-background-color: transperent; -fx-border-color: white; -fx-text-fill: white;" />
+      <PasswordField fx:id="newPass" layoutX="271.0" layoutY="334.0" prefHeight="38.0" prefWidth="194.0" promptText="New Password" style="-fx-background-color: transperent; -fx-border-color: white; -fx-text-fill: white;" />
+      <PasswordField fx:id="confirmPass" layoutX="271.0" layoutY="393.0" prefHeight="38.0" prefWidth="194.0" promptText="Confirm Password" style="-fx-background-color: transperent; -fx-border-color: white; -fx-text-fill: white;" />
    </children>
 </AnchorPane>
