@@ -158,10 +158,10 @@ public class user_account_controller implements Initializable {
                 return;
             }
 
-            String newHashedPassword = BCrypt.hashpw(newPassword, BCrypt.gensalt());
+
             String updateSql = "UPDATE users SET password = ? WHERE user_name = ?";
             try (PreparedStatement updateStmt = conn.prepareStatement(updateSql)) {
-                updateStmt.setString(1, newHashedPassword);
+                updateStmt.setString(1, BCrypt.hashpw(newPassword, BCrypt.gensalt()));
                 updateStmt.setString(2, usernameText);
                 updateStmt.executeUpdate();
             }
