@@ -3,9 +3,11 @@ package user_gui_controller;
 import javafx.animation.TranslateTransition;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
@@ -14,12 +16,15 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 
 import javafx.event.ActionEvent;
+import main_package.user_session;
 
 import javax.swing.text.html.ImageView;
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
 
-public class user_main_controller {
+public class user_main_controller implements Initializable {
 
 
 
@@ -34,7 +39,13 @@ public class user_main_controller {
 
     private boolean isMenuVisible = true;
 
+    @FXML
+    private Button account_btn;
 
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        account_btn.setText(user_session.get_user());
+    }
 
 
     @FXML

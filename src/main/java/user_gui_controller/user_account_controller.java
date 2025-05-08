@@ -3,6 +3,7 @@ package user_gui_controller;
 import javafx.animation.TranslateTransition;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -12,17 +13,20 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
-//import javafx.scene.layout.StackPane;
+import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
-
+import javafx.scene.image.ImageView;
 import javafx.event.ActionEvent;
-
-import javax.swing.text.html.ImageView;
+import main_package.user_session;
+import org.mindrot.jbcrypt.BCrypt;
+//import javax.swing.text.html.ImageView;
 import java.io.IOException;
+import java.net.URL;
+import java.sql.*;
+import java.util.ResourceBundle;
 
-
-public class user_account_controller {
+public class user_account_controller implements Initializable {
 
 
 
@@ -95,6 +99,16 @@ public class user_account_controller {
     private TextField username;
 
     @FXML
+    private Label pass_updated;
+
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        account_btn.setText(user_session.get_user());
+        username.setText(user_session.get_user());
+    }
+
+    @FXML
     void edit_address_action(ActionEvent event) {
 
     }
@@ -106,9 +120,62 @@ public class user_account_controller {
 
     @FXML
     void edit_password_action(ActionEvent event) {
+        String currentPass = enterPass.getText().trim();
+        String usernameText = username.getText().trim();
+        String newPassword = newPass.getText().trim();
+        String confirmPassword = confirmPass.getText().trim();
 
+        btn1_error.setVisible(false);
+        pass_error.setVisible(false);
+        confirmation_error.setVisible(false);
+        pass_updated.setVisible(false);
+
+        if (currentPass.isEmpty()) {
+            btn1_error.setVisible(true);
+            return;
+        }
+        String dbUrl = "jdbc:sqlite:store.db";
+        try (Connection conn = DriverManager.getConnection(dbUrl)) {
+            String sql = "SELECT password FROM users WHERE user_name = ?";
+            try (PreparedStatement stmt = conn.prepareStatement(sql)) {
+                stmt.setString(1, usernameText);
+                try (ResultSet rs = stmt.executeQuery()) {
+                    if (rs.next()) {
+                        String hashedPassword = rs.getString("password");
+                        if (!BCrypt.checkpw(currentPass, hashedPassword)) {
+                            pass_error.setVisible(true);
+                            return;
+                        }
+                    } else {
+                        pass_error.setVisible(true);
+                        return;
+                    }
+                }
+            }
+
+            if (!newPassword.equals(confirmPassword)) {
+                confirmation_error.setVisible(true);
+                return;
+            }
+
+            String newHashedPassword = BCrypt.hashpw(newPassword, BCrypt.gensalt());
+            String updateSql = "UPDATE users SET password = ? WHERE user_name = ?";
+            try (PreparedStatement updateStmt = conn.prepareStatement(updateSql)) {
+                updateStmt.setString(1, newHashedPassword);
+                updateStmt.setString(2, usernameText);
+                updateStmt.executeUpdate();
+            }
+
+
+            pass_updated.setVisible(true);
+            enterPass.clear();
+            newPass.clear();
+            confirmPass.clear();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
-
 
     @FXML
     private void toggle_menu() {

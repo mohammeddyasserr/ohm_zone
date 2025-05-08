@@ -136,12 +136,15 @@ public class logincontroller {
                 if (r.next()) {
                     String dbPassword = r.getString("password");
                     if (BCrypt.checkpw(passfield.getText(), dbPassword)) {
-                        Parent root= FXMLLoader.load(getClass().getResource("/user_gui/user_main.fxml"));
-                        stage=(Stage)((Node)event.getSource()).getScene().getWindow();
-                        scene= new Scene(root);
+                        String name = userfield.getText();
+                        user_session.set_user(name);
+
+                        FXMLLoader loader = new FXMLLoader(getClass().getResource("/user_gui/user_main.fxml"));
+                        Parent root = loader.load();
+                        Stage stage = (Stage) signinbtn.getScene().getWindow();
+                        Scene scene = new Scene(root);
                         stage.setScene(scene);
                         stage.show();
-
                     } else {
                         pass_error.setVisible(true);
                     }
