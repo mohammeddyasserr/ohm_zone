@@ -197,7 +197,13 @@ public class calc_controller {
         rect.setFill(color);
     }
 
-
+    private void resetBandColors() {
+        band1.setFill(Color.TRANSPARENT);
+        band2.setFill(Color.TRANSPARENT);
+        band3.setFill(Color.TRANSPARENT);
+        multiplier.setFill(Color.TRANSPARENT);
+        tol.setFill(Color.TRANSPARENT);
+    }
 
     private void setupComboBoxes() {
         var digits = digitMap.keySet();
@@ -258,6 +264,8 @@ public class calc_controller {
         HBox.setHgrow(fourbandpane, is4 ? Priority.ALWAYS : Priority.NEVER);
         HBox.setHgrow(fivebandpane, is5 ? Priority.ALWAYS : Priority.NEVER);
         HBox.setHgrow(sixbandpane, is6 ? Priority.ALWAYS : Priority.NEVER);
+
+        resetBandColors();
     }
 
     @FXML
