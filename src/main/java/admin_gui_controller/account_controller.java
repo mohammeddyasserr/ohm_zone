@@ -33,11 +33,11 @@ public class account_controller implements Initializable {
     @FXML  Button editbtn;
     @FXML  Button account_btn;
     @FXML
-<<<<<<< Updated upstream
+
      Pane side_panel;
-=======
-    Pane side_panel;
->>>>>>> Stashed changes
+
+
+
     @FXML
     Button menu_btn;
 
@@ -49,11 +49,11 @@ public class account_controller implements Initializable {
 
     }
     @FXML
-<<<<<<< Updated upstream
-   void edit_password(ActionEvent event) {
-=======
+
+
+
     void edit_password(ActionEvent event) {
->>>>>>> Stashed changes
+
         // Reset errors
         old_error.setText("");
         new_error.setText("");
@@ -135,10 +135,8 @@ public class account_controller implements Initializable {
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
-<<<<<<< Updated upstream
+
         System.out.println("Admin page button clicked");
-=======
->>>>>>> Stashed changes
 
     }
 
@@ -204,8 +202,8 @@ public class account_controller implements Initializable {
         //side_panel.setManaged(!isVisible);
     }
 
-<<<<<<< Updated upstream
+
 }
-=======
-}
->>>>>>> Stashed changes
+
+
+
