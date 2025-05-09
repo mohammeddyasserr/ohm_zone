@@ -21,3 +21,16 @@
     -fx-background-color: #014A4B;              
     -fx-text-fill: white;
 }
+
+.combo-box .text {
+    -fx-fill: #a4a1a1;
+}
+
+.combo-box .list-cell {
+    -fx-background-color: transparent;    /* background of each option */
+    -fx-text-fill: white;           /* text color of each option */
+}
+
+.combo-box .list-cell:hover {
+    -fx-background-color:  linear-gradient(from 0% 0% to 100% 100%, #001f3f, #003b46);  /* hover effect */
+}

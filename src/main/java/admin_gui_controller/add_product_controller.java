@@ -9,6 +9,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
@@ -25,9 +26,41 @@ public class add_product_controller implements Initializable {
         // Constructor افتراضي
     }
     int const_id;
+    private String currentPrefix = "";
 
+    private void enforceCategoryPrefix(String categoryPrefix) {
+        name.textProperty().addListener((obs, oldText, newText) -> {
+            if (!newText.startsWith(categoryPrefix + "-")) {
+                // Re-add the prefix if the user tries to delete or modify it
+                name.setText(categoryPrefix + "-");
+                name.positionCaret(name.getText().length());
+            }
+        });
+    }
 
     public void initialize(URL location, ResourceBundle resources) {
+        if(category.getValue() == null) {
+            name.setDisable(true);
+        }
+        if (category.getItems().isEmpty()) {
+            category.getItems().addAll("RES", "CAP", "Battery");
+        }
+
+        category.valueProperty().addListener((obs, oldVal, newVal) -> {
+            if (newVal != null) {
+                currentPrefix = newVal + "-";
+                name.setDisable(false);
+                name.setText(currentPrefix);
+                name.positionCaret(currentPrefix.length());
+            }
+        });
+        name.textProperty().addListener((obs, oldText, newText) -> {
+            if (!currentPrefix.isEmpty() && !newText.startsWith(currentPrefix)) {
+                // Restore the prefix if it's removed or changed
+                name.setText(currentPrefix);
+                name.positionCaret(currentPrefix.length());
+            }
+        });
         account_btn.setText(user_session.get_user());
 
         try {
@@ -86,6 +119,11 @@ public class add_product_controller implements Initializable {
     @FXML
     private Button account_btn;
 
+    @FXML
+    private ComboBox category;
+
+    @FXML
+    private Label cat_error;
 
     @FXML
     void acount_page(ActionEvent event) throws IOException {
@@ -171,6 +209,7 @@ public class add_product_controller implements Initializable {
         name_error.setText("");
         price_error.setText("");
         quantity_error.setText("");
+        cat_error.setText("");
 
         try {
             Connection con2 = DriverManager.getConnection("jdbc:sqlite:store.db");
@@ -178,8 +217,11 @@ public class add_product_controller implements Initializable {
             PreparedStatement ps2 = con2.prepareStatement("select * from product where name=?");
             ps2.setString(1,name.getText());
             ResultSet r2 = ps2.executeQuery();
-            if(name.getText().isEmpty()){
-                name_error.setText("name can't be empty");
+            if(category.getValue() == null){
+                cat_error.setText("please choose a category");
+            }
+            else if (name.getText().trim().equals(currentPrefix)) {
+                name_error.setText("you must complete the product name");
             }
             else if (r2.next()) {
                 name_error.setText("there is another product with this name");
@@ -191,7 +233,7 @@ public class add_product_controller implements Initializable {
                 price_error.setText("Must be digits only");
             }else if (Double.parseDouble(price.getText().trim()) == 0) {
                 price_error.setText("Price can't be zero");
-            }if (quantity.getText().isEmpty()) {
+            }else if (quantity.getText().isEmpty()) {
                 quantity_error.setText("quantity can't be empty");
             } else if (!quantity.getText().matches("\\d+")) {
                 quantity_error.setText("Must be an integer value.");
@@ -205,9 +247,22 @@ public class add_product_controller implements Initializable {
                         Double.parseDouble(price.getText().trim()),
                         Integer.parseInt(quantity.getText().trim())
                 );
-                name.setText("");
-                price.setText("");
-                quantity.setText("");
+                // Clear all fields
+                name.clear();
+                price.clear();
+                quantity.clear();
+                category.getSelectionModel().clearSelection();
+
+// Disable name field again
+                name.setDisable(true);
+
+// Clear any stored prefix
+                currentPrefix = "";
+
+// Reset the prompt (optional)
+                name.setPromptText("Enter product name");
+                category.setPromptText("Category");
+
             }
             con2.close();
             r2.close();
