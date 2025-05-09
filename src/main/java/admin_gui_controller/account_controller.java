@@ -7,52 +7,116 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import main_package.user_session;
+import org.mindrot.jbcrypt.BCrypt;
 
 import java.io.IOException;
 import java.net.URL;
 import java.sql.*;
 import java.util.ResourceBundle;
-import org.mindrot.jbcrypt.BCrypt;
 
-public class add_admin_controller implements Initializable {
+public class account_controller implements Initializable {
 
-    @FXML
-    private Pane side_panel;
-    @FXML
-    private Button menu_btn;
+    @FXML  TextField user;
+    @FXML  PasswordField old_pass;
+    @FXML  PasswordField new_pass;
+    @FXML  PasswordField confirm_pass;
 
-    // Add Admin Fields
+    @FXML  Label old_error;
+    @FXML  Label new_error;
+    @FXML  Label confirm_error;
+    @FXML  Label result_label;
+
+    @FXML  Button editbtn;
+    @FXML  Button account_btn;
     @FXML
-    TextField user_name;
+<<<<<<< Updated upstream
+     Pane side_panel;
+=======
+    Pane side_panel;
+>>>>>>> Stashed changes
     @FXML
-    PasswordField password;
-    @FXML
-    PasswordField password_confirm;
-    @FXML
-    Label username_error;
-    @FXML
-    Label password_error;
-    @FXML
-    Label confirm_error;
-    @FXML
-    Label result_label;
-    @FXML
-    Button addbtn;
-    @FXML
-    private Button account_btn;
+    Button menu_btn;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        user.setText(user_session.get_user());
+        user.setEditable(false);
         account_btn.setText(user_session.get_user());
-    }
 
+    }
+    @FXML
+<<<<<<< Updated upstream
+   void edit_password(ActionEvent event) {
+=======
+    void edit_password(ActionEvent event) {
+>>>>>>> Stashed changes
+        // Reset errors
+        old_error.setText("");
+        new_error.setText("");
+        confirm_error.setText("");
+        result_label.setText("");
+
+        String username = user.getText().trim();
+        String currentPassword = old_pass.getText().trim();
+        String newPassword = new_pass.getText().trim();
+        String confirmPassword = confirm_pass.getText().trim();
+
+        boolean valid = true;
+
+        if (currentPassword.isEmpty()) {
+            old_error.setText("Please enter your current password.");
+            valid = false;
+        }
+
+        if (newPassword.isEmpty()) {
+            new_error.setText("Please enter a new password.");
+            valid = false;
+        }
+
+        if (!newPassword.equals(confirmPassword)) {
+            confirm_error.setText("Passwords do not match.");
+            valid = false;
+        }
+
+        if (!valid) return;
+
+        try (Connection conn = DriverManager.getConnection("jdbc:sqlite:store.db")) {
+            String query = "SELECT password FROM admins WHERE user_name = ?";
+            PreparedStatement stmt = conn.prepareStatement(query);
+            stmt.setString(1, username);
+            ResultSet rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                String hashedPassword = rs.getString("password");
+                if (!BCrypt.checkpw(currentPassword, hashedPassword)) {
+                    old_error.setText("Incorrect old password.");
+                    return;
+                }
+            } else {
+                old_error.setText("Admin not found.");
+                return;
+            }
+
+            String updateSql = "UPDATE admins SET password = ? WHERE user_name = ?";
+            PreparedStatement updateStmt = conn.prepareStatement(updateSql);
+            updateStmt.setString(1, BCrypt.hashpw(newPassword, BCrypt.gensalt()));
+            updateStmt.setString(2, username);
+            updateStmt.executeUpdate();
+
+            result_label.setText("Password updated successfully.");
+            old_pass.clear();
+            new_pass.clear();
+            confirm_pass.clear();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            result_label.setText("An error occurred while updating the password.");
+        }
+    }
 
     // Navigation Methods
     @FXML
@@ -71,7 +135,10 @@ public class add_admin_controller implements Initializable {
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
-
+<<<<<<< Updated upstream
+        System.out.println("Admin page button clicked");
+=======
+>>>>>>> Stashed changes
 
     }
 
@@ -137,68 +204,8 @@ public class add_admin_controller implements Initializable {
         //side_panel.setManaged(!isVisible);
     }
 
-    // Add Admin Logic
-    @FXML
-    void add_admin(ActionEvent event) {
-        // Reset error messages
-        username_error.setText("");
-        password_error.setText("");
-        confirm_error.setText("");
-        result_label.setText("");
-
-        String username = user_name.getText().trim();
-        String pass = password.getText();
-        String confirmPass = password_confirm.getText();
-
-        boolean valid = true;
-
-        // Validation
-        if (username.isEmpty()) {
-            username_error.setText("Username is required.");
-            valid = false;
-        }
-
-        if (pass.isEmpty()) {
-            password_error.setText("Password is required.");
-            valid = false;
-        }
-
-        if (confirmPass.isEmpty()) {
-            confirm_error.setText("Confirm password is required.");
-            valid = false;
-        } else if (!pass.equals(confirmPass)) {
-            confirm_error.setText("Passwords do not match.");
-            valid = false;
-        }
-
-        if (valid) {
-            try (Connection conn = DriverManager.getConnection("jdbc:sqlite:store.db")) {
-                // Check if username already exists
-                String checkSql = "SELECT * FROM admins WHERE user_name = ?";
-                PreparedStatement checkStmt = conn.prepareStatement(checkSql);
-                checkStmt.setString(1, username);
-                ResultSet rs = checkStmt.executeQuery();
-
-                if (rs.next()) {
-                    result_label.setText("Admin already exists.");
-                } else {
-                    String insertSql = "INSERT INTO admins (user_name, password) VALUES (?, ?)";
-                    PreparedStatement insertStmt = conn.prepareStatement(insertSql);
-                    insertStmt.setString(1, username);
-                    pass=BCrypt.hashpw(pass, BCrypt.gensalt());
-                    insertStmt.setString(2, pass); // Consider hashing in real apps
-                    insertStmt.executeUpdate();
-
-                    result_label.setText("Admin added successfully.");
-                    user_name.clear();
-                    password.clear();
-                    password_confirm.clear();
-                }
-            } catch (SQLException e) {
-                result_label.setText("Database error: " + e.getMessage());
-                e.printStackTrace();
-            }
-        }
-
-    }
+<<<<<<< Updated upstream
 }
+=======
+}
+>>>>>>> Stashed changes

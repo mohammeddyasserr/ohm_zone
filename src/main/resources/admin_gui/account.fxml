@@ -2,19 +2,17 @@
 
 <?import javafx.geometry.Rectangle2D?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.Glow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 
-<AnchorPane prefHeight="570.0" prefWidth="951.0" style="-fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #002b36, #014d4a, #00ffcc);;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="admin_gui_controller.admin_main_controller">
+<AnchorPane prefHeight="570.0" prefWidth="951.0" style="-fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #002b36, #014d4a, #00ffcc);;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="admin_gui_controller.account_controller">
    <children>
-      <ImageView fitHeight="516.0" fitWidth="520.0" layoutX="222.0" layoutY="30.0" opacity="0.18" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../icons/logo.png" />
-         </image>
-      </ImageView>
       <Pane prefHeight="74.0" prefWidth="958.0" style="-fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #001f3f, #003b46);;">
          <children>
             <Button fx:id="menu_btn" layoutX="14.0" layoutY="24.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#toggle_menu" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #ffffff, #e0f7fa);;">
@@ -107,5 +105,14 @@
                   </ImageView>
                </graphic></Button>
          </children></Pane>
+      <TextField fx:id="user" layoutX="223.0" layoutY="195.0" promptText="Username" style="-fx-background-color: transperent; -fx-border-color: white; -fx-text-fill: white;" />
+      <PasswordField fx:id="confirm_pass" layoutX="223.0" layoutY="396.0" promptText="Confirm password" style="-fx-background-color: transperent; -fx-border-color: white; -fx-text-fill: white;" />
+      <PasswordField fx:id="new_pass" layoutX="223.0" layoutY="328.0" promptText="New password" style="-fx-background-color: transperent; -fx-border-color: white; -fx-text-fill: white;" />
+      <PasswordField fx:id="old_pass" layoutX="223.0" layoutY="259.0" promptText="Old password" style="-fx-background-color: transperent; -fx-border-color: white; -fx-text-fill: white;" />
+      <Button fx:id="editbtn" layoutX="688.0" layoutY="328.0" mnemonicParsing="false" onAction="#edit_password" prefHeight="26.0" prefWidth="166.0" style="-fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #001f3f, #003b46);" text="EDIT PASSWORD" textFill="WHITE" />
+      <Label fx:id="result_label" layoutX="688.0" layoutY="354.0" prefHeight="18.0" prefWidth="166.0" textFill="#cf2020" />
+      <Label fx:id="confirm_error" layoutX="223.0" layoutY="422.0" prefHeight="18.0" prefWidth="150.0" textFill="#cf2020" />
+      <Label fx:id="new_error" layoutX="223.0" layoutY="354.0" prefHeight="18.0" prefWidth="150.0" textFill="#cf2020" />
+      <Label fx:id="old_error" layoutX="223.0" layoutY="285.0" prefHeight="18.0" prefWidth="150.0" textFill="#cf2020" />
    </children>
 </AnchorPane>
