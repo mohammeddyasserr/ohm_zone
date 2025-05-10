@@ -4,6 +4,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.effect.Glow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -19,18 +20,17 @@
             <children>
                 <!-- Top Bar -->
                 <AnchorPane fx:id="topBar" prefHeight="74.0" style="-fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #001f3f, #003b46);">
-                    <children>
-                        <!-- Menu Button -->
-                        <Button fx:id="menu_btn" layoutX="14.0" layoutY="24.0" mnemonicParsing="false" onAction="#toggle_menu" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #ffffff, #e0f7fa);">
-                            <graphic>
-                                <ImageView fitHeight="26.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
-                                    <image>
-                                        <Image url="@../icons/menu.png" />
-                                    </image>
-                                </ImageView>
-                            </graphic>
-                        </Button>
-                    </children>
+               <children>
+                  <Button fx:id="back" layoutX="14.0" layoutY="20.0" mnemonicParsing="false" onAction="#back_btn" prefHeight="30.0" prefWidth="57.0" style="-fx-background-color: transparent; -fx-alignment: CENTER_RIGHT;" text="Back" textFill="WHITE" />
+                  <ImageView fitHeight="21.0" fitWidth="21.0" layoutX="12.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true">
+                     <effect>
+                        <Glow />
+                     </effect>
+                     <image>
+                        <Image url="@../icons/back.png" />
+                     </image>
+                  </ImageView>
+               </children>
                 </AnchorPane>
 
                 <!-- Centered Logo -->
@@ -56,7 +56,7 @@
             <Circle fill="DODGERBLUE" layoutX="665.0" layoutY="478.0" radius="25.0" stroke="BLACK" strokeType="INSIDE" style="-fx-stroke: transparent; -fx-fill: #014d4a;" />
             <Circle fill="DODGERBLUE" layoutX="730.0" layoutY="478.0" radius="25.0" stroke="BLACK" strokeType="INSIDE" style="-fx-stroke: transparent; -fx-fill: #014d4a;" />
             <Circle fill="DODGERBLUE" layoutX="795.0" layoutY="478.0" radius="25.0" stroke="BLACK" strokeType="INSIDE" style="-fx-stroke: transparent; -fx-fill: #014d4a;" />
-            <TableView id="productsTable" fx:id="table" layoutX="365.0" layoutY="14.0" onMouseClicked="#rowClicked" prefHeight="422.0" prefWidth="482.0" style="-fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #001f3f, #003b46); -fx-border-color: white; -fx-border-radius: 50;" stylesheets="@style1.CSS">
+            <TableView id="productsTable" fx:id="table" layoutX="359.0" layoutY="14.0" onMouseClicked="#rowClicked" prefHeight="422.0" prefWidth="482.0" style="-fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #001f3f, #003b46); -fx-border-color: white; -fx-border-radius: 25;" stylesheets="@style1.CSS">
                <columns>
                   <TableColumn fx:id="name" minWidth="100.0" prefWidth="144.79998779296875" text="NAME" />
                   <TableColumn fx:id="price" minWidth="24.79998779296875" prefWidth="162.4000244140625" text="PRICE" />
@@ -68,7 +68,7 @@
                   <Font name="System Bold" size="15.0" />
                </font>
             </Label>
-            <Label layoutX="148.0" layoutY="14.0" prefHeight="38.0" prefWidth="173.0" style="-fx-background-color: transparent;" textFill="WHITE">
+            <Label fx:id="date" layoutX="148.0" layoutY="14.0" prefHeight="38.0" prefWidth="173.0" style="-fx-background-color: transparent;" textFill="WHITE">
                <font>
                   <Font size="15.0" />
                </font>
@@ -78,14 +78,14 @@
                   <Font name="System Bold" size="15.0" />
                </font>
             </Label>
-            <Label layoutX="36.0" layoutY="311.0" prefHeight="38.0" prefWidth="80.0" style="-fx-background-color: transparent;" text="   Total :" textFill="WHITE">
+            <Label layoutX="36.0" layoutY="311.0" prefHeight="38.0" prefWidth="80.0" style="-fx-background-color: transparent;" text=" Total :" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font></Label>
-            <Label layoutX="105.0" layoutY="311.0" prefHeight="38.0" prefWidth="194.0" style="-fx-background-color: transparent;" textFill="WHITE" />
-            <Label layoutX="36.0" layoutY="385.0" prefHeight="39.0" prefWidth="266.0" style="-fx-background-color: transparent;" text="Thank you for purchase" textFill="WHITE">
+            <Label layoutX="144.0" layoutY="311.0" prefHeight="38.0" prefWidth="174.0" style="-fx-background-color: transparent;" textFill="WHITE" />
+            <Label layoutX="36.0" layoutY="385.0" prefHeight="39.0" prefWidth="266.0" style="-fx-background-color: transparent;" text="Thank you for your purchase" textFill="WHITE">
                <font>
-                  <Font name="System Bold" size="24.0" />
+                  <Font name="System Bold" size="18.0" />
                </font>
             </Label>
             <Label layoutX="36.0" layoutY="91.0" prefHeight="38.0" prefWidth="80.0" style="-fx-background-color: transparent;" text="Bill ID :" textFill="WHITE">
@@ -93,12 +93,12 @@
                   <Font name="System Bold" size="15.0" />
                </font>
             </Label>
-            <Label layoutX="145.0" layoutY="91.0" prefHeight="38.0" prefWidth="173.0" style="-fx-background-color: transparent;" textFill="WHITE">
+            <Label fx:id="id" layoutX="145.0" layoutY="91.0" prefHeight="38.0" prefWidth="173.0" style="-fx-background-color: transparent;" textFill="WHITE">
                <font>
                   <Font size="15.0" />
                </font>
             </Label>
-            <Label layoutX="148.0" layoutY="144.0" prefHeight="38.0" prefWidth="173.0" style="-fx-background-color: transparent;" textFill="WHITE">
+            <Label fx:id="username" layoutX="148.0" layoutY="144.0" prefHeight="38.0" prefWidth="173.0" style="-fx-background-color: transparent;" textFill="WHITE">
                <font>
                   <Font size="15.0" />
                </font>
