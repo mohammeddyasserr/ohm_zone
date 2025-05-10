@@ -43,7 +43,7 @@ public class add_product_controller implements Initializable {
             name.setDisable(true);
         }
         if (category.getItems().isEmpty()) {
-            category.getItems().addAll("RES", "CAP", "Battery");
+            category.getItems().addAll("RES", "CAP", "Battery","Diode","IC","Jumpers","Transistor","TestBoard","SolderingIron","Multimeter","Kits","Switch");
         }
 
         category.valueProperty().addListener((obs, oldVal, newVal) -> {

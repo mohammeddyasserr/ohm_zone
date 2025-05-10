@@ -1,47 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.Glow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.input.MouseEvent?>
 
-<AnchorPane prefHeight="594.0" prefWidth="951.0" style="-fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #002b36, #014d4a, #00ffcc);" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="user_gui_controller.user_main_controller">
+<AnchorPane prefHeight="594.0" prefWidth="951.0" style="-fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #002b36, #014d4a, #00ffcc);" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="user_gui_controller.shop_controller">
    <children>
       <!-- Top StackPane containing top bar and centered logo -->
       <StackPane AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <!-- Top Bar -->
-            <AnchorPane fx:id="topBar" prefHeight="74.0"
-                        style="-fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #001f3f, #003b46);">
+            <AnchorPane fx:id="topBar" prefHeight="74.0" style="-fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #001f3f, #003b46);">
                <children>
                   <!-- Menu Button -->
-                  <Button fx:id="menu_btn" layoutX="14.0" layoutY="24.0" mnemonicParsing="false" onAction="#toggle_menu"
-                          prefHeight="30.0" prefWidth="30.0"
-                          style="-fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #ffffff, #e0f7fa);">
+                  <Button fx:id="menu_btn" layoutX="14.0" layoutY="24.0" mnemonicParsing="false" onAction="#toggle_menu" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #ffffff, #e0f7fa);">
                      <graphic>
                         <ImageView fitHeight="26.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../icons/menu.png"/>
+                              <Image url="@../icons/menu.png" />
                            </image>
                         </ImageView>
                      </graphic>
                   </Button>
 
                   <!-- Account Button (Right) -->
-                  <Button fx:id="account_btn" layoutY="25.0" mnemonicParsing="false" onAction="#acount_page"
-                          prefHeight="29.0" prefWidth="200.0"
-                          style="-fx-background-color: transparent; -fx-alignment: CENTER_RIGHT;"
-                          text="mohammed" textFill="WHITE" AnchorPane.rightAnchor="10.0">
+                  <Button fx:id="account_btn" layoutY="25.0" mnemonicParsing="false" onAction="#acount_page" prefHeight="29.0" prefWidth="200.0" style="-fx-background-color: transparent; -fx-alignment: CENTER_RIGHT;" text="mohammed" textFill="WHITE" AnchorPane.rightAnchor="10.0">
                      <graphic>
                         <ImageView fitHeight="21.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../icons/account.png"/>
+                              <Image url="@../icons/account.png" />
                            </image>
                            <effect>
-                              <Glow/>
+                              <Glow />
                            </effect>
                         </ImageView>
                      </graphic>
@@ -52,7 +54,7 @@
             <!-- Centered Logo -->
             <ImageView fx:id="logoImage" fitHeight="50.0" fitWidth="50.0" preserveRatio="true">
                <image>
-                  <Image url="@../icons/logo.png"/>
+                  <Image url="@../icons/logo.png" />
                </image>
             </ImageView>
          </children>
@@ -127,5 +129,155 @@
             </VBox>
          </children>
       </AnchorPane>
-   </children>
+      <GridPane fx:id="productGrid" alignment="TOP_LEFT" hgap="20.0" style="-fx-background-color: transparent;" vgap="20.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="170.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="74.0">
+
+         <padding>
+            <Insets bottom="20" left="20" right="20" top="20" />
+         </padding>
+
+         <!-- Column constraints to enable resizing -->
+         <columnConstraints>
+            <ColumnConstraints hgrow="ALWAYS" percentWidth="25.0" />
+            <ColumnConstraints hgrow="ALWAYS" percentWidth="25.0" />
+            <ColumnConstraints hgrow="ALWAYS" percentWidth="25.0" />
+            <ColumnConstraints hgrow="ALWAYS" percentWidth="25.0" />
+         </columnConstraints>
+
+         <!-- 12 product cards (4 columns × 3 rows) -->
+         <!-- You can replace image paths and prices as needed -->
+
+         <!-- Row 0 -->
+         <VBox fx:id="Resistance" alignment="CENTER" maxWidth="Infinity" onMouseClicked="#onProductClick" prefHeight="250" prefWidth="200" spacing="10.0" style="-fx-background-color: rgba(255,255,255,0.1); -fx-border-color: white; -fx-border-width: 1; -fx-padding: 10;" GridPane.columnIndex="0" GridPane.rowIndex="0">
+            <children>
+               <ImageView fitHeight="150.0" fitWidth="150.0" preserveRatio="true">
+                  <image><Image url="@../icons/products/Resistances.png" /></image>
+               </ImageView>
+               <Label style="-fx-font-size: 16;" text="Resistance" textFill="WHITE" />
+            </children>
+         </VBox>
+
+         <VBox fx:id="Capacitor" alignment="CENTER" maxWidth="Infinity" onMouseClicked="#onProductClick" prefHeight="250" prefWidth="200" spacing="10.0" style="-fx-background-color: rgba(255,255,255,0.1); -fx-border-color: white; -fx-border-width: 1; -fx-padding: 10;" GridPane.columnIndex="1" GridPane.rowIndex="0">
+            <children>
+               <ImageView fitHeight="150.0" fitWidth="150.0" preserveRatio="true">
+                  <image><Image url="@../icons/products/Capacitors.png" /></image>
+               </ImageView>
+               <Label style="-fx-font-size: 16;" text="Capacitor" textFill="WHITE" />
+            </children>
+         </VBox>
+
+         <VBox fx:id="Battery" alignment="CENTER" maxWidth="Infinity" onMouseClicked="#onProductClick" prefHeight="250" prefWidth="200" spacing="10.0" style="-fx-background-color: rgba(255,255,255,0.1); -fx-border-color: white; -fx-border-width: 1; -fx-padding: 10;" GridPane.columnIndex="2" GridPane.rowIndex="0">
+            <children>
+               <ImageView fitHeight="114.0" fitWidth="150.0" preserveRatio="true">
+                  <image><Image url="@../icons/products/Battery.png" /></image>
+               </ImageView>
+               <Label style="-fx-font-size: 16;" text="Battery" textFill="WHITE" />
+            </children>
+         </VBox>
+
+         <VBox fx:id="Diode" alignment="CENTER" maxWidth="Infinity" onMouseClicked="#onProductClick" prefHeight="250" prefWidth="200" spacing="10.0" style="-fx-background-color: rgba(255,255,255,0.1); -fx-border-color: white; -fx-border-width: 1; -fx-padding: 10;" GridPane.columnIndex="3" GridPane.rowIndex="0">
+            <children>
+               <ImageView fitHeight="150.0" fitWidth="150.0" preserveRatio="true">
+                  <image><Image url="@../icons/products/Diode.png" /></image>
+               </ImageView>
+               <Label style="-fx-font-size: 16;" text="Diode" textFill="WHITE" />
+            </children>
+         </VBox>
+
+         <!-- Row 1 -->
+         <VBox fx:id="ICS" alignment="CENTER" maxWidth="Infinity" onMouseClicked="#onProductClick" prefHeight="250" prefWidth="200" spacing="10.0" style="-fx-background-color: rgba(255,255,255,0.1); -fx-border-color: white; -fx-border-width: 1; -fx-padding: 10;" GridPane.columnIndex="0" GridPane.rowIndex="1">
+            <children>
+               <ImageView fitHeight="109.0" fitWidth="150.0" preserveRatio="true">
+                  <image><Image url="@../icons/products/ICS.png" /></image>
+               </ImageView>
+               <Label style="-fx-font-size: 16;" text="IC" textFill="WHITE" />
+            </children>
+         </VBox>
+
+         <VBox fx:id="Jumpers" alignment="CENTER" maxWidth="Infinity" onMouseClicked="#onProductClick" prefHeight="250" prefWidth="200" spacing="10.0" style="-fx-background-color: rgba(255,255,255,0.1); -fx-border-color: white; -fx-border-width: 1; -fx-padding: 10;" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <children>
+               <ImageView fitHeight="150.0" fitWidth="150.0" preserveRatio="true">
+                  <image><Image url="@../icons/products/Jumpers.png" /></image>
+               </ImageView>
+               <Label style="-fx-font-size: 16;" text="Jumpers" textFill="WHITE" />
+            </children>
+         </VBox>
+
+         <VBox fx:id="Transistor" alignment="CENTER" maxWidth="Infinity" onMouseClicked="#onProductClick" prefHeight="250" prefWidth="200" spacing="10.0" style="-fx-background-color: rgba(255,255,255,0.1); -fx-border-color: white; -fx-border-width: 1; -fx-padding: 10;" GridPane.columnIndex="2" GridPane.rowIndex="1">
+            <children>
+               <ImageView fitHeight="150.0" fitWidth="150.0" preserveRatio="true">
+                  <image><Image url="@../icons/products/Transistor.png" /></image>
+               </ImageView>
+               <Label style="-fx-font-size: 16;" text="Transistor" textFill="WHITE" />
+            </children>
+         </VBox>
+
+         <VBox fx:id="Test_Board" alignment="CENTER" maxWidth="Infinity" onMouseClicked="#onProductClick" prefHeight="250" prefWidth="200" spacing="10.0" style="-fx-background-color: rgba(255,255,255,0.1); -fx-border-color: white; -fx-border-width: 1; -fx-padding: 10;" GridPane.columnIndex="3" GridPane.rowIndex="1">
+            <children>
+               <ImageView fitHeight="116.0" fitWidth="150.0" preserveRatio="true">
+                  <image><Image url="@../icons/products/Test_Board.png" /></image>
+               </ImageView>
+               <Label style="-fx-font-size: 16;" text="Test Board" textFill="WHITE" />
+            </children>
+         </VBox>
+
+         <!-- Row 2 -->
+         <VBox fx:id="Soldering_Iron" alignment="CENTER" maxWidth="Infinity" onMouseClicked="#onProductClick" prefHeight="250" prefWidth="200" spacing="10.0" style="-fx-background-color: rgba(255,255,255,0.1); -fx-border-color: white; -fx-border-width: 1; -fx-padding: 10;" GridPane.columnIndex="0" GridPane.rowIndex="2">
+            <children>
+               <ImageView fitHeight="126.0" fitWidth="150.0" preserveRatio="true">
+                  <image><Image url="@../icons/products/Soldering_Iron.png" /></image>
+               </ImageView>
+               <Label style="-fx-font-size: 16;" text="Soldering Iron" textFill="WHITE" />
+            </children>
+         </VBox>
+
+         <VBox fx:id="Avo" alignment="CENTER" maxWidth="Infinity" onMouseClicked="#onProductClick" prefHeight="250" prefWidth="200" spacing="10.0" style="-fx-background-color: rgba(255,255,255,0.1); -fx-border-color: white; -fx-border-width: 1; -fx-padding: 10;" GridPane.columnIndex="1" GridPane.rowIndex="2">
+            <children>
+               <ImageView fitHeight="139.0" fitWidth="150.0" preserveRatio="true">
+                  <image><Image url="@../icons/products/Avo.jpeg" /></image>
+               </ImageView>
+               <Label style="-fx-font-size: 16;" text="Multimeter" textFill="WHITE" />
+            </children>
+         </VBox>
+
+         <VBox fx:id="Boards" alignment="CENTER" maxWidth="Infinity" onMouseClicked="#onProductClick" prefHeight="250" prefWidth="200" spacing="10.0" style="-fx-background-color: rgba(255,255,255,0.1); -fx-border-color: white; -fx-border-width: 1; -fx-padding: 10;" GridPane.columnIndex="2" GridPane.rowIndex="2">
+            <children>
+               <ImageView fitHeight="150.0" fitWidth="150.0" preserveRatio="true">
+                  <image><Image url="@../icons/products/Boards.jpg" /></image>
+               </ImageView>
+               <Label style="-fx-font-size: 16;" text="Programable Boards" textFill="WHITE" />
+            </children>
+         </VBox>
+
+         <VBox fx:id="Switch" alignment="CENTER" maxWidth="Infinity" onMouseClicked="#onProductClick" prefHeight="250" prefWidth="200" spacing="10.0" style="-fx-background-color: rgba(255,255,255,0.1); -fx-border-color: white; -fx-border-width: 1; -fx-padding: 10;" GridPane.columnIndex="3" GridPane.rowIndex="2">
+            <children>
+               <ImageView fitHeight="132.0" fitWidth="144.0" preserveRatio="true">
+                  <image><Image url="@../icons/products/Switch.png" /></image>
+               </ImageView>
+               <Label style="-fx-font-size: 16;" text="Switch" textFill="WHITE" />
+            </children>
+         </VBox>
+         <rowConstraints>
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+         </rowConstraints>
+
+      </GridPane>
+
+      <AnchorPane fx:id="detailsPane" prefWidth="300" style="-fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #001f3f, #003b46);" translateX="300" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="74.0">
+
+         <VBox alignment="CENTER" spacing="15" AnchorPane.topAnchor="20.0">
+            <ImageView fx:id="detailsImage" fitHeight="150" fitWidth="150" preserveRatio="true" />
+            <Label fx:id="detailsName" style="-fx-font-size: 20px;" text="Product Name" textFill="WHITE" />
+            <Label fx:id="detailsPrice" style="-fx-font-size: 18px;" text="price" textFill="WHITE" />
+            <ComboBox fx:id="options" prefWidth="150.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-text-fill: white;" stylesheets="@style.CSS" />
+            <TextField fx:id="quantity" promptText="Quantity" style="-fx-background-color: transparent; -fx-border-color: white; -fx-text-fill: white;" />
+         </VBox>
+
+      </AnchorPane>
+
+
+
+        </children>
+
 </AnchorPane>

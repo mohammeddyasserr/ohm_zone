@@ -1,0 +1,36 @@
+.table-view {
+    -fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #001f3f, #003b46);               
+    -fx-control-inner-background: linear-gradient(from 0% 0% to 100% 100%, #001f3f, #003b46);
+    -fx-table-cell-border-color: #2D2D2D;       
+    -fx-padding: 5px;
+}
+
+.table-view .column-header {
+    -fx-background-color: #C6F7E7;               
+    -fx-text-fill: #01ECEF;                      
+    -fx-font-weight: bold;
+}
+
+.table-view .cell {
+    -fx-text-fill: #CFCFCF;                     
+    -fx-font-size: 13px;
+    -fx-alignment: CENTER;
+}
+
+.table-view .table-row-cell:selected {
+    -fx-background-color: #014A4B;              
+    -fx-text-fill: white;
+}
+
+.combo-box .text {
+    -fx-fill: #a4a1a1;
+}
+
+.combo-box .list-cell {
+    -fx-background-color: transparent;    /* background of each option */
+    -fx-text-fill: white;           /* text color of each option */
+}
+
+.combo-box .list-cell:hover {
+    -fx-background-color:  linear-gradient(from 0% 0% to 100% 100%, #001f3f, #003b46);  /* hover effect */
+}
