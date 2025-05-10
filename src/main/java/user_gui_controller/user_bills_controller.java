@@ -2,46 +2,67 @@ package user_gui_controller;
 
 import db_edit_functions.product;
 import javafx.animation.TranslateTransition;
+import javafx.beans.property.ReadOnlyObjectWrapper;
+import javafx.beans.property.ReadOnlyStringWrapper;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
 import javafx.scene.control.ScrollPane;
-import javafx.scene.layout.*;
-import javafx.scene.text.Text;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
+import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
-import javafx.scene.image.ImageView;
-import javafx.scene.control.Label;
-import javafx.scene.input.MouseEvent;
-
 import javafx.event.ActionEvent;
 import main_package.user_session;
-
-
-import javax.swing.*;
-import java.awt.*;
-
+import javafx.scene.image.ImageView;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.*;
 import java.util.ResourceBundle;
 
 
-public class shop_controller implements Initializable {
-
+public class user_bills_controller implements Initializable {
 
 
     @FXML
-    private ImageView logo;
+    private TableView<Bill> bills_table;
+
+    @FXML
+    private TableColumn<Bill, Integer> id;
+
+    @FXML
+    private TableColumn<Bill, String> date;
+
+    @FXML
+    private TableColumn<Bill, Double> price;
+
+    private ObservableList<Bill> bills = FXCollections.observableArrayList();
 
     @FXML
     private AnchorPane left_menu;
+
+    @FXML
+    private ImageView logoImage;
+
+    @FXML
+    private Button menu_btn;
+
+    @FXML
+    private AnchorPane topBar;
+    @FXML
+    private ImageView logo;
 
     @FXML
     private ScrollPane main_scroll_pane;
@@ -51,105 +72,42 @@ public class shop_controller implements Initializable {
     @FXML
     private Button account_btn;
 
-    @FXML
-    private GridPane productGrid;
-
-    @FXML
-    private AnchorPane detailsPane;
-
-    @FXML private ImageView detailsImage;
-
-    @FXML private Label detailsName;
-
-    @FXML private Label detailsPrice;
-
-    @FXML private Text detailsDescription;
-
-    @FXML
-    private ComboBox options;
-
-    @FXML
-    private TextField quantity;
-
-    @FXML
-    private VBox Resistance, Capacitor, Battery, Diode, ICS, Jumpers, Transistor, Test_Board, Soldering_Iron, Avo, Boards, Switch;
-
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
         account_btn.setText(user_session.get_user());
-        Resistance.setUserData("Resistance");
-        Capacitor.setUserData("Capacitor");
-        Battery.setUserData("Battery");
-        Diode.setUserData("Diode");
-        ICS.setUserData("IC");
-        Jumpers.setUserData("Jumpers");
-        Transistor.setUserData("Transistor");
-        Test_Board.setUserData("Test Board");
-        Soldering_Iron.setUserData("Soldering Iron");
-        Avo.setUserData("Multimeter");
-        Boards.setUserData("Programmable Boards");
-        Switch.setUserData("Switch");
+        setupBillsColumns();
+        loadBillsData();
+
     }
 
-
-
-
-
-
-
-    private void showDetailsPane() {
-        detailsPane.setVisible(true);
-
-        TranslateTransition slideIn = new TranslateTransition(Duration.millis(300), detailsPane);
-        slideIn.setFromX(300);  // Start from right
-        slideIn.setToX(0);      // Slide to original position
-        slideIn.play();
+    private void setupBillsColumns() {
+        id.setCellValueFactory(cellData -> new ReadOnlyObjectWrapper(cellData.getValue().getId()));
+        date.setCellValueFactory(cellData -> new ReadOnlyStringWrapper(cellData.getValue().getDate()));
+        price.setCellValueFactory(cellData -> new ReadOnlyObjectWrapper(cellData.getValue().getPrice()));
     }
-    @FXML
-    private void onProductClick(MouseEvent event) {
-        VBox clickedBox = (VBox) event.getSource();
-        String productName = (String) clickedBox.getUserData();
-        String cat="";
-        if (productName != null) {
-            detailsName.setText(productName);
-            if (productName == "Resistance") {
-                cat = "RES";
-            } else if (productName == "Capacitor") {
-                cat = "CAP";
-            } else if (productName == "Battery") {
-                cat = "Battery";
-            } else if (productName == "Diode") {
-                cat = "Diode";
-            } else if (productName == "IC") {
-                cat = "IC";
-            } else if (productName == "Jumpers") {
-                cat = "Jumpers";
-            } else if (productName == "Transistor") {
-                cat = "Transistor";
-            } else if (productName == "Test_Board") {
-                cat = "TestBoard";
-            } else if (productName == "Soldering_Iron") {
-                cat = "SolderingIron";
-            } else if (productName == "Multimeter") {
-                cat = "Multimeter";
-            } else if (productName == "Programmable_Board") {
-                cat = "Kits";
-            } else if (productName == "Switch") {
-                cat = "Switch";
+
+    private void loadBillsData() {
+        bills.clear();
+        String username = user_session.get_user();
+        try (Connection conn = DriverManager.getConnection("jdbc:sqlite:store.db");
+             PreparedStatement ps = conn.prepareStatement(
+                     "SELECT \"Bill_id\", \"Date\", \"Total_price\" FROM adminbills WHERE Username = ?")) {
+            ps.setString(1, username);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                bills.add(new Bill(
+                        rs.getString("Bill_id"),
+                        rs.getString("Date"),
+                        rs.getString("Total_price")
+                ));
             }
-            try (Connection conn = DriverManager.getConnection("jdbc:sqlite:store.db")) {
-                PreparedStatement ps = conn.prepareStatement("SELECT * FROM product WHERE name LIKE ?");
-                ps.setString(1, cat + "%-");
-                ResultSet rs = ps.executeQuery();
-
-
-
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
+        bills_table.setItems(bills);
     }
+
+
 
 
     @FXML
@@ -229,7 +187,7 @@ public class shop_controller implements Initializable {
 
     @FXML
     void pills_page_user(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/user_gui/pills.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/user_gui/user_bills.fxml"));
         Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
         stage.setScene(scene);
@@ -243,5 +201,25 @@ public class shop_controller implements Initializable {
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
+    }
+
+    @FXML
+    void rowClicked(MouseEvent event) {
+
+    }
+    public class Bill {
+        private final SimpleStringProperty id;
+        private final SimpleStringProperty date;
+        private final SimpleStringProperty price;
+
+        public Bill(String id, String date, String price) {
+            this.id = new SimpleStringProperty(id);
+            this.date = new SimpleStringProperty(date);
+            this.price = new SimpleStringProperty(price);
+        }
+
+        public String getId() { return id.get(); }
+        public String getDate() { return date.get(); }
+        public String getPrice() { return price.get(); }
     }
 }
