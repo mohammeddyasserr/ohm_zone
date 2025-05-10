@@ -129,13 +129,13 @@
          <columns>
             <TableColumn fx:id="name" minWidth="100.0" prefWidth="138.40000915527344" text="NAME" />
             <TableColumn fx:id="price" minWidth="100.0" prefWidth="180.0" text="PRICE" />
-            <TableColumn fx:id="quantity" minWidth="100.0" prefWidth="198.39996337890625" text="QUANTITY" />
+            <TableColumn fx:id="quantity" minWidth="100.0" prefWidth="198.39996337890625" style="-fx-text-fill: white;" text="QUANTITY" />
             <TableColumn fx:id="total_price" minWidth="100.0" prefWidth="184.7999267578125" text="TOTAL PRICE" />
          </columns>
       </TableView>
       <Button fx:id="b1" layoutX="700.0" layoutY="507.0" mnemonicParsing="false" onAction="#checkout" prefHeight="38.0" prefWidth="194.0" style="-fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #001f3f, #003b46);" text="CHECKOUT" textFill="WHITE" />
-      <Label fx:id="checkout" layoutX="712.0" layoutY="545.0" prefHeight="18.0" prefWidth="182.0" text="Checkout completed successfully!" visible="false" />
-      <Label layoutX="778.0" layoutY="545.0" text="Error during checkout" textFill="#cf2020" visible="false" />
+      <Label fx:id="checkout" layoutX="712.0" layoutY="545.0" prefHeight="18.0" prefWidth="182.0" text="" />
+      <Label fx:id="checkout_error" layoutX="778.0" layoutY="545.0" text="" textFill="#cf2020" />
       <Label layoutX="193.0" layoutY="429.0" prefHeight="30.0" prefWidth="515.0" style="-fx-text-fill: linear-gradient(from 0% 0% to 100% 100%, #001f3f, #003b46);" text="Double-click a row to remove the corresponding item from the cart.">
          <font>
             <Font name="System Bold" size="14.0" />

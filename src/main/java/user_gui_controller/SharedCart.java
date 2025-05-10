@@ -3,11 +3,12 @@ package user_gui_controller;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 public class SharedCart {
     public static final ObservableList<HashMap<String, Object>> cartItems = FXCollections.observableArrayList();
-
     public static void addItem(String name, double price, int quantity) {
         for (HashMap<String, Object> item : cartItems) {
             if (item.get("name").equals(name)) {

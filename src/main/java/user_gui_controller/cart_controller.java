@@ -20,11 +20,13 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import main_package.user_session;
+import java.sql.Date;
 
 import javax.swing.text.html.ImageView;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.*;
+import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.ResourceBundle;
 
@@ -228,18 +230,21 @@ public class cart_controller implements Initializable {
             }
 
             // 3. Insert order record
-            Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+            LocalDate today = LocalDate.now();
+            String dateStr = today.toString();
             String insertOrderSQL = "INSERT INTO orders (username, total_price, order_date) VALUES (?, ?, ?)";
+            System.out.print(dateStr);
             try (PreparedStatement orderStmt = conn.prepareStatement(insertOrderSQL)) {
                 orderStmt.setString(1, user_session.get_user());
                 orderStmt.setDouble(2, total);
-                orderStmt.setTimestamp(3, timestamp);
+                orderStmt.setString(3, dateStr);
                 orderStmt.executeUpdate();
             }
 
             conn.commit();
             SharedCart.cartItems.clear();
             checkout.setText("Checkout completed successfully!");
+            checkout_error.setText("");
 
         } catch (SQLException e) {
             checkout_error.setText("Error during checkout");
@@ -277,7 +282,10 @@ public class cart_controller implements Initializable {
         // Add quantity spinners
         quantity.setCellFactory(tc -> new TableCell<>() {
             private final Spinner<Integer> spinner = new Spinner<>(1, 100, 1);
-
+            {
+                spinner.setStyle("-fx-text-fill: white;");
+                spinner.getEditor().setStyle("-fx-text-fill: white; -fx-background-color: transparent;");
+            }
             @Override
             protected void updateItem(Integer value, boolean empty) {
                 super.updateItem(value, empty);
@@ -304,24 +312,7 @@ public class cart_controller implements Initializable {
         table.refresh();
     }
 
-    public void addItemToCart(String itemName, double price, int quantity) {
-        for (HashMap<String, Object> item : SharedCart.cartItems) {
-            if (item.get("name").equals(itemName)) {
-                int currentQty = (int) item.get("quantity");
-                int newQty = currentQty + quantity;
-                updateItemQuantity(item, newQty);
-                return;
-            }
-        }
 
-        // Add new item if not found
-        HashMap<String, Object> newItem = new HashMap<>();
-        newItem.put("name", itemName);
-        newItem.put("price", price);
-        newItem.put("quantity", quantity);
-        newItem.put("total", price * quantity);
-        SharedCart.cartItems.add(newItem);
-    }
 
 
 

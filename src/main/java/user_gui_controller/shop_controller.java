@@ -27,16 +27,18 @@ import javafx.animation.FadeTransition;
 import javafx.animation.ScaleTransition;
 import javafx.scene.layout.VBox;
 import javafx.util.Duration;
+import user_gui_controller.SharedCart;
+import user_gui_controller.cart_controller;
 
 import java.io.IOException;
 import java.net.URL;
 import java.sql.*;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.ResourceBundle;
 
 public class shop_controller implements Initializable {
 
-    private Map<String, String> valuePriceMap = new java.util.HashMap<>();
     @FXML private ImageView logo;
     @FXML private AnchorPane left_menu;
     @FXML private Button account_btn;
@@ -55,6 +57,7 @@ public class shop_controller implements Initializable {
     @FXML private Button closeDetailsBtn;
     @FXML private Text detailsDescription;
     @FXML private Label quantityLabel;
+    @FXML private Button cart_btn;
 
 
     private boolean isMenuVisible = true;
@@ -216,15 +219,25 @@ public class shop_controller implements Initializable {
             }
 
             if (!options.getItems().isEmpty()) {
+                cart_btn.setDisable(false);
                 options.getSelectionModel().selectFirst();  // Select the first item by default
                 updateDetailsForValue(cat, options.getValue());
+                showDetailsPane(); // Only show details if we have something to show
+            } else {
+                options.setPromptText("No items available");
+                detailsName.setText(productName);
+                detailsPrice.setText("");
+                quantityLabel.setText("");
+                detailsDescription.setText("No available products for this category.");
+                cart_btn.setDisable(true);
+                showDetailsPane();
             }
 
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
-        showDetailsPane();
+
     }
 
     private void updateDetailsForValue(String catPrefix, String selectedValue) {
@@ -235,6 +248,7 @@ public class shop_controller implements Initializable {
             ps.setString(1, fullProductName);
             ResultSet rs = ps.executeQuery();
 
+
             if (rs.next()) {
                 String price = rs.getString("Price");
                 String quantity = rs.getString("Quantity");
@@ -243,11 +257,7 @@ public class shop_controller implements Initializable {
                 quantityLabel.setText("Available in stock: " + (quantity != null ? quantity : "0"));
                 detailsDescription.setText(detailsName.getText() + " " + selectedValue);
             }
-            else{
-                detailsPrice.setText("Price");
-                quantityLabel.setText("Not Available");
-                detailsDescription.setText("");
-            }
+
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -284,6 +294,21 @@ public class shop_controller implements Initializable {
         );
         return productCategoryMap.get(productName);
     }
+
+    @FXML
+    void addtocart(ActionEvent event) {
+        String selectedValue = options.getValue();
+        String productType = detailsName.getText();
+        String productPrefix = getProductPrefix(productType);
+        String fullName = productPrefix + "-" + selectedValue;
+        String quantityText = quantity0.getText();
+        String price = detailsPrice.getText(); // "50.75 EGP"
+        String amount = price.replaceAll("[^\\d.]", ""); // "50.75"
+
+
+        SharedCart.addItem(productPrefix+"-"+selectedValue,Integer.parseInt(amount),Integer.parseInt(quantityText));
+    }
+
 
     @FXML
     private void toggle_menu() {
