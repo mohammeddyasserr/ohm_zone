@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="594.0" prefWidth="927.0" style="-fx-background-color: #014d4a;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="user_gui_controller.receipt_controller">
+    <children>
+        <!-- Top StackPane containing top bar and centered logo -->
+        <StackPane AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <children>
+                <!-- Top Bar -->
+                <AnchorPane fx:id="topBar" prefHeight="74.0" style="-fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #001f3f, #003b46);">
+                    <children>
+                        <!-- Menu Button -->
+                        <Button fx:id="menu_btn" layoutX="14.0" layoutY="24.0" mnemonicParsing="false" onAction="#toggle_menu" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #ffffff, #e0f7fa);">
+                            <graphic>
+                                <ImageView fitHeight="26.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@../icons/menu.png" />
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                        </Button>
+                    </children>
+                </AnchorPane>
+
+                <!-- Centered Logo -->
+                <ImageView fx:id="logoImage" fitHeight="50.0" fitWidth="50.0" preserveRatio="true">
+                    <image>
+                        <Image url="@../icons/logo.png" />
+                    </image>
+                </ImageView>
+            </children>
+        </StackPane>
+      <AnchorPane layoutX="31.0" layoutY="95.0" prefHeight="477.0" prefWidth="864.0" style="-fx-background-color: transparent;">
+         <children>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#143656" height="478.0" layoutX="12.0" stroke="BLACK" strokeType="INSIDE" style="-fx-fill: linear-gradient(from 0% 0% to 100% 100%, #001f3f, #003b46); -fx-arc-width: 50; -fx-arc-height: 50;" width="845.0" />
+            <Circle fill="DODGERBLUE" layoutX="80.0" layoutY="478.0" radius="25.0" stroke="BLACK" strokeType="INSIDE" style="-fx-stroke: transparent; -fx-fill: #014d4a;" />
+            <Circle fill="DODGERBLUE" layoutX="145.0" layoutY="478.0" radius="25.0" stroke="BLACK" strokeType="INSIDE" style="-fx-stroke: transparent; -fx-fill: #014d4a;" />
+            <Circle fill="DODGERBLUE" layoutX="210.0" layoutY="478.0" radius="25.0" stroke="BLACK" strokeType="INSIDE" style="-fx-stroke: transparent; -fx-fill: #014d4a;" />
+            <Circle fill="DODGERBLUE" layoutX="275.0" layoutY="478.0" radius="25.0" stroke="BLACK" strokeType="INSIDE" style="-fx-stroke: transparent; -fx-fill: #014d4a;" />
+            <Circle fill="DODGERBLUE" layoutX="340.0" layoutY="478.0" radius="25.0" stroke="BLACK" strokeType="INSIDE" style="-fx-stroke: transparent; -fx-fill: #014d4a;" />
+            <Circle fill="DODGERBLUE" layoutX="405.0" layoutY="478.0" radius="25.0" stroke="BLACK" strokeType="INSIDE" style="-fx-stroke: transparent; -fx-fill: #014d4a;" />
+            <Circle fill="DODGERBLUE" layoutX="470.0" layoutY="478.0" radius="25.0" stroke="BLACK" strokeType="INSIDE" style="-fx-stroke: transparent; -fx-fill: #014d4a;" />
+            <Circle fill="DODGERBLUE" layoutX="535.0" layoutY="478.0" radius="25.0" stroke="BLACK" strokeType="INSIDE" style="-fx-stroke: transparent; -fx-fill: #014d4a;" />
+            <Circle fill="DODGERBLUE" layoutX="600.0" layoutY="478.0" radius="25.0" stroke="BLACK" strokeType="INSIDE" style="-fx-stroke: transparent; -fx-fill: #014d4a;" />
+            <Circle fill="DODGERBLUE" layoutX="665.0" layoutY="478.0" radius="25.0" stroke="BLACK" strokeType="INSIDE" style="-fx-stroke: transparent; -fx-fill: #014d4a;" />
+            <Circle fill="DODGERBLUE" layoutX="730.0" layoutY="478.0" radius="25.0" stroke="BLACK" strokeType="INSIDE" style="-fx-stroke: transparent; -fx-fill: #014d4a;" />
+            <Circle fill="DODGERBLUE" layoutX="795.0" layoutY="478.0" radius="25.0" stroke="BLACK" strokeType="INSIDE" style="-fx-stroke: transparent; -fx-fill: #014d4a;" />
+            <TableView id="productsTable" fx:id="table" layoutX="365.0" layoutY="14.0" onMouseClicked="#rowClicked" prefHeight="422.0" prefWidth="482.0" style="-fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #001f3f, #003b46); -fx-border-color: white; -fx-border-radius: 50;" stylesheets="@style1.CSS">
+               <columns>
+                  <TableColumn fx:id="name" minWidth="100.0" prefWidth="144.79998779296875" text="NAME" />
+                  <TableColumn fx:id="price" minWidth="24.79998779296875" prefWidth="162.4000244140625" text="PRICE" />
+                  <TableColumn fx:id="quantity" minWidth="100.0" prefWidth="179.20001220703125" text="QUANTITY" />
+               </columns>
+            </TableView>
+            <Label layoutX="36.0" layoutY="14.0" prefHeight="38.0" prefWidth="80.0" style="-fx-background-color: trasparent;" text="Date :" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="148.0" layoutY="14.0" prefHeight="38.0" prefWidth="173.0" style="-fx-background-color: transparent;" textFill="WHITE">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="36.0" layoutY="144.0" prefHeight="38.0" prefWidth="80.0" style="-fx-background-color: transparent;" text="Username :" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="36.0" layoutY="311.0" prefHeight="38.0" prefWidth="80.0" style="-fx-background-color: transparent;" text="   Total :" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font></Label>
+            <Label layoutX="105.0" layoutY="311.0" prefHeight="38.0" prefWidth="194.0" style="-fx-background-color: transparent;" textFill="WHITE" />
+            <Label layoutX="36.0" layoutY="385.0" prefHeight="39.0" prefWidth="266.0" style="-fx-background-color: transparent;" text="Thank you for purchase" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Label>
+            <Label layoutX="36.0" layoutY="91.0" prefHeight="38.0" prefWidth="80.0" style="-fx-background-color: transparent;" text="Bill ID :" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="145.0" layoutY="91.0" prefHeight="38.0" prefWidth="173.0" style="-fx-background-color: transparent;" textFill="WHITE">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="148.0" layoutY="144.0" prefHeight="38.0" prefWidth="173.0" style="-fx-background-color: transparent;" textFill="WHITE">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+    </children>
+</AnchorPane>
