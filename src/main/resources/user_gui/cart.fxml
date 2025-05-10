@@ -141,5 +141,6 @@
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
+      <Label fx:id="quantity_error" alignment="CENTER_RIGHT" layoutX="407.0" layoutY="480.0" prefHeight="18.0" prefWidth="486.0" textFill="#cf2020" />
    </children>
 </AnchorPane>

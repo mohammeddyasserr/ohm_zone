@@ -47,6 +47,9 @@ public class cart_controller implements Initializable {
     @FXML
     private Button account_btn;
 
+    @FXML
+    private Label quantity_error;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         account_btn.setText(user_session.get_user());
@@ -208,6 +211,7 @@ public class cart_controller implements Initializable {
     void checkout(ActionEvent event) {
         checkout.setText("");
         checkout_error.setText("");
+        quantity_error.setText("");
         Connection conn = null; // Declare outside try-with-resources
 
         try {
@@ -219,33 +223,54 @@ public class cart_controller implements Initializable {
                     .mapToDouble(item -> (double) item.get("total"))
                     .sum();
 
-            // 2. Update product quantities
+            // 2. Check availability first
+            boolean allAvailable = true;
             for (HashMap<String, Object> item : SharedCart.cartItems) {
-                String updateSQL = "UPDATE product SET quantity = quantity - ? WHERE name = ?";
-                try (PreparedStatement pstmt = conn.prepareStatement(updateSQL)) {
-                    pstmt.setInt(1, (int) item.get("quantity"));
-                    pstmt.setString(2, (String) item.get("name"));
-                    pstmt.executeUpdate();
+                String selectSQL = "SELECT quantity FROM product WHERE name = ?";
+                try (PreparedStatement check = conn.prepareStatement(selectSQL)) {
+                    check.setString(1, (String) item.get("name"));
+                    try (ResultSet rs = check.executeQuery()) {
+                        if (rs.next()) {
+                            int dbQuantity = rs.getInt("quantity");
+                            int requestedQuantity = (int) item.get("quantity");
+
+                            if (requestedQuantity > dbQuantity) {
+                                quantity_error.setText("Not enough quantity for: " + item.get("name"));
+                                allAvailable = false;
+                                break; // Stop checking further
+                            }
+                        }
+                    }
                 }
             }
 
-            // 3. Insert order record
-            LocalDate today = LocalDate.now();
-            String dateStr = today.toString();
-            String insertOrderSQL = "INSERT INTO orders (username, total_price, order_date) VALUES (?, ?, ?)";
-            System.out.print(dateStr);
-            try (PreparedStatement orderStmt = conn.prepareStatement(insertOrderSQL)) {
-                orderStmt.setString(1, user_session.get_user());
-                orderStmt.setDouble(2, total);
-                orderStmt.setString(3, dateStr);
-                orderStmt.executeUpdate();
+// 3. Proceed with updates only if all are available
+            if (allAvailable) {
+                for (HashMap<String, Object> item : SharedCart.cartItems) {
+                    String updateSQL = "UPDATE product SET quantity = quantity - ? WHERE name = ?";
+                    try (PreparedStatement pstmt = conn.prepareStatement(updateSQL)) {
+                        pstmt.setInt(1, (int) item.get("quantity"));
+                        pstmt.setString(2, (String) item.get("name"));
+                        pstmt.executeUpdate();
+                    }
+                }
+                // 3. Insert order record
+                LocalDate today = LocalDate.now();
+                String dateStr = today.toString();
+                String insertOrderSQL = "INSERT INTO orders (username, total_price, order_date) VALUES (?, ?, ?)";
+                System.out.print(dateStr);
+                try (PreparedStatement orderStmt = conn.prepareStatement(insertOrderSQL)) {
+                    orderStmt.setString(1, user_session.get_user());
+                    orderStmt.setDouble(2, total);
+                    orderStmt.setString(3, dateStr);
+                    orderStmt.executeUpdate();
+                }
+
+                conn.commit();
+                SharedCart.cartItems.clear();
+                checkout.setText("Checkout completed successfully!");
+                checkout_error.setText("");
             }
-
-            conn.commit();
-            SharedCart.cartItems.clear();
-            checkout.setText("Checkout completed successfully!");
-            checkout_error.setText("");
-
         } catch (SQLException e) {
             checkout_error.setText("Error during checkout");
             try {
