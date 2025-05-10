@@ -285,6 +285,21 @@
                <ComboBox fx:id="options" onAction="#onOptionSelected" prefWidth="150.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-text-fill: silver;" />
                <TextField fx:id="quantity0" promptText="Quantity" style="-fx-background-color: transparent; -fx-border-color: white; -fx-text-fill: white;" />
                <Label fx:id="quantityLabel" style="-fx-text-fill: grey; -fx-font-size: 14;" />
+               <Label fx:id="quantityErrorLabel"
+                      text=""
+                      textFill="red"
+                      style="-fx-font-size: 12px;"
+                      visible="false"
+                      managed="false"
+                      opacity="0" />
+
+               <Label fx:id="successLabel"
+                      text=""
+                      textFill="lightgreen"
+                      style="-fx-font-size: 12px;"
+                      visible="false"
+                      managed="false"
+                      opacity="0" />
                <!-- Product Description -->
                <Text fx:id="detailsDescription" style="-fx-fill: white;" text="Description" wrappingWidth="260.0" />
                <Button fx:id="cart_btn" mnemonicParsing="false" style="-fx-background-color: linear-gradient(from 0% 0% to 100% 100%, rgba(0,255,204,0.2), rgba(0,200,120,0.15), rgba(255,255,255,0.1));" onAction="#addtocart" text="ADD TO CART" textFill="WHITE" />
