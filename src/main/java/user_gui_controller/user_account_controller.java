@@ -1,6 +1,7 @@
 package user_gui_controller;
 
 import javafx.animation.TranslateTransition;
+import javafx.collections.ListChangeListener;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -21,6 +22,8 @@ import org.mindrot.jbcrypt.BCrypt;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.*;
+import javafx.scene.control.Label;
+import java.util.HashMap;
 import java.util.ResourceBundle;
 
 public class user_account_controller implements Initializable {
@@ -29,6 +32,9 @@ public class user_account_controller implements Initializable {
 
     @FXML
     private ImageView logo;
+
+    @FXML
+    private Label cartCounter;
 
     @FXML
     private AnchorPane left_menu;
@@ -118,6 +124,18 @@ public class user_account_controller implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         account_btn.setText(user_session.get_user());
         username.setText(user_session.get_user());
+        updateCartCount(); // initial load
+
+        SharedCart.cartItems.addListener((ListChangeListener<? super HashMap<String, Object>>) change -> {
+            updateCartCount(); // auto update on add/remove
+        });
+    }
+
+    private void updateCartCount() {
+        if (cartCounter != null) {
+            int count = SharedCart.getTotalItemCount();
+            cartCounter.setText("Your Cart (" + count + ")");
+        }
     }
 
     @FXML

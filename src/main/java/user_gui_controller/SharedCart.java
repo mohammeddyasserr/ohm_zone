@@ -9,12 +9,14 @@ import java.util.List;
 
 public class SharedCart {
     public static final ObservableList<HashMap<String, Object>> cartItems = FXCollections.observableArrayList();
+
     public static void addItem(String name, double price, int quantity) {
         for (HashMap<String, Object> item : cartItems) {
             if (item.get("name").equals(name)) {
                 int newQty = (int) item.get("quantity") + quantity;
                 item.put("quantity", newQty);
                 item.put("total", price * newQty);
+                cartItems.set(cartItems.indexOf(item), item); // force update
                 return;
             }
         }
@@ -27,9 +29,7 @@ public class SharedCart {
         cartItems.add(newItem);
     }
 
-    public static int getTotalQuantity() {
-        return cartItems.stream()
-                .mapToInt(item -> (int) item.get("quantity"))
-                .sum();
+    public static int getTotalItemCount() {
+        return cartItems.stream().mapToInt(item -> (int) item.get("quantity")).sum();
     }
 }

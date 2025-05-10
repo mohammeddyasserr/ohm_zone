@@ -2,6 +2,7 @@ package user_gui_controller;
 
 import db_edit_functions.product;
 import javafx.animation.TranslateTransition;
+import javafx.collections.ListChangeListener;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -37,6 +38,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.ResourceBundle;
 
+
 public class shop_controller implements Initializable {
 
     @FXML private ImageView logo;
@@ -61,6 +63,8 @@ public class shop_controller implements Initializable {
     @FXML private Button cart_page_btn;
     @FXML private Label quantityErrorLabel;
     @FXML private Label successLabel;
+    @FXML private Label cartCounter;
+
 
 
     private boolean isMenuVisible = true;
@@ -106,8 +110,10 @@ public class shop_controller implements Initializable {
             }
         });
 
-        SharedCart.cartItems.addListener((javafx.collections.ListChangeListener<HashMap<String, Object>>) change -> {
-            updateCartCount();
+        updateCartCount(); // initial load
+
+        SharedCart.cartItems.addListener((ListChangeListener<? super HashMap<String, Object>>) change -> {
+            updateCartCount(); // auto update on add/remove
         });
     }
 
@@ -322,11 +328,10 @@ public class shop_controller implements Initializable {
     }
 
     private void updateCartCount() {
-        int totalItems = SharedCart.cartItems.stream()
-                .mapToInt(item -> (int) item.get("quantity"))
-                .sum();
-
-        cart_page_btn.setText("Your Cart (" + totalItems + ")");
+        if (cartCounter != null) {
+            int count = SharedCart.getTotalItemCount();
+            cartCounter.setText("Your Cart (" + count + ")");
+        }
     }
 
     @FXML

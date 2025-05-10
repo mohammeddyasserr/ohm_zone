@@ -1,6 +1,7 @@
 package user_gui_controller;
 
 import javafx.animation.TranslateTransition;
+import javafx.collections.ListChangeListener;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -68,6 +69,8 @@ public class calc_controller {
     private final Map<String, Double> multiplierMap = new HashMap<>();
     private final Map<String, String> toleranceMap = new HashMap<>();
     private final Map<String, Color> colorMap = new HashMap<>();
+    @FXML private Label cartCounter;
+
 
     @FXML
     public void initialize() {
@@ -76,6 +79,11 @@ public class calc_controller {
         setupComboBoxes();
         band_num.getItems().addAll("4", "5", "6");
         band_num.setOnAction(e -> switchBandPane());
+        updateCartCount(); // initial load
+
+        SharedCart.cartItems.addListener((ListChangeListener<? super HashMap<String, Object>>) change -> {
+            updateCartCount(); // auto update on add/remove
+        });
     }
 
     @FXML
@@ -85,7 +93,12 @@ public class calc_controller {
         //side_panel.setManaged(!isVisible);
     }
 
-
+    private void updateCartCount() {
+        if (cartCounter != null) {
+            int count = SharedCart.getTotalItemCount();
+            cartCounter.setText("Your Cart (" + count + ")");
+        }
+    }
 
     @FXML
     void calculator_page(ActionEvent event) throws IOException {
