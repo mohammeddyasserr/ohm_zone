@@ -12,6 +12,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.control.TextField;
+import javafx.scene.effect.Glow;
 import javafx.scene.layout.*;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -19,64 +21,46 @@ import javafx.util.Duration;
 import javafx.scene.image.ImageView;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
-
 import javafx.event.ActionEvent;
 import main_package.user_session;
-
-
-import javax.swing.*;
-import java.awt.*;
+import javafx.animation.FadeTransition;
+import javafx.animation.ScaleTransition;
+import javafx.scene.layout.VBox;
+import javafx.util.Duration;
 
 import java.io.IOException;
 import java.net.URL;
 import java.sql.*;
+import java.util.Map;
 import java.util.ResourceBundle;
-
 
 public class shop_controller implements Initializable {
 
+    private Map<String, String> valuePriceMap = new java.util.HashMap<>();
+    @FXML private ImageView logo;
+    @FXML private AnchorPane left_menu;
+    @FXML private Button account_btn;
+    @FXML private GridPane productGrid;
+    @FXML private AnchorPane detailsPane;
+    @FXML private ImageView detailsImage;
+    @FXML private Label detailsName;
+    @FXML private Label detailsPrice;
+    @FXML private ComboBox<String> options;
+    @FXML private TextField quantity0;
+    @FXML private VBox Resistance, Capacitor, Battery, Diode, ICS, Jumpers, Transistor, Test_Board, Soldering_Iron, Avo, Boards, Switch;
+    @FXML private ColumnConstraints col1;
+    @FXML private ColumnConstraints col2;
+    @FXML private ColumnConstraints col3;
+    @FXML private ColumnConstraints col4;
+    @FXML private Button closeDetailsBtn;
+    @FXML private Text detailsDescription;
+    @FXML private Label quantityLabel;
 
-
-    @FXML
-    private ImageView logo;
-
-    @FXML
-    private AnchorPane left_menu;
-
-    @FXML
-    private ScrollPane main_scroll_pane;
 
     private boolean isMenuVisible = true;
 
-    @FXML
-    private Button account_btn;
-
-    @FXML
-    private GridPane productGrid;
-
-    @FXML
-    private AnchorPane detailsPane;
-
-    @FXML private ImageView detailsImage;
-
-    @FXML private Label detailsName;
-
-    @FXML private Label detailsPrice;
-
-    @FXML private Text detailsDescription;
-
-    @FXML
-    private ComboBox options;
-
-    @FXML
-    private TextField quantity;
-
-    @FXML
-    private VBox Resistance, Capacitor, Battery, Diode, ICS, Jumpers, Transistor, Test_Board, Soldering_Iron, Avo, Boards, Switch;
-
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
         account_btn.setText(user_session.get_user());
         Resistance.setUserData("Resistance");
         Capacitor.setUserData("Capacitor");
@@ -90,74 +74,222 @@ public class shop_controller implements Initializable {
         Avo.setUserData("Multimeter");
         Boards.setUserData("Programmable Boards");
         Switch.setUserData("Switch");
-    }
+        options.setCellFactory(listView -> new javafx.scene.control.ListCell<>() {
+            @Override
+            protected void updateItem(String item, boolean empty) {
+                super.updateItem(item, empty);
+                if (empty || item == null) {
+                    setText(null);
+                } else {
+                    setText(item);
+                    setStyle("-fx-text-fill: black; -fx-background-color: transparent;");
+                }
+            }
+        });
 
-
-
-
-
-
+        options.setButtonCell(new javafx.scene.control.ListCell<>() {
+            @Override
+            protected void updateItem(String item, boolean empty) {
+                super.updateItem(item, empty);
+                if (empty || item == null) {
+                    setText(null);
+                } else {
+                    setText(item);
+                    setStyle("-fx-text-fill: silver; -fx-background-color: transparent;");
+                }
+            }
+        });
+         }
 
     private void showDetailsPane() {
         detailsPane.setVisible(true);
 
+        // Shrink the product cards dynamically (width and height)
+        resizeProductCards(0.22, 0.5);  // Shrink to 22% width and 50% height
+
+        // Slide the details pane in
         TranslateTransition slideIn = new TranslateTransition(Duration.millis(300), detailsPane);
-        slideIn.setFromX(300);  // Start from right
-        slideIn.setToX(0);      // Slide to original position
+        slideIn.setToX(0);
         slideIn.play();
+
+        // Animate product grid items (fade and scale)
+        animateProductGrid(0.8, 0.5);  // Shrink and fade the product cards
     }
+
     @FXML
-    private void onProductClick(MouseEvent event) {
-        VBox clickedBox = (VBox) event.getSource();
-        String productName = (String) clickedBox.getUserData();
-        String cat="";
-        if (productName != null) {
-            detailsName.setText(productName);
-            if (productName == "Resistance") {
-                cat = "RES";
-            } else if (productName == "Capacitor") {
-                cat = "CAP";
-            } else if (productName == "Battery") {
-                cat = "Battery";
-            } else if (productName == "Diode") {
-                cat = "Diode";
-            } else if (productName == "IC") {
-                cat = "IC";
-            } else if (productName == "Jumpers") {
-                cat = "Jumpers";
-            } else if (productName == "Transistor") {
-                cat = "Transistor";
-            } else if (productName == "Test_Board") {
-                cat = "TestBoard";
-            } else if (productName == "Soldering_Iron") {
-                cat = "SolderingIron";
-            } else if (productName == "Multimeter") {
-                cat = "Multimeter";
-            } else if (productName == "Programmable_Board") {
-                cat = "Kits";
-            } else if (productName == "Switch") {
-                cat = "Switch";
-            }
-            try (Connection conn = DriverManager.getConnection("jdbc:sqlite:store.db")) {
-                PreparedStatement ps = conn.prepareStatement("SELECT * FROM product WHERE name LIKE ?");
-                ps.setString(1, cat + "%-");
-                ResultSet rs = ps.executeQuery();
+    private void closeDetailsPane() {
+        TranslateTransition slideOut = new TranslateTransition(Duration.millis(300), detailsPane);
+        slideOut.setToX(300);  // Slide the details pane out of view
+        slideOut.setOnFinished(e -> {
+            detailsPane.setVisible(false);
+            detailsPane.setTranslateX(300);  // Reset position
 
+            // Restore product cards to full size
+            resizeProductCards(0.25, 1.0);  // Restore to 25% width and 100% height
+            animateProductGrid(1.0, 1.0);  // Restore size and opacity
+        });
+        slideOut.play();
+    }
 
+    private void animateProductGrid(double scaleTo, double opacityTo) {
+        for (Node node : productGrid.getChildren()) {
+            if (node instanceof VBox) {
+                // Fade Transition
+                FadeTransition fade = new FadeTransition(Duration.millis(300), node);
+                fade.setToValue(opacityTo);  // Fade out/in
+                fade.play();
 
-            } catch (SQLException e) {
-                e.printStackTrace();
+                // Scale Transition (shrink/grow size)
+                ScaleTransition scale = new ScaleTransition(Duration.millis(300), node);
+                scale.setToX(scaleTo);  // Shrink/grow horizontally
+                scale.setToY(scaleTo);  // Shrink/grow vertically
+                scale.play();
             }
         }
     }
 
+    private void resizeProductCards(double widthPercent, double heightPercent) {
+        double gridWidth = productGrid.getWidth();
+        double gridHeight = productGrid.getHeight();
+
+        double targetWidth = gridWidth * widthPercent;   // Shrink to this width
+        double targetHeight = gridHeight * heightPercent; // Shrink to this height
+
+        for (Node node : productGrid.getChildren()) {
+            if (node instanceof VBox vbox) {
+                vbox.setPrefWidth(targetWidth);
+                vbox.setPrefHeight(targetHeight);  // Shrink height as well
+            }
+        }
+    }
+
+    @FXML
+    private void onMouseEnterClose() {
+        Glow glow = new Glow();
+        glow.setLevel(1.0);  // Set the glow intensity (0.0 to 1.0)
+        closeDetailsBtn.setEffect(glow);  // Apply glow effect
+    }
+
+    @FXML
+    private void onMouseExitClose() {
+        closeDetailsBtn.setEffect(null);  // Remove the glow effect
+    }
+
+    @FXML
+    private void onProductClick(MouseEvent event) {
+        VBox clickedBox = (VBox) event.getSource();
+        String productName = (String) clickedBox.getUserData();
+        detailsName.setText(productName);
+
+        ImageView clickedImage = (ImageView) clickedBox.getChildren().get(0);
+        detailsImage.setImage(clickedImage.getImage());
+
+        Map<String, String> productCategoryMap = Map.ofEntries(
+                Map.entry("Resistance", "RES"),
+                Map.entry("Capacitor", "CAP"),
+                Map.entry("Battery", "Battery"),
+                Map.entry("Diode", "Diode"),
+                Map.entry("IC", "IC"),
+                Map.entry("Jumpers", "Jumpers"),
+                Map.entry("Transistor", "Transistor"),
+                Map.entry("Test Board", "TestBoard"),
+                Map.entry("Soldering Iron", "SolderingIron"),
+                Map.entry("Multimeter", "Multimeter"),
+                Map.entry("Programmable Boards", "Kits"),
+                Map.entry("Switch", "Switch")
+        );
+
+        String cat = productCategoryMap.get(productName);
+        if (cat == null) return;
+
+        options.getItems().clear();
+
+        try (Connection conn = DriverManager.getConnection("jdbc:sqlite:store.db")) {
+            PreparedStatement ps = conn.prepareStatement("SELECT * FROM product WHERE name LIKE ?");
+            ps.setString(1, cat + "%");
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                String fullName = rs.getString("name");   // e.g., RES-1000ohm
+                String displayName = fullName.replaceFirst(cat + "-", ""); // Remove RES- part
+                options.getItems().add(displayName);
+            }
+
+            if (!options.getItems().isEmpty()) {
+                options.getSelectionModel().selectFirst();  // Select the first item by default
+                updateDetailsForValue(cat, options.getValue());
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        showDetailsPane();
+    }
+
+    private void updateDetailsForValue(String catPrefix, String selectedValue) {
+        String fullProductName = catPrefix + "-" + selectedValue;
+
+        try (Connection conn = DriverManager.getConnection("jdbc:sqlite:store.db")) {
+            PreparedStatement ps = conn.prepareStatement("SELECT * FROM product WHERE name = ?");
+            ps.setString(1, fullProductName);
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                String price = rs.getString("Price");
+                String quantity = rs.getString("Quantity");
+
+                detailsPrice.setText(price + " EGP");
+                quantityLabel.setText("Available in stock: " + (quantity != null ? quantity : "0"));
+                detailsDescription.setText(detailsName.getText() + " " + selectedValue);
+            }
+            else{
+                detailsPrice.setText("Price");
+                quantityLabel.setText("Not Available");
+                detailsDescription.setText("");
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    private void onOptionSelected() {
+        String selectedValue = options.getValue();
+        if (selectedValue == null) return;
+
+        String productType = detailsName.getText(); // e.g., "Resistance"
+        String productPrefix = getProductPrefix(productType); // e.g., "RES"
+
+        if (productPrefix != null) {
+            updateDetailsForValue(productPrefix, selectedValue);
+        }
+    }
+
+    private String getProductPrefix(String productName) {
+        Map<String, String> productCategoryMap = Map.ofEntries(
+                Map.entry("Resistance", "RES"),
+                Map.entry("Capacitor", "CAP"),
+                Map.entry("Battery", "Battery"),
+                Map.entry("Diode", "Diode"),
+                Map.entry("IC", "IC"),
+                Map.entry("Jumpers", "Jumpers"),
+                Map.entry("Transistor", "Transistor"),
+                Map.entry("Test Board", "TestBoard"),
+                Map.entry("Soldering Iron", "SolderingIron"),
+                Map.entry("Multimeter", "Multimeter"),
+                Map.entry("Programmable Boards", "Kits"),
+                Map.entry("Switch", "Switch")
+        );
+        return productCategoryMap.get(productName);
+    }
 
     @FXML
     private void toggle_menu() {
         isMenuVisible = !isMenuVisible;
 
         if (isMenuVisible) {
-            // Show menu with animation
             left_menu.setVisible(true);
             left_menu.setManaged(true);
 
@@ -166,9 +298,7 @@ public class shop_controller implements Initializable {
             slideIn.setToX(0);
             slideIn.play();
 
-            AnchorPane.setLeftAnchor(main_scroll_pane, 165.0);
         } else {
-            // Hide menu with animation
             TranslateTransition slideOut = new TranslateTransition(Duration.millis(300), left_menu);
             slideOut.setFromX(0);
             slideOut.setToX(-left_menu.getWidth());
@@ -178,7 +308,6 @@ public class shop_controller implements Initializable {
             });
             slideOut.play();
 
-            AnchorPane.setLeftAnchor(main_scroll_pane, 0.0);
         }
     }
 

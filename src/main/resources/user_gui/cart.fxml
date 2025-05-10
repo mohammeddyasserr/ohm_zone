@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="checkout_error" prefHeight="594.0" prefWidth="951.0" style="-fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #002b36, #014d4a, #00ffcc);" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="user_gui_controller.cart_controller">
+<AnchorPane fx:id="cart_page" prefHeight="594.0" prefWidth="951.0" style="-fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #002b36, #014d4a, #00ffcc);" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="user_gui_controller.cart_controller">
    <children>
       <!-- Top StackPane containing top bar and centered logo -->
       <StackPane AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -32,7 +32,7 @@
                   </Button>
 
                   <!-- Account Button (Right) -->
-                  <Button fx:id="account_btn" layoutY="25.0" mnemonicParsing="false" onAction="#acount_page" prefHeight="29.0" prefWidth="200.0" style="-fx-background-color: transparent; -fx-alignment: CENTER_RIGHT;" text="mohammed" textFill="WHITE" AnchorPane.rightAnchor="10.0">
+                  <Button fx:id="account_btn" contentDisplay="RIGHT" layoutY="25.0" mnemonicParsing="false" onAction="#acount_page" prefHeight="29.0" prefWidth="200.0" style="-fx-background-color: transparent; -fx-alignment: CENTER_RIGHT;" text="mohammed" textFill="WHITE" AnchorPane.rightAnchor="10.0">
                      <graphic>
                         <ImageView fitHeight="21.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
                            <image>

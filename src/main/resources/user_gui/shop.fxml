@@ -14,7 +14,8 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.input.MouseEvent?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 <AnchorPane prefHeight="594.0" prefWidth="951.0" style="-fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #002b36, #014d4a, #00ffcc);" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="user_gui_controller.shop_controller">
    <children>
@@ -36,7 +37,7 @@
                   </Button>
 
                   <!-- Account Button (Right) -->
-                  <Button fx:id="account_btn" layoutY="25.0" mnemonicParsing="false" onAction="#acount_page" prefHeight="29.0" prefWidth="200.0" style="-fx-background-color: transparent; -fx-alignment: CENTER_RIGHT;" text="mohammed" textFill="WHITE" AnchorPane.rightAnchor="10.0">
+                  <Button fx:id="account_btn" contentDisplay="RIGHT" layoutY="25.0" mnemonicParsing="false" onAction="#acount_page" prefHeight="29.0" prefWidth="200.0" style="-fx-background-color: transparent; -fx-alignment: CENTER_RIGHT;" text="mohammed" textFill="WHITE" AnchorPane.rightAnchor="10.0">
                      <graphic>
                         <ImageView fitHeight="21.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -137,10 +138,10 @@
 
          <!-- Column constraints to enable resizing -->
          <columnConstraints>
-            <ColumnConstraints hgrow="ALWAYS" percentWidth="25.0" />
-            <ColumnConstraints hgrow="ALWAYS" percentWidth="25.0" />
-            <ColumnConstraints hgrow="ALWAYS" percentWidth="25.0" />
-            <ColumnConstraints hgrow="ALWAYS" percentWidth="25.0" />
+            <ColumnConstraints fx:id="col1" hgrow="ALWAYS" percentWidth="25.0" />
+            <ColumnConstraints fx:id="col2" hgrow="ALWAYS" percentWidth="25.0" />
+            <ColumnConstraints fx:id="col3" hgrow="ALWAYS" percentWidth="25.0" />
+            <ColumnConstraints fx:id="col4" hgrow="ALWAYS" percentWidth="25.0" />
          </columnConstraints>
 
          <!-- 12 product cards (4 columns × 3 rows) -->
@@ -265,15 +266,32 @@
       </GridPane>
 
       <AnchorPane fx:id="detailsPane" prefWidth="300" style="-fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #001f3f, #003b46);" translateX="300" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="74.0">
+         <children>
+            <!-- Close Button -->
+            <Button fx:id="closeDetailsBtn" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#closeDetailsPane" onMouseEntered="#onMouseEnterClose" onMouseExited="#onMouseExitClose" prefHeight="20.0" prefWidth="20.0" style="-fx-background-color: transparent; -fx-font-size: 20;" text="X" textFill="lightseagreen">
+               <font>
+                  <Font name="Baloo Tamma 2 Regular" size="20.0" />
+               </font>
+            </Button>
 
-         <VBox alignment="CENTER" spacing="15" AnchorPane.topAnchor="20.0">
-            <ImageView fx:id="detailsImage" fitHeight="150" fitWidth="150" preserveRatio="true" />
-            <Label fx:id="detailsName" style="-fx-font-size: 20px;" text="Product Name" textFill="WHITE" />
-            <Label fx:id="detailsPrice" style="-fx-font-size: 18px;" text="price" textFill="WHITE" />
-            <ComboBox fx:id="options" prefWidth="150.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-text-fill: white;" stylesheets="@style.CSS" />
-            <TextField fx:id="quantity" promptText="Quantity" style="-fx-background-color: transparent; -fx-border-color: white; -fx-text-fill: white;" />
-         </VBox>
-
+            <!-- Main Content -->
+            <VBox alignment="CENTER" spacing="15" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="40.0">
+               <padding>
+                  <Insets left="10" right="10" />
+               </padding>
+               <ImageView fx:id="detailsImage" fitHeight="150" fitWidth="150" preserveRatio="true" />
+               <Label fx:id="detailsName" style="-fx-font-size: 20px;" text="Product Name" textFill="WHITE" />
+               <Label fx:id="detailsPrice" style="-fx-font-size: 18px;" text="price" textFill="WHITE" />
+               <ComboBox fx:id="options"
+                         onAction="#onOptionSelected"
+                         prefWidth="150.0"
+                         style="-fx-background-color: transparent; -fx-border-color: white; -fx-text-fill: silver;" />
+               <TextField fx:id="quantity0" promptText="Quantity" style="-fx-background-color: transparent; -fx-border-color: white; -fx-text-fill: white;" />
+               <Label fx:id="quantityLabel" style="-fx-text-fill: grey; -fx-font-size: 14;" />
+               <!-- Product Description -->
+               <Text fx:id="detailsDescription" style="-fx-fill: white;" text="Description" wrappingWidth="260.0" />
+            </VBox>
+         </children>
       </AnchorPane>
 
 

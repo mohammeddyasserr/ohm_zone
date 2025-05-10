@@ -7,6 +7,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
@@ -17,13 +18,17 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import main_package.user_session;
 
 import java.io.IOException;
+import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.ResourceBundle;
 
 public class calc_controller {
 
+    @FXML private Button account_btn;
     @FXML private ComboBox<String> band_num;
     @FXML private Pane fourbandpane;
     @FXML private Pane fivebandpane;
@@ -66,6 +71,7 @@ public class calc_controller {
 
     @FXML
     public void initialize() {
+        account_btn.setText(user_session.get_user());
         setupMaps();
         setupComboBoxes();
         band_num.getItems().addAll("4", "5", "6");
@@ -92,7 +98,7 @@ public class calc_controller {
 
     @FXML
     void acount_page(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/user_gui/account_user.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/user_gui/account_page.fxml"));
         Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
         stage.setScene(scene);

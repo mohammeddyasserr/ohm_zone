@@ -8,43 +8,34 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane prefHeight="594.0" prefWidth="951.0"
-            style="-fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #002b36, #014d4a, #00ffcc);"
-            xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="user_gui_controller.user_main_controller">
+<AnchorPane prefHeight="594.0" prefWidth="951.0" style="-fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #002b36, #014d4a, #00ffcc);" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="user_gui_controller.user_main_controller">
    <children>
       <!-- Top StackPane containing top bar and centered logo -->
       <StackPane AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <!-- Top Bar -->
-            <AnchorPane fx:id="topBar" prefHeight="74.0"
-                        style="-fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #001f3f, #003b46);">
+            <AnchorPane fx:id="topBar" prefHeight="74.0" style="-fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #001f3f, #003b46);">
                <children>
                   <!-- Menu Button -->
-                  <Button fx:id="menu_btn" layoutX="14.0" layoutY="24.0" mnemonicParsing="false" onAction="#toggle_menu"
-                          prefHeight="30.0" prefWidth="30.0"
-                          style="-fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #ffffff, #e0f7fa);">
+                  <Button fx:id="menu_btn" layoutX="14.0" layoutY="24.0" mnemonicParsing="false" onAction="#toggle_menu" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #ffffff, #e0f7fa);">
                      <graphic>
                         <ImageView fitHeight="26.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../icons/menu.png"/>
+                              <Image url="@../icons/menu.png" />
                            </image>
                         </ImageView>
                      </graphic>
                   </Button>
 
                   <!-- Account Button (Right) -->
-                  <Button fx:id="account_btn" layoutY="25.0" mnemonicParsing="false" onAction="#acount_page"
-                          prefHeight="29.0" prefWidth="200.0"
-                          style="-fx-background-color: transparent; -fx-alignment: CENTER_RIGHT;"
-                          text="mohammed" textFill="WHITE" AnchorPane.rightAnchor="10.0">
+                  <Button fx:id="account_btn" contentDisplay="RIGHT" layoutY="25.0" mnemonicParsing="false" onAction="#acount_page" prefHeight="29.0" prefWidth="200.0" style="-fx-background-color: transparent; -fx-alignment: CENTER_RIGHT;" text="mohammed" textFill="WHITE" AnchorPane.rightAnchor="10.0">
                      <graphic>
                         <ImageView fitHeight="21.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../icons/account.png"/>
+                              <Image url="@../icons/account.png" />
                            </image>
                            <effect>
-                              <Glow/>
+                              <Glow />
                            </effect>
                         </ImageView>
                      </graphic>
@@ -55,88 +46,73 @@
             <!-- Centered Logo -->
             <ImageView fx:id="logoImage" fitHeight="50.0" fitWidth="50.0" preserveRatio="true">
                <image>
-                  <Image url="@../icons/logo.png"/>
+                  <Image url="@../icons/logo.png" />
                </image>
             </ImageView>
          </children>
       </StackPane>
 
       <!-- Left Menu -->
-      <AnchorPane fx:id="left_menu" layoutY="74.4" prefWidth="170.0"
-                  style="-fx-background-color: linear-gradient(from 0% 0% to 100% 100%, rgba(0,255,204,0.2), rgba(0,200,120,0.15), rgba(255,255,255,0.1));"
-                  AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="74.0">
+      <AnchorPane fx:id="left_menu" layoutY="74.4" prefWidth="170.0" style="-fx-background-color: linear-gradient(from 0% 0% to 100% 100%, rgba(0,255,204,0.2), rgba(0,200,120,0.15), rgba(255,255,255,0.1));" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="74.0">
          <children>
-            <VBox spacing="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
-                  AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <VBox spacing="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
                   <!-- Top Buttons -->
-                  <Button mnemonicParsing="false" onAction="#home_page_user" prefHeight="51.0" prefWidth="166.0"
-                          style="-fx-background-color: transparent; -fx-alignment: CENTER_LEFT;"
-                          text="Home" textFill="WHITE">
+                  <Button mnemonicParsing="false" onAction="#home_page_user" prefHeight="51.0" prefWidth="166.0" style="-fx-background-color: transparent; -fx-alignment: CENTER_LEFT;" text="Home" textFill="WHITE">
                      <graphic>
                         <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../icons/home.png"/>
+                              <Image url="@../icons/home.png" />
                            </image>
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button mnemonicParsing="false" onAction="#shop_page" prefHeight="51.0" prefWidth="166.0"
-                          style="-fx-background-color: transparent; -fx-alignment: CENTER_LEFT;"
-                          text="Shop" textFill="WHITE">
+                  <Button mnemonicParsing="false" onAction="#shop_page" prefHeight="51.0" prefWidth="166.0" style="-fx-background-color: transparent; -fx-alignment: CENTER_LEFT;" text="Shop" textFill="WHITE">
                      <graphic>
                         <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../icons/you.png"/>
+                              <Image url="@../icons/you.png" />
                            </image>
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button mnemonicParsing="false" onAction="#pills_page_user" prefHeight="51.0" prefWidth="166.0"
-                          style="-fx-background-color: transparent; -fx-alignment: CENTER_LEFT;"
-                          text="Pills" textFill="WHITE">
+                  <Button mnemonicParsing="false" onAction="#pills_page_user" prefHeight="51.0" prefWidth="166.0" style="-fx-background-color: transparent; -fx-alignment: CENTER_LEFT;" text="Pills" textFill="WHITE">
                      <graphic>
                         <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../icons/you.png"/>
+                              <Image url="@../icons/you.png" />
                            </image>
                         </ImageView>
                      </graphic>
                   </Button>
 
                   <!-- Spacer to push bottom buttons down -->
-                  <AnchorPane VBox.vgrow="ALWAYS"/>
+                  <AnchorPane VBox.vgrow="ALWAYS" />
 
                   <!-- Bottom Buttons -->
-                  <Button mnemonicParsing="false" onAction="#cart_page" prefHeight="51.0" prefWidth="166.0"
-                          style="-fx-background-color: transparent; -fx-alignment: CENTER_LEFT;"
-                          text="Your Cart" textFill="WHITE">
+                  <Button mnemonicParsing="false" onAction="#cart_page" prefHeight="51.0" prefWidth="166.0" style="-fx-background-color: transparent; -fx-alignment: CENTER_LEFT;" text="Your Cart" textFill="WHITE">
                      <graphic>
                         <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../icons/cart.png"/>
+                              <Image url="@../icons/cart.png" />
                            </image>
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button mnemonicParsing="false" onAction="#calculator_page" prefHeight="51.0" prefWidth="166.0"
-                          style="-fx-background-color: transparent; -fx-alignment: CENTER_LEFT;"
-                          text="Calculator" textFill="WHITE">
+                  <Button mnemonicParsing="false" onAction="#calculator_page" prefHeight="51.0" prefWidth="166.0" style="-fx-background-color: transparent; -fx-alignment: CENTER_LEFT;" text="Calculator" textFill="WHITE">
                      <graphic>
                         <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../icons/cart.png"/>
+                              <Image url="@../icons/cart.png" />
                            </image>
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button mnemonicParsing="false" onAction="#login_page" prefHeight="51.0" prefWidth="166.0"
-                          style="-fx-background-color: transparent; -fx-alignment: CENTER_LEFT;"
-                          text="Log Out" textFill="WHITE">
+                  <Button mnemonicParsing="false" onAction="#login_page" prefHeight="51.0" prefWidth="166.0" style="-fx-background-color: transparent; -fx-alignment: CENTER_LEFT;" text="Log Out" textFill="WHITE">
                      <graphic>
                         <ImageView fitHeight="30.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../icons/logout.png"/>
+                              <Image url="@../icons/logout.png" />
                            </image>
                         </ImageView>
                      </graphic>
