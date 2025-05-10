@@ -26,4 +26,10 @@ public class SharedCart {
         newItem.put("total", price * quantity);
         cartItems.add(newItem);
     }
+
+    public static int getTotalQuantity() {
+        return cartItems.stream()
+                .mapToInt(item -> (int) item.get("quantity"))
+                .sum();
+    }
 }

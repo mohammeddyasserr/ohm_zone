@@ -58,6 +58,7 @@ public class shop_controller implements Initializable {
     @FXML private Text detailsDescription;
     @FXML private Label quantityLabel;
     @FXML private Button cart_btn;
+    @FXML private Button cart_page_btn;
     @FXML private Label quantityErrorLabel;
     @FXML private Label successLabel;
 
@@ -104,8 +105,11 @@ public class shop_controller implements Initializable {
                 }
             }
         });
-        quantity0.textProperty().addListener((obs, oldVal, newVal) -> quantityErrorLabel.setText(""));
-         }
+
+        SharedCart.cartItems.addListener((javafx.collections.ListChangeListener<HashMap<String, Object>>) change -> {
+            updateCartCount();
+        });
+    }
 
     private void showDetailsPane() {
         detailsPane.setVisible(true);
@@ -269,6 +273,7 @@ public class shop_controller implements Initializable {
 
     @FXML
     private void onOptionSelected() {
+        quantity0.clear();
         String selectedValue = options.getValue();
         if (selectedValue == null) return;
 
@@ -316,16 +321,23 @@ public class shop_controller implements Initializable {
         fade.play();
     }
 
+    private void updateCartCount() {
+        int totalItems = SharedCart.cartItems.stream()
+                .mapToInt(item -> (int) item.get("quantity"))
+                .sum();
+
+        cart_page_btn.setText("Your Cart (" + totalItems + ")");
+    }
+
     @FXML
     void addtocart(ActionEvent event) {
         String selectedValue = options.getValue();
         String productType = detailsName.getText();
         String productPrefix = getProductPrefix(productType);
-
         String fullName = productPrefix + "-" + selectedValue;
         String quantityText = quantity0.getText().trim();
         String price = detailsPrice.getText(); // e.g. "50.75 EGP"
-        String amount = price.replaceAll("[^\\d.]", ""); // Keep only digits and dot
+        String amount = price.replaceAll("[^\\d.]", ""); // Extract numeric value only
 
         if (quantityText.isEmpty()) {
             showMessage(quantityErrorLabel, "Enter quantity", "red");
@@ -333,13 +345,22 @@ public class shop_controller implements Initializable {
         }
 
         try {
-            int quantity = Integer.parseInt(quantityText);
-            if (quantity <= 0) {
+            int requestedQuantity = Integer.parseInt(quantityText);
+            if (requestedQuantity <= 0) {
                 showMessage(quantityErrorLabel, "Enter valid quantity", "red");
                 return;
             }
 
-            SharedCart.addItem(fullName, Integer.parseInt(amount), quantity);
+            // Extract available quantity from label
+            String[] labelParts = quantityLabel.getText().split(":");
+            int availableQuantity = (labelParts.length > 1) ? Integer.parseInt(labelParts[1].trim()) : 0;
+
+            if (requestedQuantity > availableQuantity) {
+                showMessage(quantityErrorLabel, "Unavailable quantity", "red");
+                return;
+            }
+
+            SharedCart.addItem(fullName, Double.parseDouble(amount), requestedQuantity);
             showMessage(successLabel, "Product added to cart successfully!", "lightgreen");
 
         } catch (NumberFormatException e) {
