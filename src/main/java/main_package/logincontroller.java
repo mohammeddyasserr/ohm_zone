@@ -6,6 +6,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
@@ -49,6 +51,7 @@ public class logincontroller {
     @FXML private Label pass_match;
     @FXML private Label phone_error;
     @FXML private Label address_error;
+
 
     @FXML
     public void initialize() {
@@ -131,9 +134,8 @@ public class logincontroller {
                     user_session.set_user(userfield.getText());
                     FXMLLoader loader = new FXMLLoader(getClass().getResource("/user_gui/user_main.fxml"));
                     Parent root = loader.load();
-                    Stage stage = (Stage) signinbtn.getScene().getWindow();
-                    stage.setScene(new Scene(root));
-                    stage.show();
+                    Scene scene = ((Node) event.getSource()).getScene();
+                    scene.setRoot(root);
                 } else {
                     pass_error.setVisible(!r.next());
                     user_error.setVisible(r.next());
