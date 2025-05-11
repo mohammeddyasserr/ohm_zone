@@ -124,7 +124,7 @@
                   <Cursor fx:constant="NONE" />
                </cursor>
             </Line>
-            <MediaView fx:id="checkmark" fitHeight="150.0" fitWidth="150.0" layoutX="110.0" layoutY="274.0" />
+            <MediaView fx:id="checkmark" fitHeight="150.0" fitWidth="150.0" layoutX="110.0" layoutY="274.0" visible="false" />
          </children>
       </AnchorPane>
     </children>

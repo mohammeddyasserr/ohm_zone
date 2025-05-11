@@ -114,10 +114,8 @@ public class receipt_controller implements Initializable {
 
             String user = username.getText().trim().replaceAll("\\s+", "_");
             File outputFile;
-            int counter = 1;
             do {
                 outputFile = new File(screenshotsDir, id.getText() + ".png");
-                counter++;
             } while (outputFile.exists());
 
             try {
@@ -126,9 +124,6 @@ public class receipt_controller implements Initializable {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-
-            mediaPlayer.pause();
-            mediaPlayer.seek(mediaPlayer.getTotalDuration());
         });
     }
 
