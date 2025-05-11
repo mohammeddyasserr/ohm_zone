@@ -91,14 +91,14 @@ public class user_bills_controller implements Initializable {
         String username = user_session.get_user();
         try (Connection conn = DriverManager.getConnection("jdbc:sqlite:store.db");
              PreparedStatement ps = conn.prepareStatement(
-                     "SELECT \"Bill_id\", \"Date\", \"Total_price\" FROM adminbills WHERE Username = ?")) {
+                     "SELECT \"bill_id\", \"order_date\", \"total_price\" FROM orders WHERE username = ?")) {
             ps.setString(1, username);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 bills.add(new Bill(
-                        rs.getString("Bill_id"),
-                        rs.getString("Date"),
-                        rs.getString("Total_price")
+                        rs.getString("bill_id"),
+                        rs.getString("order_date"),
+                        rs.getString("total_price")
                 ));
             }
         } catch (SQLException e) {

@@ -187,7 +187,7 @@ public class cart_controller implements Initializable {
     private Button b1;
 
     @FXML
-    void checkout(ActionEvent event) {
+    void checkout(ActionEvent event) throws IOException {
 
         if (SharedCart.cartItems.isEmpty()) {
             showMessage(checkout_error,"Cart is empty!","red");
@@ -248,6 +248,10 @@ public class cart_controller implements Initializable {
                     orderStmt.executeUpdate();
                 }
 
+                Parent newRoot = FXMLLoader.load(getClass().getResource("/user_gui/receipt.fxml"));
+                Scene scene = ((Node) event.getSource()).getScene();
+                scene.setRoot(newRoot);
+
                 conn.commit();
                 SharedCart.cartItems.clear();
                 showMessage(checkout,"Checkout completed successfully!","darktgreen");
@@ -271,6 +275,10 @@ public class cart_controller implements Initializable {
                 System.err.println("Error closing connection: " + e.getMessage());
             }
         }
+        Parent newRoot = FXMLLoader.load(getClass().getResource("/user_gui/receipt.fxml"));
+        Scene scene = ((Node) event.getSource()).getScene();
+        scene.setRoot(newRoot);
+
     }
 
     private void setupTable() {
