@@ -1,18 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
 <?import javafx.scene.effect.Glow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.media.MediaView?>
 <?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Line?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TableColumn?>
 <AnchorPane prefHeight="594.0" prefWidth="927.0" style="-fx-background-color: #014d4a;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="user_gui_controller.receipt_controller">
     <children>
         <!-- Top StackPane containing top bar and centered logo -->
@@ -21,20 +24,20 @@
                 <!-- Top Bar -->
                 <AnchorPane fx:id="topBar" prefHeight="74.0" style="-fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #001f3f, #003b46);">
                <children>
-                  <Button fx:id="back" layoutX="14.0" layoutY="20.0" mnemonicParsing="false" onAction="#back_btn" prefHeight="30.0" prefWidth="57.0" style="-fx-background-color: transparent; -fx-alignment: CENTER_RIGHT;" text="Back" textFill="WHITE" />
-                  <ImageView fitHeight="21.0" fitWidth="21.0" layoutX="12.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true">
-                     <effect>
-                        <Glow />
-                     </effect>
-                     <image>
-                        <Image url="@../icons/back.png" />
-                     </image>
-                  </ImageView>
-               </children>
-                </AnchorPane>
+                  <Button fx:id="back" layoutX="14.0" layoutY="20.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="57.0" style="-fx-background-color: transparent; -fx-alignment: CENTER_RIGHT;" text="Back" textFill="WHITE" />
+                   <ImageView fitHeight="21.0" fitWidth="21.0" layoutX="12.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true">
+                      <effect>
+                         <Glow />
+                      </effect>
+                      <image>
+                         <Image url="@../icons/back.png" />
+                      </image>
+                   </ImageView>
+                </children>
+                 </AnchorPane>
 
-                <!-- Centered Logo -->
-                <ImageView fx:id="logoImage" fitHeight="50.0" fitWidth="50.0" preserveRatio="true">
+                 <!-- Centered Logo -->
+                <ImageView fx:id="logoImage" fitHeight="74.0" fitWidth="104.0" preserveRatio="true">
                     <image>
                         <Image url="@../icons/logo.png" />
                     </image>
@@ -56,53 +59,64 @@
             <Circle fill="DODGERBLUE" layoutX="665.0" layoutY="478.0" radius="25.0" stroke="BLACK" strokeType="INSIDE" style="-fx-stroke: transparent; -fx-fill: #014d4a;" />
             <Circle fill="DODGERBLUE" layoutX="730.0" layoutY="478.0" radius="25.0" stroke="BLACK" strokeType="INSIDE" style="-fx-stroke: transparent; -fx-fill: #014d4a;" />
             <Circle fill="DODGERBLUE" layoutX="795.0" layoutY="478.0" radius="25.0" stroke="BLACK" strokeType="INSIDE" style="-fx-stroke: transparent; -fx-fill: #014d4a;" />
-            <TableView id="productsTable" fx:id="table" layoutX="359.0" layoutY="14.0" onMouseClicked="#rowClicked" prefHeight="422.0" prefWidth="482.0" style="-fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #001f3f, #003b46); -fx-border-color: white; -fx-border-radius: 25;" stylesheets="@style1.CSS">
+            <TableView id="productsTable" fx:id="table" layoutX="359.0" layoutY="14.0" prefHeight="422.0" prefWidth="482.0" style="-fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #001f3f, #003b46); -fx-border-color: white; -fx-border-radius: 25;" stylesheets="@style1.CSS">
                <columns>
                   <TableColumn fx:id="name" minWidth="100.0" prefWidth="144.79998779296875" text="NAME" />
                   <TableColumn fx:id="price" minWidth="24.79998779296875" prefWidth="162.4000244140625" text="PRICE" />
                   <TableColumn fx:id="quantity" minWidth="100.0" prefWidth="179.20001220703125" text="QUANTITY" />
                </columns>
             </TableView>
-            <Label layoutX="36.0" layoutY="14.0" prefHeight="38.0" prefWidth="80.0" style="-fx-background-color: trasparent;" text="Date :" textFill="WHITE">
+            <Label layoutX="40.0" layoutY="92.0" prefHeight="38.0" prefWidth="80.0" style="-fx-background-color: trasparent;" text="Date :" textFill="WHITE">
                <font>
-                  <Font name="System Bold" size="15.0" />
+                  <Font name="System Bold" size="20.0" />
                </font>
             </Label>
-            <Label fx:id="date" layoutX="148.0" layoutY="14.0" prefHeight="38.0" prefWidth="173.0" style="-fx-background-color: transparent;" textFill="WHITE">
+            <Label fx:id="date" layoutX="150.0" layoutY="185.0" prefHeight="38.0" prefWidth="173.0" style="-fx-background-color: transparent;" textFill="WHITE">
                <font>
                   <Font size="15.0" />
                </font>
             </Label>
-            <Label layoutX="36.0" layoutY="144.0" prefHeight="38.0" prefWidth="80.0" style="-fx-background-color: transparent;" text="Username :" textFill="WHITE">
+            <Label layoutX="40.0" layoutY="185.0" prefHeight="38.0" prefWidth="104.0" style="-fx-background-color: transparent;" text="Username :" textFill="WHITE">
                <font>
-                  <Font name="System Bold" size="15.0" />
+                  <Font name="System Bold" size="20.0" />
                </font>
             </Label>
-            <Label layoutX="36.0" layoutY="311.0" prefHeight="38.0" prefWidth="80.0" style="-fx-background-color: transparent;" text=" Total :" textFill="WHITE">
+            <Label layoutX="40.0" layoutY="225.0" prefHeight="38.0" prefWidth="120.0" style="-fx-background-color: transparent;" text="Order Total :" textFill="WHITE">
                <font>
-                  <Font name="System Bold" size="15.0" />
+                  <Font name="System Bold" size="20.0" />
                </font></Label>
-            <Label layoutX="144.0" layoutY="311.0" prefHeight="38.0" prefWidth="174.0" style="-fx-background-color: transparent;" textFill="WHITE" />
-            <Label layoutX="36.0" layoutY="385.0" prefHeight="39.0" prefWidth="266.0" style="-fx-background-color: transparent;" text="Thank you for your purchase" textFill="WHITE">
+            <Label layoutX="150.0" layoutY="225.0" prefHeight="38.0" prefWidth="174.0" style="-fx-background-color: transparent;" textFill="WHITE" />
+            <Label alignment="CENTER" layoutX="30.0" layoutY="385.0" prefHeight="39.0" prefWidth="319.0" style="-fx-background-color: transparent;" text="Thank You For Your Purchase" textAlignment="CENTER" textFill="WHITE">
                <font>
-                  <Font name="System Bold" size="18.0" />
+                  <Font name="Charm Bold" size="25.0" />
                </font>
             </Label>
-            <Label layoutX="36.0" layoutY="91.0" prefHeight="38.0" prefWidth="80.0" style="-fx-background-color: transparent;" text="Bill ID :" textFill="WHITE">
+            <Label layoutX="40.0" layoutY="145.0" prefHeight="38.0" prefWidth="80.0" style="-fx-background-color: transparent;" text="Bill ID :" textFill="WHITE">
                <font>
-                  <Font name="System Bold" size="15.0" />
+                  <Font name="System Bold" size="20.0" />
                </font>
             </Label>
-            <Label fx:id="id" layoutX="145.0" layoutY="91.0" prefHeight="38.0" prefWidth="173.0" style="-fx-background-color: transparent;" textFill="WHITE">
-               <font>
-                  <Font size="15.0" />
-               </font>
-            </Label>
-            <Label fx:id="username" layoutX="148.0" layoutY="144.0" prefHeight="38.0" prefWidth="173.0" style="-fx-background-color: transparent;" textFill="WHITE">
+            <Label fx:id="id" layoutX="150.0" layoutY="92.0" prefHeight="38.0" prefWidth="173.0" style="-fx-background-color: transparent;" textFill="WHITE">
                <font>
                   <Font size="15.0" />
                </font>
             </Label>
+            <Label fx:id="username" layoutX="150.0" layoutY="145.0" prefHeight="38.0" prefWidth="173.0" style="-fx-background-color: transparent;" textFill="WHITE">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <ImageView fx:id="logoImage1" fitHeight="80.0" fitWidth="90.0" layoutX="150.0" preserveRatio="true">
+               <image>
+                  <Image url="@../icons/logo.png" />
+               </image>
+            </ImageView>
+            <Line endX="156.24542236328125" endY="-1.52587890625E-5" layoutX="192.0" layoutY="129.0" startX="-154.67205810546875" startY="-1.52587890625E-5" stroke="WHITE" strokeLineCap="ROUND" style="-fx-fill: silver;">
+               <cursor>
+                  <Cursor fx:constant="NONE" />
+               </cursor>
+            </Line>
+            <MediaView fx:id="checkmark" fitHeight="150.0" fitWidth="150.0" layoutX="110.0" layoutY="274.0" />
          </children>
       </AnchorPane>
     </children>

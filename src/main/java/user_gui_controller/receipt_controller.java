@@ -13,18 +13,23 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
+import javafx.scene.media.MediaPlayer;
+import javafx.scene.media.MediaView;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import javafx.scene.media.Media;
 
 import javafx.event.ActionEvent;
 import main_package.user_session;
 import javafx.scene.control.Label;
-import javax.swing.text.html.ImageView;
+
+import javafx.scene.image.ImageView;
 import java.awt.*;
 import java.io.IOException;
 import java.net.URL;
 import java.util.HashMap;
 import java.util.ResourceBundle;
+
 
 
 public class receipt_controller implements Initializable {
@@ -48,10 +53,15 @@ public class receipt_controller implements Initializable {
     @FXML
     private Label cartCounter;
 
+    @FXML
+    private MediaView checkmark;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        account_btn.setText(user_session.get_user());
+        checkmark();
+        if (account_btn != null) {
+            account_btn.setText(user_session.get_user());
+        }
         updateCartCount(); // initial load
 
         SharedCart.cartItems.addListener((ListChangeListener<? super HashMap<String, Object>>) change -> {
@@ -66,6 +76,18 @@ public class receipt_controller implements Initializable {
         }
     }
 
+    public void checkmark() {
+        String path = getClass().getResource("/videos/checkmark.mp4").toExternalForm();
+        Media media = new Media(path);
+        MediaPlayer mediaPlayer = new MediaPlayer(media);
+        checkmark.setMediaPlayer(mediaPlayer);
+
+        mediaPlayer.play();
+        mediaPlayer.setOnEndOfMedia(() -> {
+            mediaPlayer.pause();
+            mediaPlayer.seek(mediaPlayer.getTotalDuration());
+        });
+    }
 
     @FXML
     private void toggle_menu() {
@@ -95,68 +117,5 @@ public class receipt_controller implements Initializable {
 
             AnchorPane.setLeftAnchor(main_scroll_pane, 0.0);
         }
-    }
-
-    @FXML
-    void calculator_page(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/user_gui/calc.fxml"));
-        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-    }
-
-    @FXML
-    void acount_page(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/user_gui/account_page.fxml"));
-        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-    }
-
-    @FXML
-    void cart_page(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/user_gui/cart.fxml"));
-        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-    }
-
-    @FXML
-    void home_page_user(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/user_gui/user_main.fxml"));
-        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-    }
-
-    @FXML
-    void login_page(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/main_package/login.fxml"));
-        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-    }
-
-    @FXML
-    void pills_page_user(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/user_gui/pills.fxml"));
-        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-    }
-
-    @FXML
-    void shop_page(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/user_gui/shop.fxml"));
-        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
     }
 }
