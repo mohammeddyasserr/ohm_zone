@@ -18,6 +18,8 @@ import javafx.scene.media.MediaView;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import javafx.scene.media.Media;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 import javafx.event.ActionEvent;
 import main_package.user_session;
@@ -48,21 +50,25 @@ public class receipt_controller implements Initializable {
     private boolean isMenuVisible = true;
 
     @FXML
-    private Button account_btn;
-
-    @FXML
     private Label cartCounter;
 
     @FXML
     private MediaView checkmark;
 
+    @FXML
+    private Label date;
+
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         checkmark();
-        if (account_btn != null) {
-            account_btn.setText(user_session.get_user());
-        }
         updateCartCount(); // initial load
+
+        LocalDate currentDate = LocalDate.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        String formattedDate = currentDate.format(formatter);
+
+        date.setText(formattedDate);
 
         SharedCart.cartItems.addListener((ListChangeListener<? super HashMap<String, Object>>) change -> {
             updateCartCount(); // auto update on add/remove
