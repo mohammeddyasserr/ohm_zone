@@ -14,6 +14,7 @@ module team.ohm_zone {
     requires java.desktop;
     requires jbcrypt;
     requires javafx.media;
+    requires javafx.swing;
 
     opens main_package to javafx.fxml;
     opens admin_gui_controller to javafx.fxml;

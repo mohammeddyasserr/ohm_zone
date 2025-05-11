@@ -193,18 +193,17 @@ public class cart_controller implements Initializable {
             showMessage(checkout_error,"Cart is empty!","red");
             return;
         }
+
         Connection conn = null;
 
         try {
             conn = DriverManager.getConnection("jdbc:sqlite:store.db");
             conn.setAutoCommit(false);
 
-            // 1. Calculate total price
             double total = SharedCart.cartItems.stream()
                     .mapToDouble(item -> (double) item.get("total"))
                     .sum();
 
-            // 2. Check availability first
             boolean allAvailable = true;
             for (HashMap<String, Object> item : SharedCart.cartItems) {
                 String selectSQL = "SELECT quantity FROM product WHERE name = ?";
@@ -217,17 +216,18 @@ public class cart_controller implements Initializable {
 
                             if (requestedQuantity > dbQuantity) {
                                 showMessage(quantity_error,"Not enough quantity for: " + item.get("name"),"red");
-                                //quantity_error.setText("Not enough quantity for: " + item.get("name"));
                                 allAvailable = false;
-                                break; // Stop checking further
+                                break;
                             }
                         }
                     }
                 }
             }
 
-// 3. Proceed with updates only if all are available
             if (allAvailable) {
+                ObservableList<HashMap<String, Object>> tempCartItems =
+                        FXCollections.observableArrayList(SharedCart.cartItems);
+
                 for (HashMap<String, Object> item : SharedCart.cartItems) {
                     String updateSQL = "UPDATE product SET quantity = quantity - ? WHERE name = ?";
                     try (PreparedStatement pstmt = conn.prepareStatement(updateSQL)) {
@@ -236,11 +236,10 @@ public class cart_controller implements Initializable {
                         pstmt.executeUpdate();
                     }
                 }
-                // 3. Insert order record
+
                 LocalDate today = LocalDate.now();
                 String dateStr = today.toString();
                 String insertOrderSQL = "INSERT INTO orders (username, total_price, order_date) VALUES (?, ?, ?)";
-                System.out.print(dateStr);
                 try (PreparedStatement orderStmt = conn.prepareStatement(insertOrderSQL)) {
                     orderStmt.setString(1, user_session.get_user());
                     orderStmt.setDouble(2, total);
@@ -248,37 +247,36 @@ public class cart_controller implements Initializable {
                     orderStmt.executeUpdate();
                 }
 
-                Parent newRoot = FXMLLoader.load(getClass().getResource("/user_gui/receipt.fxml"));
+                conn.commit();
+
+                SharedCart.cartItems.clear();
+                showMessage(checkout,"Checkout completed successfully!","darkgreen");
+                checkout_error.setText("");
+
+                // Pass cart items to receipt page
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/user_gui/receipt.fxml"));
+                Parent newRoot = loader.load();
+                receipt_controller controller = loader.getController();
+                controller.setCartItems(tempCartItems); // <-- pass preserved cart
+
                 Scene scene = ((Node) event.getSource()).getScene();
                 scene.setRoot(newRoot);
-
-                conn.commit();
-                SharedCart.cartItems.clear();
-                showMessage(checkout,"Checkout completed successfully!","darktgreen");
-                checkout_error.setText("");
             }
+
         } catch (SQLException e) {
             showMessage(checkout_error,"Error during checkout","red");
             try {
-                if (conn != null) {
-                    conn.rollback();
-                }
+                if (conn != null) conn.rollback();
             } catch (SQLException ex) {
                 checkout_error.setText(checkout_error.getText() + " Rollback failed: " + ex.getMessage());
             }
         } finally {
             try {
-                if (conn != null) {
-                    conn.close();
-                }
+                if (conn != null) conn.close();
             } catch (SQLException e) {
                 System.err.println("Error closing connection: " + e.getMessage());
             }
         }
-        Parent newRoot = FXMLLoader.load(getClass().getResource("/user_gui/receipt.fxml"));
-        Scene scene = ((Node) event.getSource()).getScene();
-        scene.setRoot(newRoot);
-
     }
 
     private void setupTable() {

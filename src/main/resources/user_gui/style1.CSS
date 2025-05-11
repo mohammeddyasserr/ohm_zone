@@ -40,3 +40,9 @@
     -fx-background-color: transparent;
     -fx-text-fill: black;
 }
+
+.table-view .scroll-bar:horizontal {
+    -fx-opacity: 0;
+    -fx-max-height: 0;
+    -fx-pref-height: 0;
+}
