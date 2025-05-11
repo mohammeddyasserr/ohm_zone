@@ -216,6 +216,11 @@ public class cart_controller implements Initializable {
         checkout.setText("");
         checkout_error.setText("");
         quantity_error.setText("");
+
+        if (SharedCart.cartItems.isEmpty()) {
+            checkout_error.setText("Cart is empty!");
+            return;
+        }
         Connection conn = null; // Declare outside try-with-resources
 
         try {
