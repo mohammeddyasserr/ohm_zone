@@ -1,4 +1,5 @@
 package user_gui_controller;
+import javafx.animation.FadeTransition;
 import javafx.collections.ListChangeListener;
 import user_gui_controller.SharedCart;
 
@@ -185,43 +186,14 @@ public class cart_controller implements Initializable {
     @FXML
     private Button b1;
 
-//    @FXML
-//    void checkout(ActionEvent event) {
-//        checkout.setText("");
-//        checkout_error.setText("");
-//
-//        try (Connection conn = DriverManager.getConnection("jdbc:sqlite:store.db")) {
-//            conn.setAutoCommit(false);
-//
-//            for (HashMap<String, Object> item : SharedCart.cartItems) {
-//                String updateSQL = "UPDATE product SET quantity = quantity - ? WHERE name = ?";
-//                try (PreparedStatement pstmt = conn.prepareStatement(updateSQL)) {
-//                    pstmt.setInt(1, (int) item.get("quantity"));
-//                    pstmt.setString(2, (String) item.get("name"));
-//                    pstmt.executeUpdate();
-//                }
-//            }
-//
-//            conn.commit();
-//            SharedCart.cartItems.clear();
-//            checkout.setText("Checkout completed successfully!");
-//        } catch (SQLException e) {
-//            checkout_error.setText("Error during checkout");
-//        }
-//
-//    }
-
     @FXML
     void checkout(ActionEvent event) {
-        checkout.setText("");
-        checkout_error.setText("");
-        quantity_error.setText("");
 
         if (SharedCart.cartItems.isEmpty()) {
-            checkout_error.setText("Cart is empty!");
+            showMessage(checkout_error,"Cart is empty!","red");
             return;
         }
-        Connection conn = null; // Declare outside try-with-resources
+        Connection conn = null;
 
         try {
             conn = DriverManager.getConnection("jdbc:sqlite:store.db");
@@ -244,7 +216,8 @@ public class cart_controller implements Initializable {
                             int requestedQuantity = (int) item.get("quantity");
 
                             if (requestedQuantity > dbQuantity) {
-                                quantity_error.setText("Not enough quantity for: " + item.get("name"));
+                                showMessage(quantity_error,"Not enough quantity for: " + item.get("name"),"red");
+                                //quantity_error.setText("Not enough quantity for: " + item.get("name"));
                                 allAvailable = false;
                                 break; // Stop checking further
                             }
@@ -277,11 +250,11 @@ public class cart_controller implements Initializable {
 
                 conn.commit();
                 SharedCart.cartItems.clear();
-                checkout.setText("Checkout completed successfully!");
+                showMessage(checkout,"Checkout completed successfully!","darktgreen");
                 checkout_error.setText("");
             }
         } catch (SQLException e) {
-            checkout_error.setText("Error during checkout");
+            showMessage(checkout_error,"Error during checkout","red");
             try {
                 if (conn != null) {
                     conn.rollback();
@@ -346,10 +319,22 @@ public class cart_controller implements Initializable {
         table.refresh();
     }
 
+    private void showMessage(Label label, String message, String color) {
+        label.setText(message);
+        label.setStyle("-fx-font-size: 12px; -fx-text-fill: " + color + ";");
+        label.setVisible(true);
+        label.setManaged(true);
+        label.setOpacity(1.0);
 
-
-
-
-
+        FadeTransition fade = new FadeTransition(Duration.seconds(2), label);
+        fade.setFromValue(1.0);
+        fade.setToValue(0.0);
+        fade.setDelay(Duration.seconds(1));
+        fade.setOnFinished(e -> {
+            label.setVisible(false);
+            label.setManaged(false);
+        });
+        fade.play();
+    }
 
 }
