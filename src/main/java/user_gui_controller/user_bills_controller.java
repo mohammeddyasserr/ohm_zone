@@ -32,6 +32,10 @@ import java.net.URL;
 import java.sql.*;
 import java.util.ResourceBundle;
 
+import java.awt.*;
+import java.io.File;
+import java.util.HashMap;
+
 
 public class user_bills_controller implements Initializable {
 
@@ -205,7 +209,26 @@ public class user_bills_controller implements Initializable {
 
     @FXML
     void rowClicked(MouseEvent event) {
+        if (event.getClickCount() == 2) { // double-click
+            Bill selectedBill = bills_table.getSelectionModel().getSelectedItem();
+            if (selectedBill != null) {
+                // Append ".png" to the ID to form the file name
+                String fileName = selectedBill.getId().toString() + ".png";
 
+                // Construct the full path
+                File imageFile = new File("Bills", fileName); // pills/<id>.png
+
+                try {
+                    if (imageFile.exists()) {
+                        Desktop.getDesktop().open(imageFile);
+                    } else {
+                        System.out.println("File not found: " + imageFile.getAbsolutePath());
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
     }
     public class Bill {
         private final SimpleStringProperty id;
