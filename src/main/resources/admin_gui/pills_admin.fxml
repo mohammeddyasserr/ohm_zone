@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Rectangle2D?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.effect.Glow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+
+<AnchorPane prefHeight="570.0" prefWidth="951.0" style="-fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #002b36, #014d4a, #00ffcc);;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="admin_gui_controller.bills_controller">
+    <children>
+        <Pane prefHeight="74.0" prefWidth="958.0" style="-fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #001f3f, #003b46);;">
+            <children>
+                <Button fx:id="menu_btn" layoutX="14.0" layoutY="24.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#toggle_menu" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #ffffff, #e0f7fa);;">
+                    <graphic>
+                        <ImageView fitHeight="26.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../icons/menu.png" />
+                            </image>
+                            <viewport>
+                                <Rectangle2D />
+                            </viewport>
+                        </ImageView>
+                    </graphic>
+                </Button>
+                <ImageView fitHeight="74.0" fitWidth="90.0" layoutX="442.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../icons/logo.png" />
+                    </image>
+                </ImageView>
+                <Button fx:id="account_btn" contentDisplay="RIGHT" layoutX="571.0" layoutY="24.0" mnemonicParsing="false" onAction="#acount_page" prefHeight="29.0" prefWidth="375.0" style="-fx-background-color: transparent; -fx-alignment: CENTER_RIGHT;" text="mohammed" textFill="WHITE">
+                    <graphic>
+                        <ImageView fitHeight="21.0" fitWidth="87.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../icons/account.png" />
+                            </image>
+                            <effect>
+                                <Glow />
+                            </effect>
+                        </ImageView>
+                    </graphic>
+                </Button>
+            </children>
+        </Pane>
+        <Pane fx:id="side_panel" layoutY="74.0" prefHeight="495.0" prefWidth="166.0" style="-fx-background-color: linear-gradient(from 0% 0% to 100% 100%, rgba(0,255,204,0.2), rgba(0,200,120,0.15), rgba(255,255,255,0.1));;">
+            <children>
+                <Button graphicTextGap="10.0" mnemonicParsing="false" onAction="#home_page" prefHeight="51.0" prefWidth="166.0" style="-fx-background-color: transparent; -fx-alignment: CENTER_LEFT;" text="Home" textFill="WHITE">
+                    <graphic>
+                        <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../icons/home.png" />
+                            </image>
+                        </ImageView>
+                    </graphic></Button>
+                <Button graphicTextGap="10.0" layoutY="51.0" mnemonicParsing="false" onAction="#addp_page" prefHeight="51.0" prefWidth="166.0" style="-fx-background-color: transparent; -fx-alignment: CENTER_LEFT;" text="Add Product" textFill="WHITE">
+                    <graphic>
+                        <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../icons/add.png" />
+                            </image>
+                        </ImageView>
+                    </graphic></Button>
+                <Button graphicTextGap="10.0" layoutY="102.0" mnemonicParsing="false" onAction="#removep_page" prefHeight="51.0" prefWidth="166.0" style="-fx-background-color: transparent; -fx-alignment: CENTER_LEFT;" text="Remove Product" textFill="WHITE">
+                    <graphic>
+                        <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../icons/remove.png" />
+                            </image>
+                        </ImageView>
+                    </graphic></Button>
+                <Button graphicTextGap="10.0" layoutY="153.0" mnemonicParsing="false" onAction="#editp_page" prefHeight="51.0" prefWidth="166.0" style="-fx-background-color: transparent; -fx-alignment: CENTER_LEFT;" text="Edit Product" textFill="WHITE">
+                    <graphic>
+                        <ImageView fitHeight="30.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../icons/edit.png" />
+                            </image>
+                        </ImageView>
+                    </graphic></Button>
+                <Button graphicTextGap="10.0" layoutY="204.0" mnemonicParsing="false" onAction="#pills_page" prefHeight="51.0" prefWidth="166.0" style="-fx-background-color: transparent; -fx-alignment: CENTER_LEFT;" text="Pills" textFill="WHITE">
+                    <graphic>
+                        <ImageView fitHeight="30.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../icons/pills.png" />
+                            </image>
+                        </ImageView>
+                    </graphic></Button>
+                <Button graphicTextGap="10.0" layoutY="255.0" mnemonicParsing="false" onAction="#adda_page" prefHeight="51.0" prefWidth="166.0" style="-fx-background-color: transparent; -fx-alignment: CENTER_LEFT;" text="Adminstration" textFill="WHITE">
+                    <graphic>
+                        <ImageView fitHeight="30.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../icons/administration.png" />
+                            </image>
+                        </ImageView>
+                    </graphic></Button>
+                <Button graphicTextGap="10.0" layoutY="444.0" mnemonicParsing="false" onAction="#login_page" prefHeight="51.0" prefWidth="166.0" style="-fx-background-color: transparent; -fx-alignment: CENTER_LEFT;" text="Log Out" textFill="WHITE">
+                    <graphic>
+                        <ImageView fitHeight="30.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../icons/logout.png" />
+                            </image>
+                        </ImageView>
+                    </graphic></Button>
+            </children></Pane>
+      <TableView fx:id="table" layoutX="166.0" layoutY="74.0" prefHeight="495.0" prefWidth="792.0" style="-fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #001f3f, #003b46);">
+        <columns>
+          <TableColumn fx:id="bill_id" prefWidth="111.20005798339844" text="Bill ID" />
+          <TableColumn fx:id="date" prefWidth="229.60003662109375" text="Date" />
+            <TableColumn fx:id="total_price" prefWidth="191.199951171875" text="Total Price" />
+            <TableColumn fx:id="user_name" prefWidth="257.60003662109375" text="Username" />
+        </columns>
+         <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+         </columnResizePolicy>
+      </TableView>
+    </children>
+</AnchorPane>
