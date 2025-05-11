@@ -1,4 +1,3 @@
-/* خلفية الجدول وداخله شفافين */
 .table-view {
     -fx-background-color: transparent;
     -fx-control-inner-background: transparent;
@@ -6,36 +5,31 @@
     -fx-padding: 0;
 }
 
-/* خلفية رؤوس الأعمدة */
 .table-view .column-header-background {
     -fx-background-color: transparent;
 }
 
-/* تنسيق رؤوس الأعمدة (PRODUCT, QUANTITY, PRICE...) */
 .table-view .column-header,
 .table-view .column-header .label {
     -fx-background-color: transparent;
-    -fx-text-fill: white;        /* لون الكلام فوق */
+    -fx-text-fill: white;
     -fx-font-weight: bold;
     -fx-font-size: 13px;
     -fx-alignment: CENTER;
 }
 
-/* تنسيق الخلايا داخل الجدول */
 .table-view .cell {
     -fx-background-color: transparent;
-    -fx-text-fill: black;        /* لون النص داخل الجدول */
+    -fx-text-fill: black;
     -fx-font-size: 13px;
     -fx-alignment: CENTER;
 }
 
-/* شفافية كل صف */
 .table-view .table-row-cell {
     -fx-background-color: transparent;
     -fx-border-color: transparent;
 }
 
-/* لما تختار صف (selection) */
 .table-view .table-row-cell:selected {
     -fx-background-color: transparent;
     -fx-text-fill: black;
