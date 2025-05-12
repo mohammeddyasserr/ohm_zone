@@ -105,11 +105,11 @@
                   </ImageView>
                </graphic></Button>
          </children></Pane>
-      <TextField fx:id="user" layoutX="223.0" layoutY="195.0" promptText="Username" style="-fx-background-color: transperent; -fx-border-color: white; -fx-text-fill: white;" />
-      <PasswordField fx:id="confirm_pass" layoutX="223.0" layoutY="396.0" promptText="Confirm password" style="-fx-background-color: transperent; -fx-border-color: white; -fx-text-fill: white;" />
-      <PasswordField fx:id="new_pass" layoutX="223.0" layoutY="328.0" promptText="New password" style="-fx-background-color: transperent; -fx-border-color: white; -fx-text-fill: white;" />
-      <PasswordField fx:id="old_pass" layoutX="223.0" layoutY="259.0" promptText="Old password" style="-fx-background-color: transperent; -fx-border-color: white; -fx-text-fill: white;" />
-      <Button fx:id="editbtn" layoutX="688.0" layoutY="328.0" mnemonicParsing="false" onAction="#edit_password" prefHeight="26.0" prefWidth="166.0" style="-fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #001f3f, #003b46);" text="EDIT PASSWORD" textFill="WHITE" />
+      <TextField fx:id="user" layoutX="223.0" layoutY="195.0" prefHeight="38.0" prefWidth="194.0" promptText="Username" style="-fx-background-color: transperent; -fx-border-color: white; -fx-text-fill: white;" />
+      <PasswordField fx:id="confirm_pass" layoutX="223.0" layoutY="396.0" prefHeight="38.0" prefWidth="194.0" promptText="Confirm password" style="-fx-background-color: transperent; -fx-border-color: white; -fx-text-fill: white;" />
+      <PasswordField fx:id="new_pass" layoutX="223.0" layoutY="328.0" prefHeight="38.0" prefWidth="194.0" promptText="New password" style="-fx-background-color: transperent; -fx-border-color: white; -fx-text-fill: white;" />
+      <PasswordField fx:id="old_pass" layoutX="223.0" layoutY="259.0" prefHeight="38.0" prefWidth="194.0" promptText="Password" style="-fx-background-color: transperent; -fx-border-color: white; -fx-text-fill: white;" />
+      <Button fx:id="editbtn" layoutX="659.0" layoutY="396.0" mnemonicParsing="false" onAction="#edit_password" prefHeight="38.0" prefWidth="194.0" style="-fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #001f3f, #003b46);" text="EDIT PASSWORD" textFill="WHITE" />
       <Label fx:id="result_label" layoutX="688.0" layoutY="354.0" prefHeight="18.0" prefWidth="166.0" textFill="#cf2020" />
       <Label fx:id="confirm_error" layoutX="223.0" layoutY="422.0" prefHeight="18.0" prefWidth="150.0" textFill="#cf2020" />
       <Label fx:id="new_error" layoutX="223.0" layoutY="354.0" prefHeight="18.0" prefWidth="150.0" textFill="#cf2020" />

@@ -8,12 +8,12 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<?import javafx.scene.layout.HBox?>
-<AnchorPane fx:id="cart_page" prefHeight="594.0" prefWidth="951.0" style="-fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #002b36, #014d4a, #00ffcc);" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="user_gui_controller.cart_controller">
+<AnchorPane fx:id="cart_page" prefHeight="594.0" prefWidth="933.0" style="-fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #002b36, #014d4a, #00ffcc);" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="user_gui_controller.cart_controller">
    <children>
       <!-- Top StackPane containing top bar and centered logo -->
       <StackPane AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -97,13 +97,13 @@
                   <!-- Bottom Buttons -->
                   <Button fx:id="cart_page_btn" onAction="#cart_page" style="-fx-background-color: transparent;">
                      <graphic>
-                        <HBox spacing="5" alignment="CENTER_LEFT">
+                        <HBox alignment="CENTER_LEFT" spacing="5">
                            <ImageView fitHeight="20" fitWidth="20">
                               <image>
                                  <Image url="@../icons/cart.png" />
                               </image>
                            </ImageView>
-                           <Label fx:id="cartCounter" text="Your Cart (0)" textFill="white" style="-fx-font-size: 14px;" />
+                           <Label fx:id="cartCounter" style="-fx-font-size: 14px;" text="Your Cart (0)" textFill="white" />
                         </HBox>
                      </graphic>
                   </Button>
@@ -129,7 +129,7 @@
             </VBox>
          </children>
       </AnchorPane>
-      <TableView id="productsTable" fx:id="table" layoutX="193.0" layoutY="91.0" onMouseClicked="#rowClicked" prefHeight="326.0" prefWidth="702.0" style="-fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #001f3f, #003b46);" stylesheets="@../admin_gui/style.CSS">
+      <TableView id="productsTable" fx:id="table" layoutX="203.0" layoutY="96.0" onMouseClicked="#rowClicked" prefHeight="326.0" prefWidth="702.0" style="-fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #002b36, #014d4a, #00ffcc); -fx-border-color: white;" stylesheets="@style1.CSS">
          <columns>
             <TableColumn fx:id="name" minWidth="100.0" prefWidth="138.40000915527344" text="NAME" />
             <TableColumn fx:id="price" minWidth="100.0" prefWidth="180.0" text="PRICE" />
@@ -137,10 +137,10 @@
             <TableColumn fx:id="total_price" minWidth="100.0" prefWidth="184.7999267578125" text="TOTAL PRICE" />
          </columns>
       </TableView>
-      <Button fx:id="b1" layoutX="700.0" layoutY="507.0" mnemonicParsing="false" onAction="#checkout" prefHeight="38.0" prefWidth="194.0" style="-fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #001f3f, #003b46);" text="CHECKOUT" textFill="WHITE" />
+      <Button fx:id="b1" layoutX="718.0" layoutY="506.0" mnemonicParsing="false" onAction="#checkout" prefHeight="38.0" prefWidth="194.0" style="-fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #001f3f, #003b46);" text="CHECKOUT" textFill="WHITE" />
       <Label fx:id="checkout" layoutX="712.0" layoutY="545.0" prefHeight="18.0" prefWidth="182.0" text="" />
       <Label fx:id="checkout_error" layoutX="778.0" layoutY="545.0" text="" textFill="#cf2020" />
-      <Label layoutX="193.0" layoutY="429.0" prefHeight="30.0" prefWidth="515.0" style="-fx-text-fill: linear-gradient(from 0% 0% to 100% 100%, #001f3f, #003b46);" text="Double-click a row to remove the corresponding item from the cart.">
+      <Label layoutX="203.0" layoutY="434.0" prefHeight="30.0" prefWidth="515.0" style="-fx-text-fill: linear-gradient(from 0% 0% to 100% 100%, #001f3f, #003b46);" text="Double-click a row to remove the corresponding item from the cart.">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>

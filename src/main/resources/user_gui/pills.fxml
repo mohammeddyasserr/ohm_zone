@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane prefHeight="594.0" prefWidth="951.0" style="-fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #002b36, #014d4a, #00ffcc);" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="user_gui_controller.user_bills_controller">
+<AnchorPane prefHeight="594.0" prefWidth="939.0" style="-fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #002b36, #014d4a, #00ffcc);" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="user_gui_controller.user_bills_controller">
    <children>
       <!-- Top StackPane containing top bar and centered logo -->
       <StackPane AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -123,11 +123,11 @@
             </VBox>
          </children>
       </AnchorPane>
-      <TableView fx:id="bills_table" layoutX="183.0" layoutY="88.0" onMouseClicked="#rowClicked" prefHeight="475.0" prefWidth="758.0" style="-fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #001f3f, #003b46);" stylesheets="@../admin_gui/style.CSS">
+      <TableView fx:id="bills_table" layoutX="205.0" layoutY="88.0" onMouseClicked="#rowClicked" prefHeight="475.0" prefWidth="712.0" style="-fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #002b36, #014d4a, #00ffcc); -fx-border-color: white;" stylesheets="@style1.CSS">
          <columns>
-            <TableColumn fx:id="id" prefWidth="218.40000915527344" text="Bill-ID" />
-            <TableColumn fx:id="date" minWidth="100.0" prefWidth="298.39996337890625" text="Date" />
-            <TableColumn fx:id="price" minWidth="100.0" prefWidth="229.60003662109375" text="Total Price" />
+            <TableColumn fx:id="id" prefWidth="191.1999969482422" text="Bill-ID" />
+            <TableColumn fx:id="date" minWidth="100.0" prefWidth="304.0" text="Date" />
+            <TableColumn fx:id="price" minWidth="100.0" prefWidth="266.4000244140625" text="Total Price" />
          </columns>
       </TableView>
    </children>

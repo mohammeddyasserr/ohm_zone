@@ -106,12 +106,12 @@
                         </ImageView>
                     </graphic></Button>
             </children></Pane>
-      <TableView id="productsTable" fx:id="table" layoutX="495.0" layoutY="102.0" onMouseClicked="#rowClicked" prefHeight="439.0" prefWidth="444.0" style="-fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #001f3f, #003b46);" stylesheets="@style.CSS">
+      <TableView id="productsTable" fx:id="table" layoutX="495.0" layoutY="102.0" onMouseClicked="#rowClicked" prefHeight="439.0" prefWidth="444.0" style="-fx-background-color: transparent; -fx-border-color: white;" stylesheets="@style1.CSS">
         <columns>
           <TableColumn fx:id="id" prefWidth="69.60003662109375" text="ID" />
-          <TableColumn fx:id="name" minWidth="100.0" prefWidth="114.39996337890625" text="NAME" />
-            <TableColumn fx:id="price" minWidth="100.0" prefWidth="128.79998779296875" text="PRICE" />
-            <TableColumn fx:id="quantity" minWidth="100.0" prefWidth="118.4000244140625" text="QUANTITY" />
+          <TableColumn fx:id="name" minWidth="100.0" prefWidth="115.20001220703125" text="NAME" />
+            <TableColumn fx:id="price" minWidth="100.0" prefWidth="131.199951171875" text="PRICE" />
+            <TableColumn fx:id="quantity" minWidth="100.0" prefWidth="127.2000732421875" text="QUANTITY" />
         </columns>
       </TableView>
       <TextField fx:id="id1" disable="true" layoutX="222.0" layoutY="164.0" prefHeight="38.0" prefWidth="194.0" promptText="Product ID" style="-fx-background-color: transperent; -fx-border-color: white; -fx-text-fill: white;" />

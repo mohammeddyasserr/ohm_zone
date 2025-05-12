@@ -105,12 +105,12 @@
                         </ImageView>
                     </graphic></Button>
             </children></Pane>
-        <TableView id="productsTable" fx:id="table" layoutX="180.0" layoutY="84.0" onMouseClicked="#rowClicked" prefHeight="373.0" prefWidth="764.0" stylesheets="@style.CSS">
+        <TableView id="productsTable" fx:id="table" layoutX="193.0" layoutY="84.0" onMouseClicked="#rowClicked" prefHeight="374.0" prefWidth="737.0" style="-fx-background-color: transparent; -fx-border-color: white;" stylesheets="@style1.CSS">
             <columns>
-                <TableColumn fx:id="id" prefWidth="69.60003662109375" text="ID" />
-                <TableColumn fx:id="name" minWidth="100.0" prefWidth="365.5999755859375" text="NAME" />
-                <TableColumn fx:id="price" minWidth="100.0" prefWidth="142.39996337890625" text="PRICE" />
-                <TableColumn fx:id="quantity" minWidth="100.0" prefWidth="172.0" text="QUANTITY" />
+                <TableColumn fx:id="id" prefWidth="103.20005798339844" text="ID" />
+                <TableColumn fx:id="name" minWidth="100.0" prefWidth="291.99993896484375" text="NAME" />
+                <TableColumn fx:id="price" minWidth="100.0" prefWidth="168.800048828125" text="PRICE" />
+                <TableColumn fx:id="quantity" minWidth="100.0" prefWidth="200.7999267578125" text="QUANTITY" />
             </columns>
         </TableView>
         <Button fx:id="b1" layoutX="465.0" layoutY="485.0" mnemonicParsing="false" onAction="#remove_product" prefHeight="38.0" prefWidth="194.0" style="-fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #001f3f, #003b46);" text="REMOVE PRODUCT" textFill="WHITE" />

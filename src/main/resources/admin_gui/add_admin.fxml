@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-
 <?import javafx.geometry.Rectangle2D?>
 <?import javafx.scene.control.Accordion?>
 <?import javafx.scene.control.Button?>
@@ -108,13 +107,13 @@
                </graphic></Button>
          </children></Pane>
       <Accordion />
-      <TextField id="user_name" fx:id="user_name" layoutX="226.0" layoutY="188.0" promptText="Username" style="-fx-background-color: transperent; -fx-border-color: white; -fx-text-fill: white;" />
-      <PasswordField id="password" fx:id="password" layoutX="226.0" layoutY="272.0" promptText="Password" style="-fx-background-color: transperent; -fx-border-color: white; -fx-text-fill: white;" />
-      <PasswordField id="password_confirm" fx:id="password_confirm" layoutX="226.0" layoutY="351.0" promptText="Confirm password" style="-fx-background-color: transperent; -fx-border-color: white; -fx-text-fill: white;" />
+      <TextField id="user_name" fx:id="user_name" layoutX="226.0" layoutY="188.0" prefHeight="38.0" prefWidth="194.0" promptText="Username" style="-fx-background-color: transperent; -fx-border-color: white; -fx-text-fill: white;" />
+      <PasswordField id="password" fx:id="password" layoutX="226.0" layoutY="272.0" prefHeight="38.0" prefWidth="194.0" promptText="Password" style="-fx-background-color: transperent; -fx-border-color: white; -fx-text-fill: white;" />
+      <PasswordField id="password_confirm" fx:id="password_confirm" layoutX="226.0" layoutY="351.0" prefHeight="38.0" prefWidth="194.0" promptText="Confirm password" style="-fx-background-color: transperent; -fx-border-color: white; -fx-text-fill: white;" />
       <Label id="username_error" fx:id="username_error" layoutX="225.0" layoutY="214.0" prefHeight="11.0" prefWidth="150.0" textFill="#cf2020" />
       <Label id="confirm_error" fx:id="confirm_error" layoutX="226.0" layoutY="377.0" prefHeight="18.0" prefWidth="150.0" textFill="#cf2020" />
       <Label id="password_error" fx:id="password_error" layoutX="226.0" layoutY="298.0" prefHeight="18.0" prefWidth="150.0" textFill="#cf2020" />
-      <Button id="addbtn" fx:id="addbtn" layoutX="660.0" layoutY="273.0" mnemonicParsing="false" onAction="#add_admin" prefHeight="37.0" prefWidth="150.0" style="-fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #001f3f, #003b46);" text="ADD ADMIN" textFill="WHITE" />
+      <Button id="addbtn" fx:id="addbtn" layoutX="660.0" layoutY="357.0" mnemonicParsing="false" onAction="#add_admin" prefHeight="38.0" prefWidth="194.0" style="-fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #001f3f, #003b46);" text="ADD ADMIN" textFill="WHITE" />
       <Label id="result_label" fx:id="result_label" layoutX="660.0" layoutY="313.0" prefHeight="18.0" prefWidth="150.0" textFill="#d91010" />
    </children>
 </AnchorPane>

@@ -296,7 +296,7 @@ public class cart_controller implements Initializable {
         quantity.setCellFactory(tc -> new TableCell<>() {
             private final Spinner<Integer> spinner = new Spinner<>(1, 100, 1);
             {
-                spinner.setStyle("-fx-text-fill: white;");
+                spinner.setStyle("-fx-text-fill: white; -fx-background-color: transparent ;");
                 spinner.getEditor().setStyle("-fx-text-fill: white; -fx-background-color: transparent;");
             }
             @Override
