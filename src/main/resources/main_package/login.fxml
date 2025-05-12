@@ -1,50 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.PasswordField?>
-<?import javafx.scene.control.RadioButton?>
-<?import javafx.scene.control.SplitPane?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.control.ToggleGroup?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.Group?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="631.0" prefWidth="923.0" style="-fx-background-color: linear-gradient( #1e293b, #475569);" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main_package.logincontroller">
+<AnchorPane xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="main_package.logincontroller"
+            prefHeight="631.0" prefWidth="923.0"
+            style="-fx-background-color: linear-gradient( #1e293b, #475569);">
    <children>
-      <TextField fx:id="userfield" layoutX="538.0" layoutY="155.0" prefHeight="38.0" prefWidth="194.0" promptText="Username" style="-fx-background-color: transperent; -fx-border-color: white; -fx-text-fill: white;" />
-      <PasswordField fx:id="passfield" layoutX="538.0" layoutY="236.0" prefHeight="38.0" prefWidth="194.0" promptText="Password" style="-fx-background-color: transperent; -fx-border-color: white; -fx-text-fill: white;" />
-      <Button fx:id="signinbtn" layoutX="538.0" layoutY="375.0" mnemonicParsing="false" onAction="#signinclick" prefHeight="38.0" prefWidth="194.0" style="-fx-background-color: #00FF87;" text="Sign in" />
-      <SplitPane layoutX="408.0" layoutY="107.0" prefHeight="417.0" prefWidth="0.0" />
-      <ImageView fx:id="logo" fitHeight="298.0" fitWidth="278.0" layoutX="76.0" layoutY="155.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../icons/logo.png" />
-         </image>
-      </ImageView>
-      <Label fx:id="question" layoutX="543.0" layoutY="433.0" text="Don't have an account ? " textFill="WHITE" />
-      <Button fx:id="signup" layoutX="675.0" layoutY="429.0" mnemonicParsing="false" onAction="#signuprequest" style="-fx-background-color: transperent;" text="Sign up" textFill="#00ff87" />
-
-      <RadioButton fx:id="admin" layoutX="548.0" layoutY="316.0" mnemonicParsing="false" onAction="#adminselect" prefHeight="26.0" prefWidth="86.0" styleClass="class=&quot;custom-radio&quot;" stylesheets="@style.CSS" text="Admin" textFill="WHITE">
-         <toggleGroup>
-            <ToggleGroup fx:id="user_admin" />
-         </toggleGroup></RadioButton>
-      <RadioButton fx:id="user" layoutX="548.0" layoutY="289.0" mnemonicParsing="false" onAction="#userselect" prefHeight="26.0" prefWidth="86.0" selected="true" styleClass="custom-radio" stylesheets="@style.CSS" text="User" textAlignment="CENTER" textFill="WHITE" toggleGroup="$user_admin" />
-      <TextField fx:id="usernamesignup" layoutX="104.0" layoutY="116.0" prefHeight="38.0" prefWidth="194.0" promptText="Username" style="-fx-background-color: transparent; -fx-text-fill: white; -fx-border-color: white;" visible="false" />
-      <PasswordField fx:id="pass1signup" layoutX="104.0" layoutY="174.0" prefHeight="38.0" prefWidth="194.0" promptText="Password" style="-fx-background-color: transparent; -fx-border-color: white; -fx-text-fill: white;" visible="false" />
-      <PasswordField fx:id="pass2signup" layoutX="104.0" layoutY="236.0" prefHeight="38.0" prefWidth="194.0" promptText="Confirm Password" style="-fx-background-color: transparent; -fx-border-color: white; -fx-text-fill: white;" visible="false" />
-      <TextField fx:id="phonesignup" layoutX="104.0" layoutY="297.0" prefHeight="38.0" prefWidth="194.0" promptText="Phone number" style="-fx-background-color: transparent; -fx-text-fill: white; -fx-border-color: white;" visible="false" />
-      <TextField fx:id="addresssignup" layoutX="104.0" layoutY="356.0" prefHeight="38.0" prefWidth="194.0" promptText="address" style="-fx-background-color: transparent; -fx-text-fill: white; -fx-border-color: white;" visible="false" />
-      <Button fx:id="signupbtn" layoutX="104.0" layoutY="431.0" mnemonicParsing="false" onAction="#signup" prefHeight="38.0" prefWidth="194.0" style="-fx-background-color: #00FF87;" text="Sign Up" visible="false" />
-      <Label fx:id="pass_error" layoutX="594.0" layoutY="274.0" text="wrong password try again" textFill="#cf2020" visible="false" />
-      <Label fx:id="user_error" layoutX="652.0" layoutY="193.0" prefHeight="18.0" prefWidth="79.0" text="user not found" textFill="#cf2020" visible="false" />
-      <Label fx:id="user_taken" layoutX="242.0" layoutY="155.0" text="user taken" textFill="#cf2020" visible="false" />
-      <Label fx:id="pass_match" layoutX="166.0" layoutY="273.0" prefHeight="18.0" prefWidth="131.0" text="password doesn't match" textFill="#cf2020" visible="false" />
-      <Label fx:id="phone_error" layoutX="122.0" layoutY="333.0" prefHeight="18.0" prefWidth="174.0" text="wrong number, must be 11 digit" textFill="#cf2020" visible="false" />
-      <Label fx:id="address_error" layoutX="201.0" layoutY="394.0" prefHeight="18.0" prefWidth="97.0" text="mustn't be empty" textFill="#cf2020" visible="false" />
-      <Label fx:id="pass_empty" layoutX="152.0" layoutY="212.0" text="password musn't be empty" textFill="#cf2020" visible="false" />
-      <Label fx:id="user_empty" layoutX="203.0" layoutY="155.0" text="mustn't be empty" textFill="#cf2020" visible="false" />
-      <Button fx:id="back_to_login" layoutX="157.0" layoutY="476.0" mnemonicParsing="false" onAction="#backtologin" style="-fx-background-color: transparent;" text="back to home" textFill="#00ff87" visible="false" />
-
+      <StackPane fx:id="rootPane" AnchorPane.topAnchor="0.0" AnchorPane.bottomAnchor="0.0"
+                 AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+         <Group fx:id="layoutGroup">
+            <AnchorPane prefHeight="631.0" prefWidth="923.0">
+               <children>
+                  <TextField fx:id="userfield" layoutX="538.0" layoutY="155.0" prefHeight="38.0" prefWidth="194.0" promptText="Username" style="-fx-background-color: transparent; -fx-border-color: white; -fx-text-fill: white;" />
+                  <PasswordField fx:id="passfield" layoutX="538.0" layoutY="236.0" prefHeight="38.0" prefWidth="194.0" promptText="Password" style="-fx-background-color: transparent; -fx-border-color: white; -fx-text-fill: white;" />
+                  <Button fx:id="signinbtn" layoutX="538.0" layoutY="375.0" mnemonicParsing="false" onAction="#signinclick" prefHeight="38.0" prefWidth="194.0" style="-fx-background-color: #00FF87;" text="Sign in" />
+                  <SplitPane layoutX="408.0" layoutY="107.0" prefHeight="417.0" prefWidth="0.0" />
+                  <ImageView fx:id="logo" fitHeight="298.0" fitWidth="278.0" layoutX="76.0" layoutY="155.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/logo.png" />
+                     </image>
+                  </ImageView>
+                  <Label fx:id="question" layoutX="543.0" layoutY="433.0" text="Don't have an account ? " textFill="WHITE" />
+                  <Button fx:id="signup" layoutX="675.0" layoutY="429.0" mnemonicParsing="false" onAction="#signuprequest" style="-fx-background-color: transparent;" text="Sign up" textFill="#00ff87" />
+                  <RadioButton fx:id="admin" layoutX="548.0" layoutY="316.0" mnemonicParsing="false" onAction="#adminselect" prefHeight="26.0" prefWidth="86.0" styleClass="custom-radio" stylesheets="@style.CSS" text="Admin" textFill="WHITE">
+                     <toggleGroup>
+                        <ToggleGroup fx:id="user_admin" />
+                     </toggleGroup>
+                  </RadioButton>
+                  <RadioButton fx:id="user" layoutX="548.0" layoutY="289.0" mnemonicParsing="false" onAction="#userselect" prefHeight="26.0" prefWidth="86.0" selected="true" styleClass="custom-radio" stylesheets="@style.CSS" text="User" textAlignment="CENTER" textFill="WHITE" toggleGroup="$user_admin" />
+                  <TextField fx:id="usernamesignup" layoutX="104.0" layoutY="116.0" prefHeight="38.0" prefWidth="194.0" promptText="Username" style="-fx-background-color: transparent; -fx-text-fill: white; -fx-border-color: white;" visible="false" />
+                  <PasswordField fx:id="pass1signup" layoutX="104.0" layoutY="174.0" prefHeight="38.0" prefWidth="194.0" promptText="Password" style="-fx-background-color: transparent; -fx-border-color: white; -fx-text-fill: white;" visible="false" />
+                  <PasswordField fx:id="pass2signup" layoutX="104.0" layoutY="236.0" prefHeight="38.0" prefWidth="194.0" promptText="Confirm Password" style="-fx-background-color: transparent; -fx-border-color: white; -fx-text-fill: white;" visible="false" />
+                  <TextField fx:id="phonesignup" layoutX="104.0" layoutY="297.0" prefHeight="38.0" prefWidth="194.0" promptText="Phone number" style="-fx-background-color: transparent; -fx-text-fill: white; -fx-border-color: white;" visible="false" />
+                  <TextField fx:id="addresssignup" layoutX="104.0" layoutY="356.0" prefHeight="38.0" prefWidth="194.0" promptText="address" style="-fx-background-color: transparent; -fx-text-fill: white; -fx-border-color: white;" visible="false" />
+                  <Button fx:id="signupbtn" layoutX="104.0" layoutY="431.0" mnemonicParsing="false" onAction="#signup" prefHeight="38.0" prefWidth="194.0" style="-fx-background-color: #00FF87;" text="Sign Up" visible="false" />
+                  <Label fx:id="pass_error" layoutX="594.0" layoutY="274.0" text="wrong password try again" textFill="#cf2020" visible="false" />
+                  <Label fx:id="user_error" layoutX="652.0" layoutY="193.0" prefHeight="18.0" prefWidth="79.0" text="user not found" textFill="#cf2020" visible="false" />
+                  <Label fx:id="user_taken" layoutX="242.0" layoutY="155.0" text="user taken" textFill="#cf2020" visible="false" />
+                  <Label fx:id="pass_match" layoutX="166.0" layoutY="273.0" prefHeight="18.0" prefWidth="131.0" text="password doesn't match" textFill="#cf2020" visible="false" />
+                  <Label fx:id="phone_error" layoutX="122.0" layoutY="333.0" prefHeight="18.0" prefWidth="174.0" text="wrong number, must be 11 digit" textFill="#cf2020" visible="false" />
+                  <Label fx:id="address_error" layoutX="201.0" layoutY="394.0" prefHeight="18.0" prefWidth="97.0" text="mustn't be empty" textFill="#cf2020" visible="false" />
+                  <Label fx:id="pass_empty" layoutX="152.0" layoutY="212.0" text="password musn't be empty" textFill="#cf2020" visible="false" />
+                  <Label fx:id="user_empty" layoutX="203.0" layoutY="155.0" text="mustn't be empty" textFill="#cf2020" visible="false" />
+                  <Button fx:id="back_to_login" layoutX="157.0" layoutY="476.0" mnemonicParsing="false" onAction="#backtologin" style="-fx-background-color: transparent;" text="back to home" textFill="#00ff87" visible="false" />
+               </children>
+            </AnchorPane>
+         </Group>
+      </StackPane>
    </children>
 </AnchorPane>

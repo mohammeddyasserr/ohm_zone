@@ -3,6 +3,7 @@ package main_package;
 import admin_gui_controller.admin_main_controller;
 import db_edit_functions.User;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -51,6 +52,11 @@ public class logincontroller {
     @FXML private Label pass_match;
     @FXML private Label phone_error;
     @FXML private Label address_error;
+    @FXML private StackPane rootPane; // fx:id of the outer StackPane
+    @FXML private Group layoutGroup; // fx:id of the Group containing all UI
+    private double baseWidth = 923.0;  // Match your design size
+    private double baseHeight = 631.0;
+
 
 
     @FXML
@@ -93,6 +99,16 @@ public class logincontroller {
                 signupbtn.fire();
             }
         });
+        rootPane.widthProperty().addListener((obs, oldVal, newVal) -> scaleUI());
+        rootPane.heightProperty().addListener((obs, oldVal, newVal) -> scaleUI());
+    }
+    private void scaleUI() {
+        double scaleX = rootPane.getWidth() / baseWidth;
+        double scaleY = rootPane.getHeight() / baseHeight;
+        double scale = Math.min(scaleX, scaleY); // Keep aspect ratio
+
+        layoutGroup.setScaleX(scale);
+        layoutGroup.setScaleY(scale);
     }
 
     @FXML
