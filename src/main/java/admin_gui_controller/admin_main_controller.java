@@ -131,74 +131,60 @@ public class admin_main_controller implements Initializable {
 
     @FXML
     void acount_page(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/admin_gui/account.fxml"));
-        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+        Parent newRoot = FXMLLoader.load(getClass().getResource("/admin_gui/account.fxml"));
+        Scene scene = ((Node) event.getSource()).getScene();
+        scene.setRoot(newRoot);
     }
 
     @FXML
     void adda_page(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/admin_gui/add_admin.fxml"));
-        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+        Parent newRoot = FXMLLoader.load(getClass().getResource("/admin_gui/add_admin.fxml"));
+        Scene scene = ((Node) event.getSource()).getScene();
+        scene.setRoot(newRoot);
+
+        System.out.println("Admin page button clicked");
     }
 
     @FXML
     void addp_page(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/admin_gui/add_product.fxml"));
-        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+        Parent newRoot = FXMLLoader.load(getClass().getResource("/admin_gui/add_product.fxml"));
+        Scene scene = ((Node) event.getSource()).getScene();
+        scene.setRoot(newRoot);
     }
 
     @FXML
     void editp_page(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/admin_gui/edit_product.fxml"));
-        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+        Parent newRoot = FXMLLoader.load(getClass().getResource("/admin_gui/edit_product.fxml"));
+        Scene scene = ((Node) event.getSource()).getScene();
+        scene.setRoot(newRoot);
     }
 
     @FXML
     void home_page(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/admin_gui/admin_main.fxml"));
-        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+        Parent newRoot = FXMLLoader.load(getClass().getResource("/admin_gui/admin_main.fxml"));
+        Scene scene = ((Node) event.getSource()).getScene();
+        scene.setRoot(newRoot);
     }
 
     @FXML
     void pills_page(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/admin_gui/pills_admin.fxml"));
-        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+        Parent newRoot = FXMLLoader.load(getClass().getResource("/admin_gui/pills_admin.fxml"));
+        Scene scene = ((Node) event.getSource()).getScene();
+        scene.setRoot(newRoot);
     }
 
     @FXML
     void removep_page(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/admin_gui/remove_product.fxml"));
-        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+        Parent newRoot = FXMLLoader.load(getClass().getResource("/admin_gui/remove_product.fxml"));
+        Scene scene = ((Node) event.getSource()).getScene();
+        scene.setRoot(newRoot);
     }
 
     @FXML
     void login_page(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/main_package/login.fxml"));
-        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+        Parent newRoot = FXMLLoader.load(getClass().getResource("/main_package/login.fxml"));
+        Scene scene = ((Node) event.getSource()).getScene();
+        scene.setRoot(newRoot);
     }
 
     @FXML

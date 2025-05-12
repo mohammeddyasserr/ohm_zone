@@ -79,7 +79,6 @@ public class cart_controller implements Initializable {
             int count = SharedCart.getTotalItemCount();
             cartCounter.setText("Your Cart (" + count + ")");
         }
-        table.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
     }
 
 

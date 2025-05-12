@@ -114,9 +114,8 @@ public class logincontroller {
                     user_session.set_user(userfield.getText());
                     FXMLLoader loader = new FXMLLoader(getClass().getResource("/admin_gui/admin_main.fxml"));
                     Parent root = loader.load();
-                    Stage stage = (Stage) signinbtn.getScene().getWindow();
-                    stage.setScene(new Scene(root));
-                    stage.show();
+                    Scene scene = signinbtn.getScene();  // Reuse existing scene
+                    scene.setRoot(root);                 // Set new root
                 } else {
                     pass_error.setVisible(!r.next());
                     user_error.setVisible(r.next());

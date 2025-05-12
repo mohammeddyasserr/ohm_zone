@@ -65,3 +65,7 @@
     -fx-tick-label-fill: white;
     -fx-label-fill: white;
 }
+
+.chart-axis .axis-label {
+    -fx-text-fill: white;
+}
