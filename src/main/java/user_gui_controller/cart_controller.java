@@ -73,6 +73,7 @@ public class cart_controller implements Initializable {
             int count = SharedCart.getTotalItemCount();
             cartCounter.setText("Your Cart (" + count + ")");
         }
+        table.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
     }
 
 
@@ -294,7 +295,7 @@ public class cart_controller implements Initializable {
                 new SimpleDoubleProperty((Double) data.getValue().get("total")).asObject());
         // Add quantity spinners
         quantity.setCellFactory(tc -> new TableCell<>() {
-            private final Spinner<Integer> spinner = new Spinner<>(1, 100, 1);
+            private final Spinner<Integer> spinner = new Spinner<>(1, 1000, 1);
             {
                 spinner.setStyle("-fx-text-fill: white; -fx-background-color: transparent ;");
                 spinner.getEditor().setStyle("-fx-text-fill: white; -fx-background-color: transparent;");

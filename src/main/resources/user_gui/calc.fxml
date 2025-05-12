@@ -86,7 +86,7 @@
                             <graphic>
                                 <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                                     <image>
-                                        <Image url="@../icons/you.png" />
+                                        <Image url="@../icons/pills.png" />
                                     </image>
                                 </ImageView>
                             </graphic>
@@ -112,7 +112,7 @@
                             <graphic>
                                 <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                                     <image>
-                                        <Image url="@../icons/cart.png" />
+                                        <Image url="@../icons/resistance.png" />
                                     </image>
                                 </ImageView>
                             </graphic>

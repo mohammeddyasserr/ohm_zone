@@ -14,6 +14,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -76,12 +77,14 @@ public class user_bills_controller implements Initializable {
     @FXML
     private Button account_btn;
 
+    @FXML private Label cartCounter;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         account_btn.setText(user_session.get_user());
         setupBillsColumns();
         loadBillsData();
-
+        updateCartCount();
     }
 
     private void setupBillsColumns() {
@@ -144,67 +147,60 @@ public class user_bills_controller implements Initializable {
         }
     }
 
+    private void updateCartCount() {
+        if (cartCounter != null) {
+            int count = SharedCart.getTotalItemCount();
+            cartCounter.setText("Your Cart (" + count + ")");
+        }
+    }
+
     @FXML
     void calculator_page(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/user_gui/calc.fxml"));
-        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+        Parent newRoot = FXMLLoader.load(getClass().getResource("/user_gui/calc.fxml"));
+        Scene scene = ((Node) event.getSource()).getScene();
+        scene.setRoot(newRoot);
     }
 
     @FXML
     void acount_page(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/user_gui/account_page.fxml"));
-        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+        Parent newRoot = FXMLLoader.load(getClass().getResource("/user_gui/account_page.fxml"));
+        Scene scene = ((Node) event.getSource()).getScene();
+        scene.setRoot(newRoot);
     }
 
     @FXML
     void cart_page(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/user_gui/cart.fxml"));
-        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+        Parent newRoot = FXMLLoader.load(getClass().getResource("/user_gui/cart.fxml"));
+        Scene scene = ((Node) event.getSource()).getScene();
+        scene.setRoot(newRoot);
     }
 
     @FXML
     void home_page_user(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/user_gui/user_main.fxml"));
-        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+        Parent newRoot = FXMLLoader.load(getClass().getResource("/user_gui/user_main.fxml"));
+        Scene scene = ((Node) event.getSource()).getScene();
+        scene.setRoot(newRoot);
     }
 
     @FXML
     void login_page(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/main_package/login.fxml"));
-        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+        Parent newRoot = FXMLLoader.load(getClass().getResource("/main_package/login.fxml"));
+        Scene scene = ((Node) event.getSource()).getScene();
+        scene.setRoot(newRoot);
     }
 
     @FXML
     void pills_page_user(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/user_gui/user_bills.fxml"));
-        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+        Parent newRoot = FXMLLoader.load(getClass().getResource("/user_gui/pills.fxml"));
+        Scene scene = ((Node) event.getSource()).getScene();
+        scene.setRoot(newRoot);
     }
 
     @FXML
     void shop_page(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/user_gui/shop.fxml"));
-        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+        Parent newRoot = FXMLLoader.load(getClass().getResource("/user_gui/shop.fxml"));
+        Scene scene = ((Node) event.getSource()).getScene();
+        scene.setRoot(newRoot);
     }
 
     @FXML
