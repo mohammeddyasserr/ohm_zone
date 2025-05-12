@@ -209,27 +209,25 @@ public class user_bills_controller implements Initializable {
 
     @FXML
     void rowClicked(MouseEvent event) {
-        if (event.getClickCount() == 2) { // double-click
             Bill selectedBill = bills_table.getSelectionModel().getSelectedItem();
             if (selectedBill != null) {
-                // Append ".png" to the ID to form the file name
                 String fileName = selectedBill.getId().toString() + ".png";
+                File imageFile = new File("Bills", fileName); // Bills/<id>.png
 
-                // Construct the full path
-                File imageFile = new File("Bills", fileName); // pills/<id>.png
+                if (imageFile.exists()) {
+                    javafx.scene.image.Image image = new javafx.scene.image.Image(imageFile.toURI().toString());
+                    ImageView imageView = new ImageView(image);
 
-                try {
-                    if (imageFile.exists()) {
-                        Desktop.getDesktop().open(imageFile);
-                    } else {
-                        System.out.println("File not found: " + imageFile.getAbsolutePath());
-                    }
-                } catch (IOException e) {
-                    e.printStackTrace();
+                    Stage popup = new Stage();
+                    popup.setScene(new Scene(new StackPane(imageView), 845, 478)); // Adjust size as needed
+                    popup.setTitle("Bill ID: " + selectedBill.getId());
+                    popup.show();
+                } else {
+                    System.out.println("File not found: " + imageFile.getAbsolutePath());
                 }
             }
         }
-    }
+
     public class Bill {
         private final SimpleStringProperty id;
         private final SimpleStringProperty date;

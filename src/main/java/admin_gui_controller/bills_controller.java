@@ -17,7 +17,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import main_package.user_session;
 import java.net.URL;
@@ -68,18 +70,20 @@ public class bills_controller implements Initializable {
         table.setOnMouseClicked(event -> {
             adminbills selectedBill = table.getSelectionModel().getSelectedItem();
             if (selectedBill != null) {
-                String billId = String.valueOf(selectedBill.getBill_id()); // Use getter from adminbills
-                String imagePath = "Bills/" + billId + ".png"; // Adjust path as needed
-                try {
-                    File imageFile = new File(imagePath);
-                    if (imageFile.exists()) {
-                        Desktop.getDesktop().open(imageFile);
-                    } else {
-                        System.out.println("File not found for Bill ID: " + billId);
-                    }
-                } catch (IOException e) {
-                    System.out.println("Error opening image for Bill ID " + billId + ": " + e.getMessage());
-                    e.printStackTrace();
+                String billId = String.valueOf(selectedBill.getBill_id());
+                String imagePath = "Bills/" + billId + ".png";
+
+                File imageFile = new File(imagePath);
+                if (imageFile.exists()) {
+                    javafx.scene.image.Image image = new javafx.scene.image.Image(imageFile.toURI().toString());
+                    ImageView imageView = new ImageView(image);
+
+                    Stage popup = new Stage();
+                    popup.setScene(new Scene(new StackPane(imageView), 845, 478));
+                    popup.setTitle("Bill ID: " + billId);
+                    popup.show();
+                } else {
+                    System.out.println("File not found for Bill ID: " + billId);
                 }
             }
         });
