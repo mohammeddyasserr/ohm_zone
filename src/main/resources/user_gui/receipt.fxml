@@ -10,6 +10,7 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.media.MediaView?>
 <?import javafx.scene.shape.Circle?>
@@ -47,83 +48,92 @@
                 </ImageView>
             </children>
         </StackPane>
-       <AnchorPane fx:id="receipt" layoutX="31.0" layoutY="95.0" prefHeight="477.0" prefWidth="864.0" style="-fx-background-color: transparent;">
+      <AnchorPane layoutX="19.0" layoutY="87.0" prefHeight="512.0" prefWidth="876.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="74.0">
          <children>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#143656" height="478.0" layoutX="12.0" stroke="BLACK" strokeType="INSIDE" style="-fx-fill: linear-gradient(from 0% 0% to 100% 100%, #001f3f, #003b46); -fx-arc-width: 50; -fx-arc-height: 50;" width="845.0" />
-            <Circle fill="DODGERBLUE" layoutX="80.0" layoutY="478.0" radius="25.0" stroke="BLACK" strokeType="INSIDE" style="-fx-stroke: transparent; -fx-fill: #014d4a;" />
-            <Circle fill="DODGERBLUE" layoutX="145.0" layoutY="478.0" radius="25.0" stroke="BLACK" strokeType="INSIDE" style="-fx-stroke: transparent; -fx-fill: #014d4a;" />
-            <Circle fill="DODGERBLUE" layoutX="210.0" layoutY="478.0" radius="25.0" stroke="BLACK" strokeType="INSIDE" style="-fx-stroke: transparent; -fx-fill: #014d4a;" />
-            <Circle fill="DODGERBLUE" layoutX="275.0" layoutY="478.0" radius="25.0" stroke="BLACK" strokeType="INSIDE" style="-fx-stroke: transparent; -fx-fill: #014d4a;" />
-            <Circle fill="DODGERBLUE" layoutX="340.0" layoutY="478.0" radius="25.0" stroke="BLACK" strokeType="INSIDE" style="-fx-stroke: transparent; -fx-fill: #014d4a;" />
-            <Circle fill="DODGERBLUE" layoutX="405.0" layoutY="478.0" radius="25.0" stroke="BLACK" strokeType="INSIDE" style="-fx-stroke: transparent; -fx-fill: #014d4a;" />
-            <Circle fill="DODGERBLUE" layoutX="470.0" layoutY="478.0" radius="25.0" stroke="BLACK" strokeType="INSIDE" style="-fx-stroke: transparent; -fx-fill: #014d4a;" />
-            <Circle fill="DODGERBLUE" layoutX="535.0" layoutY="478.0" radius="25.0" stroke="BLACK" strokeType="INSIDE" style="-fx-stroke: transparent; -fx-fill: #014d4a;" />
-            <Circle fill="DODGERBLUE" layoutX="600.0" layoutY="478.0" radius="25.0" stroke="BLACK" strokeType="INSIDE" style="-fx-stroke: transparent; -fx-fill: #014d4a;" />
-            <Circle fill="DODGERBLUE" layoutX="665.0" layoutY="478.0" radius="25.0" stroke="BLACK" strokeType="INSIDE" style="-fx-stroke: transparent; -fx-fill: #014d4a;" />
-            <Circle fill="DODGERBLUE" layoutX="730.0" layoutY="478.0" radius="25.0" stroke="BLACK" strokeType="INSIDE" style="-fx-stroke: transparent; -fx-fill: #014d4a;" />
-            <Circle fill="DODGERBLUE" layoutX="795.0" layoutY="478.0" radius="25.0" stroke="BLACK" strokeType="INSIDE" style="-fx-stroke: transparent; -fx-fill: #014d4a;" />
-             <TableView fx:id="table" fixedCellSize="0.0" layoutX="359.0" layoutY="14.0" prefHeight="422.0" prefWidth="482.0" style="-fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #001f3f, #003b46); -fx-border-color: white; -fx-border-radius: 25;" stylesheets="@style1.CSS">
-               <columns>
-                  <TableColumn fx:id="name" minWidth="99.20001220703125" prefWidth="99.20001220703125" style="-fx-text-fill: White;" text="NAME" />
-                  <TableColumn fx:id="price" minWidth="24.79998779296875" prefWidth="127.20001220703125" style="-fx-text-fill: White;" text="PRICE" />
-                  <TableColumn fx:id="quantity" minWidth="54.39996337890625" prefWidth="107.2000732421875" style="-fx-text-fill: White;" text="QUANTITY" />
-                  <TableColumn fx:id="total" minWidth="24.79998779296875" prefWidth="152.7999267578125" style="-fx-text-fill: White;" text="TOTAL PRICE" />
-               </columns>
-               <rotationAxis>
-                  <Point3D />
-               </rotationAxis>
-            </TableView>
-            <Label layoutX="40.0" layoutY="92.0" prefHeight="38.0" prefWidth="80.0" style="-fx-background-color: trasparent;" text="Date :" textFill="WHITE">
-               <font>
-                  <Font name="Charter Bold" size="20.0" />
-               </font>
-            </Label>
-            <Label fx:id="date" layoutX="100.0" layoutY="92.0" prefHeight="38.0" prefWidth="173.0" style="-fx-background-color: transparent;" textFill="grey">
-               <font>
-                  <Font name="Charter Bold" size="20.0" />
-               </font>
-            </Label>
-            <Label layoutX="40.0" layoutY="185.0" prefHeight="38.0" prefWidth="110.0" style="-fx-background-color: transparent;" text="Username :" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="20.0" />
-               </font>
-            </Label>
-            <Label layoutX="35.0" layoutY="330.0" prefHeight="38.0" prefWidth="120.0" style="-fx-background-color: transparent;" text="Order Total :" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="20.0" />
-               </font></Label>
-            <Label fx:id="total_price" layoutX="173.0" layoutY="329.0" prefHeight="38.0" prefWidth="174.0" style="-fx-background-color: transparent;" textFill="WHITE" />
-            <Label alignment="CENTER" layoutX="21.0" layoutY="384.0" prefHeight="39.0" prefWidth="327.0" style="-fx-background-color: transparent;" text="Thank You For Your Purchase" textAlignment="CENTER" textFill="WHITE">
-               <font>
-                  <Font name="Charm Bold" size="25.0" />
-               </font>
-            </Label>
-            <Label layoutX="40.0" layoutY="145.0" prefHeight="38.0" prefWidth="80.0" style="-fx-background-color: transparent;" text="Bill ID :" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="20.0" />
-               </font>
-            </Label>
-            <Label fx:id="id" layoutX="163.0" layoutY="145.0" prefHeight="38.0" prefWidth="173.0" style="-fx-background-color: transparent;" textFill="WHITE">
-               <font>
-                  <Font size="15.0" />
-               </font>
-            </Label>
-            <Label fx:id="username" layoutX="163.0" layoutY="185.0" prefHeight="38.0" prefWidth="173.0" style="-fx-background-color: transparent;" textFill="WHITE">
-               <font>
-                  <Font size="15.0" />
-               </font>
-            </Label>
-            <Line endX="167.20001220703125" endY="-3.0517578125E-5" layoutX="192.0" layoutY="129.0" startX="-180.0" startY="-3.0517578125E-5" stroke="white" strokeLineCap="ROUND">
-               <cursor>
-                  <Cursor fx:constant="NONE" />
-               </cursor>
-            </Line>
-            <MediaView fx:id="checkmark" fitHeight="150.0" fitWidth="150.0" layoutX="110.0" layoutY="274.0" visible="false" />
-            <Label contentDisplay="RIGHT" layoutX="86.0" layoutY="14.0" prefHeight="38.0" prefWidth="187.0" style="-fx-background-color: transparent;" text="OHM. RECEIPT." textFill="#00ff80" wrapText="true">
-               <font>
-                  <Font name="Book Antiqua" size="24.0" />
-               </font>
-            </Label>
+            <HBox alignment="CENTER" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="7.0" layoutX="38.0" layoutY="8.0">
+               <children>
+                   <AnchorPane fx:id="receipt" prefHeight="477.0" prefWidth="864.0" style="-fx-background-color: transparent;">
+                     <children>
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#143656" height="478.0" layoutX="12.0" stroke="BLACK" strokeType="INSIDE" style="-fx-fill: linear-gradient(from 0% 0% to 100% 100%, #001f3f, #003b46); -fx-arc-width: 50; -fx-arc-height: 50;" width="845.0" />
+                        <Circle fill="DODGERBLUE" layoutX="80.0" layoutY="478.0" radius="25.0" stroke="BLACK" strokeType="INSIDE" style="-fx-stroke: transparent; -fx-fill: #014d4a;" />
+                        <Circle fill="DODGERBLUE" layoutX="145.0" layoutY="478.0" radius="25.0" stroke="BLACK" strokeType="INSIDE" style="-fx-stroke: transparent; -fx-fill: #014d4a;" />
+                        <Circle fill="DODGERBLUE" layoutX="210.0" layoutY="478.0" radius="25.0" stroke="BLACK" strokeType="INSIDE" style="-fx-stroke: transparent; -fx-fill: #014d4a;" />
+                        <Circle fill="DODGERBLUE" layoutX="275.0" layoutY="478.0" radius="25.0" stroke="BLACK" strokeType="INSIDE" style="-fx-stroke: transparent; -fx-fill: #014d4a;" />
+                        <Circle fill="DODGERBLUE" layoutX="340.0" layoutY="478.0" radius="25.0" stroke="BLACK" strokeType="INSIDE" style="-fx-stroke: transparent; -fx-fill: #014d4a;" />
+                        <Circle fill="DODGERBLUE" layoutX="405.0" layoutY="478.0" radius="25.0" stroke="BLACK" strokeType="INSIDE" style="-fx-stroke: transparent; -fx-fill: #014d4a;" />
+                        <Circle fill="DODGERBLUE" layoutX="470.0" layoutY="478.0" radius="25.0" stroke="BLACK" strokeType="INSIDE" style="-fx-stroke: transparent; -fx-fill: #014d4a;" />
+                        <Circle fill="DODGERBLUE" layoutX="535.0" layoutY="478.0" radius="25.0" stroke="BLACK" strokeType="INSIDE" style="-fx-stroke: transparent; -fx-fill: #014d4a;" />
+                        <Circle fill="DODGERBLUE" layoutX="600.0" layoutY="478.0" radius="25.0" stroke="BLACK" strokeType="INSIDE" style="-fx-stroke: transparent; -fx-fill: #014d4a;" />
+                        <Circle fill="DODGERBLUE" layoutX="665.0" layoutY="478.0" radius="25.0" stroke="BLACK" strokeType="INSIDE" style="-fx-stroke: transparent; -fx-fill: #014d4a;" />
+                        <Circle fill="DODGERBLUE" layoutX="730.0" layoutY="478.0" radius="25.0" stroke="BLACK" strokeType="INSIDE" style="-fx-stroke: transparent; -fx-fill: #014d4a;" />
+                        <Circle fill="DODGERBLUE" layoutX="795.0" layoutY="478.0" radius="25.0" stroke="BLACK" strokeType="INSIDE" style="-fx-stroke: transparent; -fx-fill: #014d4a;" />
+                         <TableView fx:id="table" fixedCellSize="0.0" layoutX="359.0" layoutY="14.0" prefHeight="422.0" prefWidth="482.0" style="-fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #001f3f, #003b46); -fx-border-color: white; -fx-border-radius: 25;" stylesheets="@style1.CSS">
+                           <columns>
+                              <TableColumn fx:id="name" minWidth="99.20001220703125" prefWidth="99.20001220703125" style="-fx-text-fill: White;" text="NAME" />
+                              <TableColumn fx:id="price" minWidth="24.79998779296875" prefWidth="127.20001220703125" style="-fx-text-fill: White;" text="PRICE" />
+                              <TableColumn fx:id="quantity" minWidth="54.39996337890625" prefWidth="107.2000732421875" style="-fx-text-fill: White;" text="QUANTITY" />
+                              <TableColumn fx:id="total" minWidth="24.79998779296875" prefWidth="152.7999267578125" style="-fx-text-fill: White;" text="TOTAL PRICE" />
+                           </columns>
+                           <rotationAxis>
+                              <Point3D />
+                           </rotationAxis>
+                        </TableView>
+                        <Label layoutX="40.0" layoutY="92.0" prefHeight="38.0" prefWidth="80.0" style="-fx-background-color: trasparent;" text="Date :" textFill="WHITE">
+                           <font>
+                              <Font name="Charter Bold" size="20.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="date" layoutX="100.0" layoutY="92.0" prefHeight="38.0" prefWidth="173.0" style="-fx-background-color: transparent;" textFill="grey">
+                           <font>
+                              <Font name="Charter Bold" size="20.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="40.0" layoutY="185.0" prefHeight="38.0" prefWidth="110.0" style="-fx-background-color: transparent;" text="Username :" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="20.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="35.0" layoutY="330.0" prefHeight="38.0" prefWidth="120.0" style="-fx-background-color: transparent;" text="Order Total :" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="20.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="total_price" layoutX="173.0" layoutY="329.0" prefHeight="38.0" prefWidth="174.0" style="-fx-background-color: transparent;" textFill="WHITE" />
+                        <Label alignment="CENTER" layoutX="21.0" layoutY="384.0" prefHeight="39.0" prefWidth="327.0" style="-fx-background-color: transparent;" text="Thank You For Your Purchase" textAlignment="CENTER" textFill="WHITE">
+                           <font>
+                              <Font name="Charm Bold" size="25.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="40.0" layoutY="145.0" prefHeight="38.0" prefWidth="80.0" style="-fx-background-color: transparent;" text="Bill ID :" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="20.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="id" layoutX="163.0" layoutY="145.0" prefHeight="38.0" prefWidth="173.0" style="-fx-background-color: transparent;" textFill="WHITE">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="username" layoutX="163.0" layoutY="185.0" prefHeight="38.0" prefWidth="173.0" style="-fx-background-color: transparent;" textFill="WHITE">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
+                        <Line endX="167.20001220703125" endY="-3.0517578125E-5" layoutX="192.0" layoutY="129.0" startX="-180.0" startY="-3.0517578125E-5" stroke="white" strokeLineCap="ROUND">
+                           <cursor>
+                              <Cursor fx:constant="NONE" />
+                           </cursor>
+                        </Line>
+                        <MediaView fx:id="checkmark" fitHeight="150.0" fitWidth="150.0" layoutX="110.0" layoutY="274.0" visible="false" />
+                        <Label contentDisplay="RIGHT" layoutX="86.0" layoutY="14.0" prefHeight="38.0" prefWidth="187.0" style="-fx-background-color: transparent;" text="OHM. RECEIPT." textFill="#00ff80" wrapText="true">
+                           <font>
+                              <Font name="Book Antiqua" size="24.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </AnchorPane>
+               </children>
+            </HBox>
          </children>
       </AnchorPane>
     </children>
