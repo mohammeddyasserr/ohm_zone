@@ -16,14 +16,17 @@ import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import javafx.scene.control.Label;
 import javafx.util.Duration;
+import javafx.scene.input.MouseEvent;
 
 import javafx.event.ActionEvent;
 import main_package.user_session;
 
 import javax.swing.text.html.ImageView;
 import java.awt.*;
+
 import java.io.IOException;
 import java.net.URL;
+import java.sql.*;
 import java.util.HashMap;
 import java.util.ResourceBundle;
 
@@ -49,10 +52,44 @@ public class user_main_controller implements Initializable {
     @FXML
     private Button account_btn;
 
+    @FXML
+    private Label orders_value;
+
+    @FXML
+    private Label cart_value;
+
+
+    private void loadUserOrderCount() {
+        String username = account_btn.getText();
+
+        String query = "SELECT COUNT(*) AS count FROM orders WHERE username = ?";
+
+        try (Connection con = DriverManager.getConnection("jdbc:sqlite:store.db");
+             PreparedStatement ps = con.prepareStatement(query)) {
+
+            ps.setString(1, username);
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    int count = rs.getInt("count");
+                    orders_value.setText(Integer.toString(count));
+                } else {
+                    orders_value.setText("0");
+                }
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            orders_value.setText("Error");
+        }
+    }
+
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         account_btn.setText(user_session.get_user());
+        loadUserOrderCount();
         updateCartCount(); // initial load
+        cart_value.setText(Integer.toString(SharedCart.getTotalItemCount()));
 
         SharedCart.cartItems.addListener((ListChangeListener<? super HashMap<String, Object>>) change -> {
             updateCartCount(); // auto update on add/remove
@@ -64,6 +101,20 @@ public class user_main_controller implements Initializable {
             int count = SharedCart.getTotalItemCount();
             cartCounter.setText("Your Cart (" + count + ")");
         }
+    }
+
+    @FXML
+    void to_cart(MouseEvent event) throws IOException {
+        Parent newRoot = FXMLLoader.load(getClass().getResource("/user_gui/cart.fxml"));
+        Scene scene = ((Node) event.getSource()).getScene();
+        scene.setRoot(newRoot);
+    }
+
+    @FXML
+    void to_orders(MouseEvent event) throws IOException {
+        Parent newRoot = FXMLLoader.load(getClass().getResource("/user_gui/pills.fxml"));
+        Scene scene = ((Node) event.getSource()).getScene();
+        scene.setRoot(newRoot);
     }
 
 

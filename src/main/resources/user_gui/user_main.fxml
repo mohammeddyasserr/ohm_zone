@@ -1,15 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.effect.Glow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.control.Label?>
 <AnchorPane prefHeight="594.0" prefWidth="951.0" style="-fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #002b36, #014d4a, #00ffcc);" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="user_gui_controller.user_main_controller">
    <children>
       <!-- Top StackPane containing top bar and centered logo -->
@@ -94,13 +97,13 @@
                   <!-- Bottom Buttons -->
                   <Button fx:id="cart_page_btn" onAction="#cart_page" style="-fx-background-color: transparent;">
                      <graphic>
-                        <HBox spacing="5" alignment="CENTER_LEFT">
+                        <HBox alignment="CENTER_LEFT" spacing="5">
                            <ImageView fitHeight="20" fitWidth="20">
                               <image>
                                  <Image url="@../icons/cart.png" />
                               </image>
                            </ImageView>
-                           <Label fx:id="cartCounter" text="Your Cart (0)" textFill="white" style="-fx-font-size: 14px;" />
+                           <Label fx:id="cartCounter" style="-fx-font-size: 14px;" text="Your Cart (0)" textFill="white" />
                         </HBox>
                      </graphic>
                   </Button>
@@ -126,5 +129,95 @@
             </VBox>
          </children>
       </AnchorPane>
+      <StackPane layoutX="170.0" layoutY="74.0" prefHeight="520.0" prefWidth="782.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="168.60000000000002" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="74.0">
+         <children>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0">
+               <children>
+                  <Pane layoutX="8.0" prefHeight="124.0" prefWidth="766.0">
+                     <children>
+                        <ImageView fitHeight="124.0" fitWidth="766.0" layoutY="7.0" opacity="0.78" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../icons/electro2.jpg" />
+                           </image>
+                        </ImageView>
+                        <Label layoutX="97.0" layoutY="37.0" text="All your project Essentials in one place" textFill="WHITE">
+                           <font>
+                              <Font size="34.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+                  <Pane fx:id="orders" layoutX="441.0" layoutY="176.0" onMouseClicked="#to_orders" prefHeight="134.0" prefWidth="326.0" style="-fx-background-color: rgba(255,255,255,0.2); -fx-border-radius: 20; -fx-background-radius: 25; -fx-border-color: white; -fx-border-width: 2;">
+                     <children>
+                        <Label layoutX="28.0" layoutY="14.0" text="Orders" textFill="#dcdcdc">
+                           <font>
+                              <Font name="System Bold" size="27.0" />
+                           </font>
+                        </Label>
+                        <ImageView fitHeight="74.0" fitWidth="65.0" layoutX="247.0" layoutY="46.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../icons/money4.png" />
+                           </image>
+                        </ImageView>
+                        <Label fx:id="orders_value" layoutX="44.0" layoutY="63.0" prefHeight="32.0" prefWidth="90.0" textFill="WHITE">
+                           <font>
+                              <Font size="22.0" />
+                           </font>
+                        </Label>
+                     </children>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Pane>
+                  <Pane fx:id="cart" layoutX="441.0" layoutY="345.0" onMouseClicked="#to_cart" prefHeight="134.0" prefWidth="326.0" style="-fx-background-color: rgba(255,255,255,0.2); -fx-border-radius: 20; -fx-background-radius: 25; -fx-border-color: white; -fx-border-width: 2;">
+                     <children>
+                        <Label layoutX="14.0" layoutY="14.0" text="Your Cart" textFill="#dcdcdc">
+                           <font>
+                              <Font name="System Bold" size="27.0" />
+                           </font>
+                        </Label>
+                        <ImageView fitHeight="54.0" fitWidth="60.0" layoutX="241.0" layoutY="40.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../icons/cart.png" />
+                           </image>
+                        </ImageView>
+                        <Label fx:id="cart_value" layoutX="41.0" layoutY="67.0" prefHeight="32.0" prefWidth="112.0" textFill="WHITE">
+                           <font>
+                              <Font size="22.0" />
+                           </font>
+                        </Label>
+                     </children>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Pane>
+                  <Pane layoutX="23.0" layoutY="162.0" prefHeight="326.0" prefWidth="400.0">
+                     <children>
+                        <Label layoutX="14.0" layoutY="14.0" text="Innovate" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="37.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="167.0" layoutY="68.0" text="Build" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="37.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="257.0" layoutY="122.0" text="Create" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="37.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="22.0" layoutY="231.0" text="We've Got the Parts." textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="37.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+               </children>
+            </AnchorPane>
+         </children>
+      </StackPane>
    </children>
 </AnchorPane>
