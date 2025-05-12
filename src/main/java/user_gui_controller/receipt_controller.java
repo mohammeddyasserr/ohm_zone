@@ -1,6 +1,7 @@
 package user_gui_controller;
 
 import javafx.animation.TranslateTransition;
+import javafx.application.Platform;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
@@ -99,6 +100,7 @@ public class receipt_controller implements Initializable {
         mediaPlayer.play();
 
         mediaPlayer.setOnEndOfMedia(() -> {
+            Platform.runLater(() -> {
             // Hide circles
             var hiddenCircles = receipt.getChildren().stream()
                     .filter(node -> node instanceof Circle)
@@ -112,7 +114,7 @@ public class receipt_controller implements Initializable {
             File screenshotsDir = new File("Bills");
             if (!screenshotsDir.exists()) screenshotsDir.mkdirs();
 
-            String user = username.getText().trim().replaceAll("\\s+", "_");
+
             File outputFile;
             do {
                 outputFile = new File(screenshotsDir, id.getText() + ".png");
@@ -124,6 +126,7 @@ public class receipt_controller implements Initializable {
             } catch (IOException e) {
                 e.printStackTrace();
             }
+        });
         });
     }
 
