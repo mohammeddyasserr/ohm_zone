@@ -37,6 +37,8 @@ import java.awt.*;
 import java.io.File;
 import java.util.HashMap;
 
+import static javafx.scene.control.TableView.CONSTRAINED_RESIZE_POLICY;
+
 
 public class user_bills_controller implements Initializable {
 
@@ -85,6 +87,7 @@ public class user_bills_controller implements Initializable {
         setupBillsColumns();
         loadBillsData();
         updateCartCount();
+        bills_table.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
     }
 
     private void setupBillsColumns() {

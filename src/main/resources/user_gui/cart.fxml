@@ -129,7 +129,7 @@
             </VBox>
          </children>
       </AnchorPane>
-      <TableView id="productsTable" fx:id="table" layoutX="203.0" layoutY="96.0" onMouseClicked="#rowClicked" prefHeight="326.0" prefWidth="702.0" style="-fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #002b36, #014d4a, #00ffcc); -fx-border-color: white;" stylesheets="@style1.CSS">
+      <TableView id="productsTable" fx:id="table" layoutX="203.0" layoutY="96.0" onMouseClicked="#rowClicked" prefHeight="326.0" prefWidth="702.0" style="-fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #002b36, #014d4a, #00ffcc); -fx-border-color: white;" stylesheets="@style1.CSS" AnchorPane.bottomAnchor="171.60000000000002" AnchorPane.leftAnchor="203.0" AnchorPane.rightAnchor="27.399999999999977" AnchorPane.topAnchor="96.0">
          <columns>
             <TableColumn fx:id="name" minWidth="100.0" prefWidth="138.40000915527344" text="NAME" />
             <TableColumn fx:id="price" minWidth="100.0" prefWidth="180.0" text="PRICE" />
@@ -137,14 +137,14 @@
             <TableColumn fx:id="total_price" minWidth="100.0" prefWidth="184.7999267578125" text="TOTAL PRICE" />
          </columns>
       </TableView>
-      <Button fx:id="b1" layoutX="718.0" layoutY="506.0" mnemonicParsing="false" onAction="#checkout" prefHeight="38.0" prefWidth="194.0" style="-fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #001f3f, #003b46);" text="CHECKOUT" textFill="WHITE" />
-      <Label fx:id="checkout" layoutX="712.0" layoutY="545.0" prefHeight="18.0" prefWidth="182.0" text="" />
-      <Label fx:id="checkout_error" layoutX="778.0" layoutY="545.0" text="" textFill="#cf2020" />
-      <Label layoutX="203.0" layoutY="434.0" prefHeight="30.0" prefWidth="515.0" style="-fx-text-fill: linear-gradient(from 0% 0% to 100% 100%, #001f3f, #003b46);" text="Double-click a row to remove the corresponding item from the cart.">
+      <Button fx:id="b1" layoutX="718.0" layoutY="506.0" mnemonicParsing="false" onAction="#checkout" prefHeight="38.0" prefWidth="194.0" style="-fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #001f3f, #003b46);" text="CHECKOUT" textFill="WHITE" AnchorPane.bottomAnchor="49.6" AnchorPane.rightAnchor="20.599999999999994" />
+      <Label fx:id="checkout" layoutX="712.0" layoutY="545.0" prefHeight="18.0" prefWidth="182.0" text="" AnchorPane.bottomAnchor="30.6" AnchorPane.rightAnchor="38.599999999999994" />
+      <Label fx:id="checkout_error" layoutX="778.0" layoutY="545.0" text="" textFill="#cf2020" AnchorPane.bottomAnchor="30.399999999999956" AnchorPane.rightAnchor="38.39999999999995" />
+      <Label layoutX="203.0" layoutY="440.0" prefHeight="30.0" prefWidth="515.0" style="-fx-text-fill: linear-gradient(from 0% 0% to 100% 100%, #001f3f, #003b46);" text="Double-click a row to remove the corresponding item from the cart." AnchorPane.bottomAnchor="123.60000000000002" AnchorPane.leftAnchor="203.0">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <Label fx:id="quantity_error" alignment="CENTER_RIGHT" layoutX="407.0" layoutY="480.0" prefHeight="18.0" prefWidth="486.0" textFill="#cf2020" />
+      <Label fx:id="quantity_error" alignment="CENTER_RIGHT" layoutX="408.0" layoutY="480.0" prefHeight="18.0" prefWidth="486.0" textFill="#cf2020" AnchorPane.bottomAnchor="95.60000000000002" AnchorPane.rightAnchor="38.39999999999995" />
    </children>
 </AnchorPane>

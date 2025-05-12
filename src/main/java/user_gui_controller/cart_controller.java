@@ -56,13 +56,19 @@ public class cart_controller implements Initializable {
     @FXML
     private Label cartCounter;
 
+    @FXML private TableView<HashMap<String, Object>> table;
+    @FXML private TableColumn<HashMap<String, Object>, String> name;
+    @FXML private TableColumn<HashMap<String, Object>, Double> price;
+    @FXML private TableColumn<HashMap<String, Object>, Integer> quantity;
+    @FXML private TableColumn<HashMap<String, Object>, Double> total_price;
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         account_btn.setText(user_session.get_user());
         setupTable();
         updateCartCount(); // initial load
-
+        table.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
         SharedCart.cartItems.addListener((ListChangeListener<? super HashMap<String, Object>>) change -> {
             updateCartCount(); // auto update on add/remove
         });
@@ -163,11 +169,7 @@ public class cart_controller implements Initializable {
     @FXML
     private Label checkout;
 
-    @FXML private TableView<HashMap<String, Object>> table;
-    @FXML private TableColumn<HashMap<String, Object>, String> name;
-    @FXML private TableColumn<HashMap<String, Object>, Double> price;
-    @FXML private TableColumn<HashMap<String, Object>, Integer> quantity;
-    @FXML private TableColumn<HashMap<String, Object>, Double> total_price;
+
 
 
     @FXML

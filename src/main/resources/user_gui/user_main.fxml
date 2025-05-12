@@ -129,11 +129,11 @@
             </VBox>
          </children>
       </AnchorPane>
-      <StackPane layoutX="170.0" layoutY="74.0" prefHeight="520.0" prefWidth="782.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="168.60000000000002" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="74.0">
+      <AnchorPane layoutX="168.8000030517578" layoutY="74.4000015258789" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="170.5" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="74.4000015258789">
          <children>
-            <AnchorPane prefHeight="200.0" prefWidth="200.0">
+            <HBox alignment="CENTER" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="7.0">
                <children>
-                  <Pane layoutX="8.0" prefHeight="124.0" prefWidth="766.0">
+                  <Pane maxWidth="766.0" minWidth="766.0" prefHeight="124.0" prefWidth="766.0">
                      <children>
                         <ImageView fitHeight="124.0" fitWidth="766.0" layoutY="7.0" opacity="0.78" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -147,77 +147,78 @@
                         </Label>
                      </children>
                   </Pane>
-                  <Pane fx:id="orders" layoutX="441.0" layoutY="176.0" onMouseClicked="#to_orders" prefHeight="134.0" prefWidth="326.0" style="-fx-background-color: rgba(255,255,255,0.2); -fx-border-radius: 20; -fx-background-radius: 25; -fx-border-color: white; -fx-border-width: 2;">
-                     <children>
-                        <Label layoutX="28.0" layoutY="14.0" text="Orders" textFill="#dcdcdc">
-                           <font>
-                              <Font name="System Bold" size="27.0" />
-                           </font>
-                        </Label>
-                        <ImageView fitHeight="74.0" fitWidth="65.0" layoutX="247.0" layoutY="46.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../icons/money4.png" />
-                           </image>
-                        </ImageView>
-                        <Label fx:id="orders_value" layoutX="44.0" layoutY="63.0" prefHeight="32.0" prefWidth="90.0" textFill="WHITE">
-                           <font>
-                              <Font size="22.0" />
-                           </font>
-                        </Label>
-                     </children>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </Pane>
-                  <Pane fx:id="cart" layoutX="441.0" layoutY="345.0" onMouseClicked="#to_cart" prefHeight="134.0" prefWidth="326.0" style="-fx-background-color: rgba(255,255,255,0.2); -fx-border-radius: 20; -fx-background-radius: 25; -fx-border-color: white; -fx-border-width: 2;">
-                     <children>
-                        <Label layoutX="14.0" layoutY="14.0" text="Your Cart" textFill="#dcdcdc">
-                           <font>
-                              <Font name="System Bold" size="27.0" />
-                           </font>
-                        </Label>
-                        <ImageView fitHeight="54.0" fitWidth="60.0" layoutX="241.0" layoutY="40.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../icons/cart.png" />
-                           </image>
-                        </ImageView>
-                        <Label fx:id="cart_value" layoutX="41.0" layoutY="67.0" prefHeight="32.0" prefWidth="112.0" textFill="WHITE">
-                           <font>
-                              <Font size="22.0" />
-                           </font>
-                        </Label>
-                     </children>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </Pane>
-                  <Pane layoutX="23.0" layoutY="162.0" prefHeight="326.0" prefWidth="400.0">
-                     <children>
-                        <Label layoutX="14.0" layoutY="14.0" text="Innovate" textFill="WHITE">
-                           <font>
-                              <Font name="System Bold" size="37.0" />
-                           </font>
-                        </Label>
-                        <Label layoutX="167.0" layoutY="68.0" text="Build" textFill="WHITE">
-                           <font>
-                              <Font name="System Bold" size="37.0" />
-                           </font>
-                        </Label>
-                        <Label layoutX="257.0" layoutY="122.0" text="Create" textFill="WHITE">
-                           <font>
-                              <Font name="System Bold" size="37.0" />
-                           </font>
-                        </Label>
-                        <Label layoutX="22.0" layoutY="231.0" text="We've Got the Parts." textFill="WHITE">
-                           <font>
-                              <Font name="System Bold" size="37.0" />
-                           </font>
-                        </Label>
-                     </children>
-                  </Pane>
                </children>
-            </AnchorPane>
+            </HBox>
+            <Pane layoutX="14.0" layoutY="162.0" prefHeight="326.0" prefWidth="400.0" AnchorPane.leftAnchor="14.0">
+               <children>
+                  <Label layoutX="14.0" layoutY="14.0" text="Innovate" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="37.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="167.0" layoutY="68.0" text="Build" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="37.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="257.0" layoutY="122.0" text="Create" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="37.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="22.0" layoutY="231.0" text="We've Got the Parts." textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="37.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+
+                              <Pane fx:id="orders" layoutX="440.0" layoutY="314.0" onMouseClicked="#to_orders" prefHeight="134.0" prefWidth="326.0" style="-fx-background-color: rgba(255,255,255,0.2); -fx-border-radius: 20; -fx-background-radius: 25; -fx-border-color: white; -fx-border-width: 2;" AnchorPane.bottomAnchor="223.20000000000002" AnchorPane.rightAnchor="14.399999999999977">
+               <children>
+                  <Label layoutX="28.0" layoutY="14.0" text="Orders" textFill="#dcdcdc">
+                     <font>
+                        <Font name="System Bold" size="27.0" />
+                     </font>
+                  </Label>
+                  <ImageView fitHeight="74.0" fitWidth="65.0" layoutX="247.0" layoutY="46.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/money4.png" />
+                     </image>
+                  </ImageView>
+                  <Label fx:id="orders_value" layoutX="44.0" layoutY="63.0" prefHeight="32.0" prefWidth="90.0" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
+               </children>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Pane>
+            <Pane fx:id="cart" layoutX="440.0" layoutY="318.0" onMouseClicked="#to_cart" prefHeight="134.0" prefWidth="326.0" style="-fx-background-color: rgba(255,255,255,0.2); -fx-border-radius: 20; -fx-background-radius: 25; -fx-border-color: white; -fx-border-width: 2;" AnchorPane.bottomAnchor="67.20000000000005" AnchorPane.rightAnchor="14.200000000000045">
+               <children>
+                  <Label layoutX="14.0" layoutY="14.0" text="Your Cart" textFill="#dcdcdc">
+                     <font>
+                        <Font name="System Bold" size="27.0" />
+                     </font>
+                  </Label>
+                  <ImageView fitHeight="54.0" fitWidth="60.0" layoutX="241.0" layoutY="40.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/cart.png" />
+                     </image>
+                  </ImageView>
+                  <Label fx:id="cart_value" layoutX="41.0" layoutY="67.0" prefHeight="32.0" prefWidth="112.0" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
+               </children>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Pane>
          </children>
-      </StackPane>
+      </AnchorPane>
    </children>
 </AnchorPane>
