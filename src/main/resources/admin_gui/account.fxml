@@ -85,7 +85,7 @@
                      </image>
                   </ImageView>
                </graphic></Button>
-            <Button graphicTextGap="10.0" layoutY="204.0" mnemonicParsing="false" onAction="#pills_page" prefHeight="51.0" prefWidth="166.0" style="-fx-background-color: transparent; -fx-alignment: CENTER_LEFT;" text="Pills" textFill="WHITE">
+            <Button graphicTextGap="10.0" layoutY="204.0" mnemonicParsing="false" onAction="#pills_page" prefHeight="51.0" prefWidth="166.0" style="-fx-background-color: transparent; -fx-alignment: CENTER_LEFT;" text="Bills" textFill="WHITE">
                <graphic>
                   <ImageView fitHeight="30.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                      <image>
