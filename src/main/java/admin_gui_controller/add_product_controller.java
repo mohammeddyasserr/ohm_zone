@@ -23,7 +23,7 @@ import java.util.ResourceBundle;
 
 public class add_product_controller implements Initializable {
     public add_product_controller() {
-        // Constructor افتراضي
+
     }
     int const_id;
     private String currentPrefix = "";
@@ -71,7 +71,7 @@ public class add_product_controller implements Initializable {
 
             int const_id;
             if (r.next()) {
-                const_id = r.getInt("id") + 1; // لو عايز id الجديد
+                const_id = r.getInt("id") + 1;
             } else {
                 const_id = 1;
             }

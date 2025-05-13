@@ -30,21 +30,21 @@ public class add_admin_controller implements Initializable {
 
     // Add Admin Fields
     @FXML
-    TextField user_name;
+    private TextField user_name;
     @FXML
-    PasswordField password;
+    private PasswordField password;
     @FXML
-    PasswordField password_confirm;
+    private  PasswordField password_confirm;
     @FXML
-    Label username_error;
+     private  Label username_error;
     @FXML
-    Label password_error;
+     private  Label password_error;
     @FXML
-    Label confirm_error;
+     private  Label confirm_error;
     @FXML
-    Label result_label;
+     private Label result_label;
     @FXML
-    Button addbtn;
+    private  Button addbtn;
     @FXML
     private Button account_btn;
 
