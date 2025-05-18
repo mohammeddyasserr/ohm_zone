@@ -54,28 +54,28 @@
             <children>
                 <VBox spacing="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                     <children>
-                        <Button onAction="#home_page_user" style="-fx-background-color: transparent; -fx-alignment: CENTER_LEFT;" text="Home" textFill="WHITE">
+                        <Button onAction="#home_page_user" prefHeight="51.0" prefWidth="166.0" style="-fx-background-color: transparent; -fx-alignment: CENTER_LEFT;" text="Home" textFill="WHITE">
                             <graphic><ImageView fitHeight="25" fitWidth="25"><image><Image url="@../icons/home.png" /></image></ImageView></graphic>
                         </Button>
-                        <Button onAction="#shop_page" style="-fx-background-color: transparent; -fx-alignment: CENTER_LEFT;" text="Shop" textFill="WHITE">
+                        <Button onAction="#shop_page" prefHeight="51.0" prefWidth="166.0" style="-fx-background-color: transparent; -fx-alignment: CENTER_LEFT;" text="Shop" textFill="WHITE">
                             <graphic><ImageView fitHeight="25" fitWidth="25"><image><Image url="@../icons/you.png" /></image></ImageView></graphic>
                         </Button>
-                        <Button onAction="#pills_page_user" style="-fx-background-color: transparent; -fx-alignment: CENTER_LEFT;" text="Bills" textFill="WHITE">
+                        <Button onAction="#pills_page_user" prefHeight="51.0" prefWidth="166.0" style="-fx-background-color: transparent; -fx-alignment: CENTER_LEFT;" text="Bills" textFill="WHITE">
                             <graphic><ImageView fitHeight="25" fitWidth="25"><image><Image url="@../icons/pills.png" /></image></ImageView></graphic>
                         </Button>
                         <AnchorPane VBox.vgrow="ALWAYS" />
-                        <Button fx:id="cart_page_btn" onAction="#cart_page" style="-fx-background-color: transparent;">
+                        <Button fx:id="cart_page_btn" onAction="#cart_page" prefHeight="51.0" prefWidth="166.0" style="-fx-background-color: transparent;">
                             <graphic>
-                                <HBox alignment="CENTER_LEFT" spacing="5">
+                                <HBox alignment="CENTER_LEFT" prefHeight="51.0" prefWidth="166.0" spacing="5">
                                     <ImageView fitHeight="20" fitWidth="20"><image><Image url="@../icons/cart.png" /></image></ImageView>
                                     <Label fx:id="cartCounter" style="-fx-font-size: 14px;" text="Your Cart (0)" textFill="white" />
                                 </HBox>
                             </graphic>
                         </Button>
-                        <Button onAction="#calculator_page" style="-fx-background-color: transparent; -fx-alignment: CENTER_LEFT;" text="Calculator" textFill="WHITE">
+                        <Button onAction="#calculator_page" prefHeight="51.0" prefWidth="166.0" style="-fx-background-color: transparent; -fx-alignment: CENTER_LEFT;" text="Calculator" textFill="WHITE">
                             <graphic><ImageView fitHeight="25" fitWidth="25"><image><Image url="@../icons/resistance.png" /></image></ImageView></graphic>
                         </Button>
-                        <Button onAction="#login_page" style="-fx-background-color: transparent; -fx-alignment: CENTER_LEFT;" text="Log Out" textFill="WHITE">
+                        <Button onAction="#login_page" prefHeight="51.0" prefWidth="166.0" style="-fx-background-color: transparent; -fx-alignment: CENTER_LEFT;" text="Log Out" textFill="WHITE">
                             <graphic><ImageView fitHeight="30" fitWidth="25"><image><Image url="@../icons/logout.png" /></image></ImageView></graphic>
                         </Button>
                     </children>
@@ -86,6 +86,7 @@
         <!-- Main Content -->
         <AnchorPane layoutX="170.0" layoutY="90.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="170.5" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="90.0">
             <children>
+                <HBox alignment="CENTER" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="7.0">
                 <VBox fx:id="mainVBox" prefHeight="496.0" prefWidth="780.0" spacing="10.0" style="-fx-padding: 20;">
 
                     <!-- Band Count -->
@@ -168,6 +169,7 @@
                     </AnchorPane>
 
                 </VBox>
+                </HBox>
             </children>
         </AnchorPane>
 
