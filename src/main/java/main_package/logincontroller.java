@@ -255,6 +255,7 @@ public class logincontroller {
         addresssignup.setVisible(true);
         signupbtn.setVisible(true);
         back_to_login.setVisible(true);
+        pass_error.setVisible(false);
     }
 
     private void clearSignupFields() {
